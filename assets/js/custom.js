@@ -14,36 +14,36 @@ $(document).ready(function () {
         } else {
             $(this).removeClass("fa-times").addClass("fa-bars").parent("a").css("opacity", ".6");
         }
-        return false;
+        event.stoppropagation();
     });
 
     /* submenu */
     SubMenu.siblings("a").after('<i class="fa fa-angle-down"></i>');
     SubMenu.siblings("i").on("click", function (event) {
-        $(this).siblings("ul").slideToggle();
+        SubMenu.slideToggle();
         $(this).parent("li").toggleClass("sub-menu-open");
         if ($(this).hasClass("fa-angle-down")) {
-            $(this).switchClass("fa-angle-down", "fa-angle-up");
+            $(this).removeClass("fa-angle-down").addClass("fa-angle-up");
         } else {
-            $(this).switchClass("fa-angle-up", "fa-angle-down");
+            $(this).removeClass("fa-angle-up").addClass("fa-angle-down");
         }
-        return false;
+        event.stoppropagation();
     });
 
     /* Totop scroll */
     $(window).scroll(function () {
         var Scrolls = $(this).scrollTop();
         if (Scrolls > 100) {
-            Totop.fadeIn();
+            Totop.show();
         } else {
-            Totop.fadeOut();
+            Totop.hide();
         }
     });
     Totop.on("click", function (event) {
         $("html, body").animate({
             scrollTop: 0
         }, "slow");
-        return false;
+        event.stoppropagation();
     });
 
-});
+})

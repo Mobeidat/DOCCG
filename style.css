@@ -1,17 +1,16 @@
 ﻿/*
 Theme Name: DOCCG 2020
 Theme URI: https://doccg.com
-Author: the WordPress team
+Author: TingBiao Wang
 Author URI: https://wangtingbiao.com
-Description: 啊飒飒
-Version: 1.1
+Description: DOCCG 2020 is a WordPress theme developed by TingBiao Wang. You can use it for commercial and personal projects.
+Version: 1.0
 Requires at least: 5.0
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: wtb-text
-Tags: one-column, two-columns, right-sidebar, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
-
+Tags: two columns, flexible header, accessibility ready, custom colors, custom header, custom menu, custom logo, editor style, featured images, post formats, sticky post, theme options, threaded-comments, translation-ready
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
@@ -130,7 +129,7 @@ body {
     font-weight: 500;
     line-height: 1.618;
     letter-spacing: .5px;
-    background-color: transparent;
+    background-color: #fafafa;
 }
 
 a {
@@ -280,10 +279,12 @@ table tr td strong {
     min-height: 100vh;
     margin-left: auto;
     margin-right: auto;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, .05);
 }
 
 #site-main {
     flex-grow: 1;
+    background-color: white;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -303,6 +304,7 @@ table tr td strong {
     justify-content: space-between;
     align-items: center;
     position: relative;
+    z-index: 99;
     padding: 1rem 3vw;
     background-color: #191919;
 }
@@ -371,7 +373,7 @@ table tr td strong {
     flex-wrap: wrap;
     margin-left: 3vw;
     list-style-type: none;
-    transition: .3s;
+    transition: .5s;
 }
 
 .nav ul li a,
@@ -380,6 +382,7 @@ table tr td strong {
     padding: 1rem 1.5rem;
     color: white;
     opacity: .6;
+    transition: .3s;
 }
 
 .nav ul li a {
@@ -396,7 +399,12 @@ table tr td strong {
 .nav ul li .sub-menu {
     display: none;
     width: 100%;
-    padding: .5rem 0 .5rem;
+    padding: 1rem 0;
+    border-top: thin solid #232323;
+}
+
+.nav ul li .sub-menu li a {
+    padding: .5rem 1.5rem;
 }
 
 .nav ul .sub-menu-open {
@@ -408,7 +416,25 @@ table tr td strong {
     opacity: 1;
 }
 
+.nav ul .sub-menu-open .sub-menu {
+    border-top: thin solid #232323;
+}
+
 @media only screen and (min-width: 900px) {
+
+    #site-hea {
+        padding: 0 3vw;
+    }
+
+    /* Site title -------------------- */
+    .site-title a {
+        font-size: 2rem;
+    }
+
+    .site-title a span {
+        padding: .3rem .5rem;
+        font-size: 1.1rem;
+    }
 
     /* Toggle -------------------- */
     #menu-toggle {
@@ -417,10 +443,52 @@ table tr td strong {
 
     /* Nav -------------------- */
     #nav {
+        display: block !important;
         position: static;
         top: auto;
         left: auto;
+        background-color: transparent;
     }
+
+    .nav ul {
+        padding: 0;
+    }
+
+    .nav ul li {
+        display: inline-block;
+        margin-left: 0;
+        margin-right: 2rem;
+    }
+
+    .nav ul li a,
+    .nav ul li i {
+        padding: 1.5rem .5rem;
+        cursor: pointer;
+    }
+
+    .nav ul li i {
+        font-size: 1.2rem;
+    }
+
+    .nav ul li:hover > a,
+    .nav ul li:hover > i {
+        opacity: 1;
+    }
+
+    .nav ul li .sub-menu {
+        position: absolute;
+        top: 100%;
+        z-index: 99;
+        width: auto;
+        padding: 1rem 0;
+        background-color: #232323;
+    }
+
+    .nav ul li .sub-menu li {
+        display: block;
+        margin-right: 0;
+    }
+
 }
 
 /* Bread crumbs -------------------- */
@@ -448,18 +516,18 @@ table tr td strong {
     padding: 2rem 0;
 }
 
-.article-list:first-child {
+.article-first-list:first-child {
     display: block;
 }
 
-.article-list:first-child .article-pic {
+.article-first-list:first-child .article-pic {
     margin-right: 0;
     margin-bottom: 1rem;
 }
 
-.article-list:first-child .article-cat,
-.article-list:first-child .article-content p,
-.article-list:first-child .article-link {
+.article-first-list:first-child .article-cat,
+.article-first-list:first-child .article-content p,
+.article-first-list:first-child .article-link {
     display: block;
 }
 
@@ -569,25 +637,29 @@ table tr td strong {
 }
 
 @media only screen and (min-width: 900px) {
-    .article-list:first-child {
+    .article-box {
+        padding: 3rem 0;
+    }
+
+    .article-first-list:first-child {
         display: flex;
     }
 
-    .article-list:first-child .article-pic,
-    .article-list:first-child .article-content {
+    .article-first-list:first-child .article-pic,
+    .article-first-list:first-child .article-content {
         flex: 1;
         margin-bottom: 0;
     }
 
-    .article-list:first-child .article-pic,
+    .article-first-list:first-child .article-pic,
     .article-pic,
     .article-cat {
         margin-right: 2rem;
     }
 
     .article-list {
-        margin-bottom: 2.5rem;
-        padding-bottom: 2.5rem;
+        margin-bottom: 3rem;
+        padding-bottom: 3rem;
     }
 
     .article-pic {
@@ -609,7 +681,7 @@ table tr td strong {
 
 @media only screen and (min-width: 1200px) {
 
-    .article-list:first-child .article-title {
+    .article-first-list:first-child .article-title {
         font-size: 1.5rem;
     }
 
@@ -619,6 +691,46 @@ table tr td strong {
 
     .article-content p {
         font-size: 1rem;
+    }
+}
+
+/*-----------------------------------------------------------------
+* Site next
+-----------------------------------------------------------------*/
+.site-next {
+    text-align: center;
+}
+
+.site-next a {
+    display: inline-block;
+    margin: 0 .5rem;
+    padding: .5rem 1rem;
+    font-size: .9rem;
+    color: #232323;
+    line-height: 1;
+    background-color: #f2f2f2;
+    border-radius: .3rem;
+}
+
+.site-next a:first-child,
+.site-next a:last-child {
+    color: white;
+    background-color: #0057ff;
+}
+
+@media only screen and (min-width: 900px) {
+    .site-next a {
+        font-size: .9rem;
+    }
+
+    .site-next a:hover {
+        color: white;
+        background-color: #0057ff;
+    }
+
+    .site-next a:first-child:hover,
+    .site-next a:last-child:hover {
+        background-color: #232323;
     }
 }
 
@@ -673,11 +785,18 @@ table tr td strong {
 }
 
 @media only screen and (min-width: 900px) {
+    .site-bottom-ad {
+        padding: 4rem;
+        text-align: center;
+        background-color: #0057ff;
+    }
+
     .site-bottom-ad h2 {
-        font-size: 1.6rem;
+        font-size: 2rem;
     }
 
     .site-bottom-ad p {
+        margin: 1.5rem auto;
         font-size: 1rem;
     }
 }
