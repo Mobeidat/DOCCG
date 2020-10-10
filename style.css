@@ -194,15 +194,48 @@ a,
 input[type="text"],
 input[type="email"],
 input[type="url"],
-input[type="search"],
-input[type="checkbox"],
 input[type="submit"],
+input[type="checkbox"],
+input[type="search"],
 button[type="submit"],
 textarea {
     max-width: 100%;
-    background-color: transparent;
+    color: #666;
+    background-color: #f2f2f2;
     border: none;
     outline: 0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="submit"],
+input[type="search"],
+button[type="submit"],
+textarea {
+    padding: .8rem 1.5rem;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus {
+    outline: #0057ff solid medium;
+    outline-offset: -3px;
+}
+
+input[type="submit"],
+button[type="submit"] {
+    font-size: 1rem;
+    color: white;
+    background-color: #0057ff;
+    cursor: pointer;
+    transition: .3s;
+}
+
+input[type="submit"]:hover,
+button[type="submit"]:hover {
+    background-color: #232323;
 }
 
 input[type="checkbox"] {
@@ -262,6 +295,14 @@ table tr td strong {
     display: block;
     font-size: 1.1rem;
     text-align: center;
+}
+
+@media only screen and (min-width: 600px) {
+
+    input[type="submit"],
+    button[type="submit"] {
+        padding: .8rem 2rem;
+    }
 }
 
 /*-----------------------------------------------------------------
@@ -457,7 +498,7 @@ table tr td strong {
     .nav ul li {
         display: inline-block;
         margin-left: 0;
-        margin-right: 2rem;
+        margin-right: 1rem;
     }
 
     .nav ul li a,
@@ -731,6 +772,27 @@ table tr td strong {
     .site-next a:first-child:hover,
     .site-next a:last-child:hover {
         background-color: #232323;
+    }
+}
+
+/*-----------------------------------------------------------------
+* SEarch page
+-----------------------------------------------------------------*/
+.search-box {
+    padding-top: 1rem;
+}
+
+#searchform {
+    display: flex;
+}
+
+.searchinput {
+    flex: 1;
+}
+
+@media only screen and (min-width: 900px) {
+    .search-box {
+        padding-top: 2rem;
     }
 }
 
