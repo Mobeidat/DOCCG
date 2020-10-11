@@ -55,7 +55,7 @@ Source: http://fontawesome.io/
 == Changelog ==
 
 = 1.0 =
-* Released: October 20, 2020
+* Released: October 22, 2020
 
 Initial release
 
