@@ -6,17 +6,12 @@
  *
  * @package TingBiao Wang
  */
-get_header();?>
+get_header();
+?>
 <section class="media-box max-width">
-    <article class="media-list">
-        <figure class="media-pic"><a href=""><img src="assets/images/pic.jpg" alt=""></a></figure>
-    </article>
+	<article class="media-list">
+		<figure class="media-pic"><a href=""><img src="assets/images/pic.jpg" alt=""></a></figure>
+	</article>
 </section>
-<div class="site-next">
-    <a href="">上一页</a>
-    <a href="">1</a>
-    <span>...</span>
-    <a href="">3</a>
-    <a href="">下一页</a>
-</div>
+<div class="site-next"> <a href="">上一页</a> <a href="">1</a> <span>...</span> <a href="">3</a> <a href="">下一页</a> </div>
 <?php get_footer();?>
