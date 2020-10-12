@@ -515,6 +515,7 @@ table tr td strong {
 
     .nav ul li i {
         font-size: 1.2rem;
+        background-color: transparent;
     }
 
     .nav ul li:hover > a,
@@ -536,6 +537,13 @@ table tr td strong {
         margin-right: 0;
     }
 
+    .nav ul .sub-menu-open {
+        background-color: transparent;
+    }
+
+    .nav ul .sub-menu-open .sub-menu {
+        border-top: none;
+    }
 }
 
 /* Bread crumbs -------------------- */
@@ -559,6 +567,30 @@ table tr td strong {
 .breadcrumbs a:hover {
     color: #0057ff;
     opacity: 1;
+}
+
+/*-----------------------------------------------------------------
+* Article
+-----------------------------------------------------------------*/
+.banner {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    min-height: 30rem;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.banner::after {
+    content: url(assets/images/index-border.svg);
+    position: absolute;
+    bottom: -.5rem;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    line-height: 0;
 }
 
 /*-----------------------------------------------------------------
@@ -643,7 +675,7 @@ table tr td strong {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    color: #191919;
+    color: #232323;
 }
 
 .article-title a:hover {
@@ -776,7 +808,7 @@ table tr td strong {
     font-size: 1.5rem;
     color: white;
     line-height: 1;
-    background-color: #191919;
+    background-color: #232323;
     transform: scale(1);
     transition: .5s;
     opacity: 1;
@@ -801,7 +833,7 @@ table tr td strong {
 }
 
 .media-title a {
-    color: #191919;
+    color: #232323;
 }
 
 .media-title a:hover {
@@ -814,7 +846,7 @@ table tr td strong {
 }
 
 .media-meta i {
-    margin-right: .5rem;
+    margin-right: .3rem;
 }
 
 .media-meta span {
@@ -988,7 +1020,7 @@ table tr td strong {
 }
 
 .single-meta i {
-    margin-right: .5rem;
+    margin-right: .3rem;
 }
 
 .single-meta a:hover {
@@ -1187,14 +1219,17 @@ table tr td strong {
 }
 
 .news-title a {
+    display: inline-block;
     color: white;
 }
 
 .news-time {
-    display: inline-block;
-    margin-top: .5rem;
     color: white;
     opacity: .6;
+}
+
+.news-time i {
+    margin-right: .3rem;
 }
 
 .bottom-link {
@@ -1279,11 +1314,7 @@ table tr td strong {
     }
 
     .news-list {
-        padding: 1.5rem;
-    }
-
-    .news-title {
-        font-size: 1rem;
+        padding: 1rem 1.5rem;
     }
 
     .bottom-link {
