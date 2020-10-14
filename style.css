@@ -654,10 +654,19 @@ table tr td strong {
 
 .article-cat a {
     display: inline-block;
+	margin-left: .5rem;
     padding: .1rem .5rem;
     color: white;
     background-color: #0057ff;
     border-radius: .3rem;
+}
+
+.article-cat a:first-child{
+	margin-left: 0;
+}
+
+.article-cat a:hover{
+	background-color: #232323;
 }
 
 .article-time,
@@ -770,7 +779,7 @@ table tr td strong {
 @media only screen and (min-width: 1200px) {
 
     .article-first-list:first-child .article-title {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
 
     .article-title {
@@ -932,7 +941,8 @@ table tr td strong {
 }
 
 .site-next a:first-child,
-.site-next a:last-child {
+.site-next a:last-child,
+.site-next .current{
     color: white;
     background-color: #0057ff;
 }
@@ -942,7 +952,8 @@ table tr td strong {
         margin-bottom: 6rem;
     }
 
-    .site-next a {
+    .site-next a,
+	.site-next span {
         padding: .5rem 1rem;
         font-size: .9rem;
     }
