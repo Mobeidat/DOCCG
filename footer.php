@@ -1,11 +1,13 @@
 </main>
 
 <footer id="site-foo">
+	<?php if ( is_single() ) {} else {?>
 	<section class="site-bottom-ad">
 		<h2>非常棒的主题</h2>
 		<p>你想要这些吗</p>
 		<div class="site-bottom-ad-link"><a href="">查看更多</a></div>
 	</section>
+	<?php } ?>
 	<section class="site-bottom">
 		<div class="site-bottom-list bottom-about">
 			<?php doc_custom_logo();?>
