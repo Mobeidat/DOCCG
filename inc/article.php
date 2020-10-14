@@ -1,6 +1,6 @@
 <?php
 
-/* The category loop of the post */
+// The category loop of the post
 if ( !function_exists( 'doc_category_foreach' ) ) {
 	function doc_category_foreach() {
 		foreach ( ( get_the_category() ) as $category ) {
@@ -9,11 +9,11 @@ if ( !function_exists( 'doc_category_foreach' ) ) {
 	}
 }
 
-/* Statistic estimated reading time */
+// Statistic estimated reading time
 if ( !function_exists( 'doc_get_reading_time' ) ) {
 
 	function doc_get_reading_time( $content ) {
-		$doc_format = '%min%分%sec%秒阅读';
+		$doc_format = __( '%min%min%sec%s to read', 'doc-text' );
 		$doc_chars_per_minute = 300; // 估算1分种阅读字数
 		$doc_format = str_replace( '%num%', $doc_chars_per_minute, $doc_format );
 		$words = mb_strlen( preg_replace( '/\s/', '', html_entity_decode( strip_tags( $content ) ) ), 'UTF-8' );
@@ -24,7 +24,7 @@ if ( !function_exists( 'doc_get_reading_time' ) ) {
 
 }
 
-/* Add custom post content */
+// Add custom post content
 if ( !function_exists( 'doc_post_content_copytight' ) ) {
 
 	function doc_post_content_copytight( $content ) {
@@ -41,7 +41,7 @@ if ( !function_exists( 'doc_post_content_copytight' ) ) {
 }
 add_filter( 'the_content', 'doc_post_content_copytight' );
 
-/* Add alt and title attributes to the img tag of the post picture */
+// Add alt and title attributes to the img tag of the post picture
 if ( !function_exists( 'doc_post_img_gesalt' ) ) {
 
 	function doc_post_img_gesalt( $content ) {
@@ -59,7 +59,7 @@ add_filter( 'the_content', 'doc_post_img_gesalt' );
 /*	Post page custom comment submission/list function
 /* -------------------------------------------------------------------------- */
 
-/* Whether the comment list user is the author of the current article */
+// Whether the comment list user is the author of the current article
 if ( !function_exists( 'doc_comment_by_post_user' ) ):
 	function doc_comment_by_post_user( $comment = null ) {
 		if ( is_object( $comment ) && $comment->user_id > 0 ) {
@@ -73,7 +73,7 @@ if ( !function_exists( 'doc_comment_by_post_user' ) ):
 	}
 endif;
 
-/* Spam & Delete links for all versions of wordpress */
+// Spam & Delete links for all versions of wordpress
 if ( !function_exists( 'doc_delete_comment_link' ) ) {
 	function doc_delete_comment_link( $id ) {
 		if ( current_user_can( 'edit_post' ) ) {
@@ -85,7 +85,7 @@ if ( !function_exists( 'doc_delete_comment_link' ) ) {
 	}
 }
 
-/* Reply to comments automatically add @reviewers */
+// Reply to comments automatically add @reviewers
 function doc_comment_add_at( $comment_text, $comment = '' ) {
 	if ( $comment->comment_parent > 0 ) {
 		$comment_text = '<em>@' . get_comment_author( $comment->comment_parent ) . '</em> ' . $comment_text;
@@ -114,7 +114,7 @@ function doc_theme_comments( $comment, $args, $depth ) {
 			<?php
 			comment_text();
 			if ( $comment->comment_approved == '0' ):
-				echo '<i>等待批准的评论！！！</i>';
+				echo __( '<i>Comments waiting for approval! </i>', 'doc-text' );
 			endif;
 			?>
 			<div class="comment-meta"><span class="left"><?php printf ( __( '%1$s', 'doc-text' ), get_comment_date( 'Y-m-d A G:i:s ' ) ); doc_delete_comment_link( get_comment_ID() );?></span><span class="comment-reply">
