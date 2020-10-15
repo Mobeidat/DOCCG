@@ -5,7 +5,7 @@ $(document).ready(function () {
 	var SubMenu = $("ul.sub-menu"),
 		Totop = $("a#totop");
 
-	/* Menu toggle */
+	// Menu toggle
 	$("a#menu-toggle i").on("click", function (event) {
 		$("nav#nav").slideToggle();
 		if ($(this).hasClass("fa-bars")) {
@@ -16,7 +16,7 @@ $(document).ready(function () {
 		event.stoppropagation();
 	});
 
-	/* submenu */
+	// Submenu
 	SubMenu.siblings("a").after('<i class="fa fa-angle-down"></i>');
 	SubMenu.siblings("i").on("click", function (event) {
 		$(this).next().slideToggle();
@@ -31,7 +31,13 @@ $(document).ready(function () {
 		event.stoppropagation();
 	});
 
-	/* Totop scroll */
+	// Comment
+	$("a.comment-toggle").on("click", function (event) {
+		$("footer.single-foo").toggleClass("comment-open");
+		event.stoppropagation();
+	});
+
+	// Totop scroll
 	$(window).scroll(function () {
 		var Scrolls = $(this).scrollTop();
 		if (Scrolls > 100) {
