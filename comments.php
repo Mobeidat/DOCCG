@@ -8,22 +8,25 @@ if ( post_password_required() ) {
 	if ( have_comments() ): ?>
 	<div class="comment-box">
 		<h3 class="comment-title" itemprop="commentCount">
-			<?php comments_number(__('0 Comment', 'mrw-text'), __('1 Comment', 'mrw-text'), '% ' . __('Comments', 'mrw-text') ); ?>
+			<?php
+			comments_number( __( '0 Comment', 'doctext' ), __( '1 Comment', 'doctext' ), '% ' . __( 'Comments', 'doctext' ) );
+			echo '<a href="#respond">' . __( '写评论', 'doc-text' ) . '</a>';
+			?>
 		</h3>
 		<ol class="comment-ol"  itemprop="comment">
 			<?php
 			wp_list_comments( array(
 				'avatar_size' => 50,
 				'style' => 'ul',
-				'callback' => 'mrw_theme_comments',
+				'callback' => 'doc_theme_comments',
 				'type' => 'all'
 			) );
 			?>
 		</ol>
 		<?php
 		the_comments_pagination( array(
-			'prev_text' => __( '&laquo;', 'mrw-text' ),
-			'next_text' => __( '&raquo;', 'mrw-text' ),
+			'prev_text' => __( '&laquo;', 'doctext' ),
+			'next_text' => __( '&raquo;', 'doctext' ),
 		) );
 		?>
 	</div>
@@ -32,7 +35,7 @@ if ( post_password_required() ) {
 	if ( !comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) {
 		?>
 	<p class="no-comments">
-		<?php _e( 'Comments are closed.', 'mrw-text'); ?>
+		<?php _e( 'Comments are closed.', 'doctext'); ?>
 	</p>
 	<?php
 	}
