@@ -7,10 +7,10 @@ if ( post_password_required() ) {
 	<?php
 	if ( have_comments() ): ?>
 	<div class="comment-box">
-		<h3 class="comment-title">
+		<h3 class="comment-title" itemprop="commentCount">
 			<?php comments_number(__('0 Comment', 'mrw-text'), __('1 Comment', 'mrw-text'), '% ' . __('Comments', 'mrw-text') ); ?>
 		</h3>
-		<ol class="comment-ol">
+		<ol class="comment-ol"  itemprop="comment">
 			<?php
 			wp_list_comments( array(
 				'avatar_size' => 50,
@@ -37,7 +37,7 @@ if ( post_password_required() ) {
 	<?php
 	}
 	comment_form( array(
-		'title_reply_before' => '<h3 class="comment-title">',
+		'title_reply_before' => '<h3 class="comment-title" itemprop="comment">',
 		'title_reply_after' => '</h3>',
 		'comment_field' => '<p class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun' ) . '</label><textarea id="comment" name="comment" cols="45" rows="4" aria-required="true"></textarea></p>',
 	) );
