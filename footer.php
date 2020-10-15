@@ -1,8 +1,8 @@
 </main>
 
-<footer id="site-foo">
+<footer id="site-foo" role="footer" itemscope itemtype="http://schema.org/WPFooter">
 	<?php if ( is_single() ) {} else {?>
-	<section class="site-bottom-ad">
+	<section class="site-bottom-ad" itemscope itemtype="http://schema.org/WPAdBlock">
 		<h2>非常棒的主题</h2>
 		<p>你想要这些吗</p>
 		<div class="site-bottom-ad-link"><a href="">查看更多</a></div>
@@ -18,11 +18,11 @@
 			<div class="news-box">
 				<article class="news-list">
 					<h3 class="news-title"><a href="">RaimerSoft RadioMaximus 2.28.3 （重新包装和便携式）</a></h3>
-					<time class="news-time"><i class="fa fa-calendar-o"></i>2020年3月2日</time>
+					<time class="news-time"><i class="fa fa-calendar-o"></i>2020-3-2-</time>
 				</article>
 			</div>
 		</div>
-		<div class="site-bottom-list bottom-link">
+		<div class="site-bottom-list bottom-link" itemprop="about">
 			<h3 class="site-bottom-title">联系我</h3>
 			<p class="link-icon"><a href=""><i class="fa fa-behance"></i></a><a href=""><i class="fa fa-dribbble"></i></a><a href=""><i class="fa fa-github"></i></a></p>
 			<p class="link-img"><span>小程序</span><img src="assets/images/buy_02.jpg" alt=""></p>
