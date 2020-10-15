@@ -10,10 +10,10 @@ get_header();
 doc_sort_box();
 if ( have_posts() ):
 	?>
-<section class="article-box max-width">
+<section itemprop="article" class="article-box max-width">
 	<?php
 	while ( have_posts() ): the_post();
-	get_template_part( 'template-parts/content', '' );
+	get_template_part( 'template-parts/content', 'search' );
 	endwhile;
 	?>
 </section>
