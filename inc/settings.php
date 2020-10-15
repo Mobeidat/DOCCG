@@ -261,25 +261,28 @@ if ( !function_exists( 'doc_copyright_menu' ) ) {
 		bloginfo( 'name' );
 
 		// Powered by
-		echo ' | Powered by <a href="https://cn.wordpress.org/" target="_blank">Wordpress</a>';
+		echo '<span> | Powered by </span><a href="https://cn.wordpress.org/" target="_blank">Wordpress</a>';
 
 		// Theme by
-		echo ' | Theme by <a href="https://www.wangtingbiao.com" target="_blank" itemprop="copyrightHolder">TingBiao Wang</a>';
+		echo '<span> | Theme by </span><a href="https://www.wangtingbiao.com" target="_blank" itemprop="copyrightHolder">TingBiao Wang</a>';
 
 		// Record
 		$doc_record = get_theme_mod( 'doc_record' );
 		if ( $doc_record ) {
-			echo ' | <a href="http://www.beian.miit.gov.cn/" class="mrw-record" target="_blank">' . $doc_record . '</a>';
+			echo '<span> | </span><a href="http://www.beian.miit.gov.cn/" class="docrecord" target="_blank">' . $doc_record . '</a>';
 		}
 		echo '</p>';
 
 		// Bottom menu
-		wp_nav_menu( array(
+		$bottomnav = array(
 			'theme_location' => 'bottomnav',
 			'container' => 'div',
+			'echo' => false,
+			'items_wrap' => '%3$s',
 			'depth' => 1,
 			'fallback_cb' => 0,
-		) );
+		);
+		echo strip_tags( wp_nav_menu( $bottomnav ), '<div><a>' );
 
 		echo '</section>';
 	}
@@ -291,7 +294,11 @@ if ( !function_exists( 'doc_statistics_fixed_box' ) ) {
 
 		echo '<div id="fixed-box">';
 
-		echo get_theme_mod( 'doc_statistics' );
+		if ( is_single() ) {
+			while ( have_posts() ): the_post();
+			echo '<a class="single-comment comment-toggle"><i class="fa fa-comment"></i><span>' . get_comments_number() . '</span></a>';
+			endwhile;
+		}
 
 		$doc_back_totop_bell = get_theme_mod( 'doc_back_totop_bell', 'true' );
 		$doc_back_totop_open = get_theme_mod( 'doc_back_totop_open', 'true' );
@@ -299,8 +306,10 @@ if ( !function_exists( 'doc_statistics_fixed_box' ) ) {
 			echo '<a href="#" id="bell"><i class="fa fa-bell"></i></a>';
 		}
 		if ( $doc_back_totop_open ) {
-			echo '<a href="#" id="totop"><i class="fa fa-angle-up"></i></a>';
+			echo '<a id="totop"><i class="fa fa-angle-up"></i></a>';
 		}
+
+		echo get_theme_mod( 'doc_statistics' );
 
 		echo '</div>';
 
@@ -321,7 +330,7 @@ if ( !function_exists( 'doc_copyright_date' ) ) {
 			if ( $copyright_dates[ 0 ]->firstdate != $date[ 0 ] ) {
 				$copyright .= '-' . $date[ 0 ];
 			}
-			echo $copyright . ' ';
+			echo $copyright . '</span';
 		}
 	}
 }
