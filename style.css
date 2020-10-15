@@ -219,7 +219,8 @@ textarea {
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="url"]:focus,
-input[type="search"]:focus {
+input[type="search"]:focus,
+textarea:focus{
     background-color: white;
     outline: #0057ff solid medium;
     outline-offset: -3px;
@@ -313,6 +314,33 @@ table tr td strong {
     margin-left: 3vw;
     margin-right: 3vw;
 }
+.sort-box {
+    padding-top: 1rem;
+}
+
+.sort-box p {
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+.sort-box p span {
+    display: inline-block;
+    margin: auto .5rem;
+    padding: 0 .5rem;
+    color: white;
+    font-weight: 700;
+    align-content: 1;
+    background-color: firebrick;
+    border-radius: .3rem;
+}
+
+#searchform {
+    display: flex;
+}
+
+.searchinput {
+    flex: 1;
+}
 
 #warp {
     display: flex;
@@ -327,6 +355,12 @@ table tr td strong {
 #site-main {
     flex-grow: 1;
     background-color: white;
+}
+
+@media only screen and (min-width: 900px) {
+    .sort-box {
+        padding-top: 3rem;
+    }.sort-box h2{font-size: 2rem;}
 }
 
 @media only screen and (min-width: 1200px) {
@@ -555,12 +589,16 @@ table tr td strong {
 .breadcrumbs div {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
 }
 
-.breadcrumbs,
+.breadcrumbs span,
 .breadcrumbs a {
+	display: inline-block;
     color: #232323;
+	line-height: 1;
     opacity: .6;
 }
 
@@ -970,43 +1008,6 @@ table tr td strong {
 }
 
 /*-----------------------------------------------------------------
-* SEarch page
------------------------------------------------------------------*/
-.search-box {
-    padding-top: 1rem;
-}
-
-.search-box p {
-    margin-top: 1rem;
-    font-size: 1rem;
-}
-
-.search-box p span {
-    display: inline-block;
-    margin: auto .5rem;
-    padding: 0 .5rem;
-    color: white;
-    font-weight: 700;
-    align-content: 1;
-    background-color: firebrick;
-    border-radius: .3rem;
-}
-
-#searchform {
-    display: flex;
-}
-
-.searchinput {
-    flex: 1;
-}
-
-@media only screen and (min-width: 900px) {
-    .search-box {
-        padding-top: 3rem;
-    }
-}
-
-/*-----------------------------------------------------------------
 * Page/Post
 -----------------------------------------------------------------*/
 .single-hea,
@@ -1036,6 +1037,14 @@ table tr td strong {
 
 .single-meta i {
     margin-right: .3rem;
+}
+
+.single-meta a {
+	margin-left: .5rem;
+}
+
+.single-meta a:first-child {
+	margin-left: 0;
 }
 
 .single-meta a:hover {
