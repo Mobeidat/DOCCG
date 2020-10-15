@@ -13,13 +13,13 @@ if ( !function_exists( 'doc_category_foreach' ) ) {
 if ( !function_exists( 'doc_get_reading_time' ) ) {
 
 	function doc_get_reading_time( $content ) {
-		$doc_format = __( '%min%min%sec%s to read', 'doc-text' );
-		$doc_chars_per_minute = 300; // 估算1分种阅读字数
-		$doc_format = str_replace( '%num%', $doc_chars_per_minute, $doc_format );
+		$mrw_format = '%min%分%sec%秒阅读';
+		$mrw_chars_per_minute = 300; // 估算1分种阅读字数
+		$mrw_format = str_replace( '%num%', $mrw_chars_per_minute, $mrw_format );
 		$words = mb_strlen( preg_replace( '/\s/', '', html_entity_decode( strip_tags( $content ) ) ), 'UTF-8' );
-		$minutes = floor( $words / $doc_chars_per_minute );
-		$seconds = floor( $words % $doc_chars_per_minute / ( $doc_chars_per_minute / 60 ) );
-		return str_replace( '%sec%', $seconds, str_replace( '%min%', $minutes, $doc_format ) );
+		$minutes = floor( $words / $mrw_chars_per_minute );
+		$seconds = floor( $words % $mrw_chars_per_minute / ( $mrw_chars_per_minute / 60 ) );
+		return str_replace( '%sec%', $seconds, str_replace( '%min%', $minutes, $mrw_format ) );
 	}
 
 }
@@ -30,9 +30,9 @@ if ( !function_exists( 'doc_post_content_copytight' ) ) {
 	function doc_post_content_copytight( $content ) {
 		if ( is_singular( 'post' ) ) {
 			$doc_single_copytight_open = get_theme_mod( 'doc_single_copytight_open', 'ture' );
-			$doc_single_copytight = get_theme_mod( 'doc_single_copytight', __( '本文是从网络上收集的，版权属于原始作者或组织。 如果此页面侵犯了您的权益，请通过电子邮件 hi@wangtingbiao.com 与我们联系！', 'doc-text' ) );
+			$doc_single_copytight = get_theme_mod( 'doc_single_copytight', __( 'This article is collected from the Internet, and the copyright belongs to the original author or organization. If this page violates your rights, please contact us via email hi@doccg.com!', 'doc-text' ) );
 			if ( $doc_single_copytight_open ) {
-				$content .= '<p class="wp-block-copytight single-copytight"><i class="fa fa-flag"></i><span>' . $doc_single_copytight . '</span></p>';
+				$content .= '<p class="wp-block-copytight single-copytight" itemscope itemtype="http://schema.org/Organization" itemprop="copyrightHolder"><i class="fa fa-flag"></i><span>' . $doc_single_copytight . '</span></p>';
 			}
 		}
 		return $content;
@@ -117,7 +117,7 @@ function doc_theme_comments( $comment, $args, $depth ) {
 				echo __( '<i>Comments waiting for approval! </i>', 'doc-text' );
 			endif;
 			?>
-			<div class="comment-meta"><span class="left"><?php printf ( __( '%1$s', 'doc-text' ), get_comment_date( 'Y-m-d A G:i:s ' ) ); doc_delete_comment_link( get_comment_ID() );?></span><span class="comment-reply">
+			<div class="comment-meta"><span class="left"><?php printf ( __( '%1$s', 'doc-text' ), get_comment_date( 'Y-m-d A G:i:s' ) ); doc_delete_comment_link( get_comment_ID() );?></span><span class="comment-reply">
 				<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args[ 'max_depth' ] ) ), $comment->comment_ID ); ?>
 				</span></div>
 		</div>
