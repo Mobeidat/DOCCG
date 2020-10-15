@@ -7,7 +7,7 @@ if ( !function_exists( 'doc_getting_started_menu' ) ):
 		$plugin_count = '<span class="awaiting-mod action-count">' . esc_html( DOCCG_THEME_VERSION ) . '</span>';
 		$title = sprintf( esc_html__( '%1$s %2$s', 'doc-text' ), esc_html( DOCCG_THEME_NAME ), $plugin_count );
 
-		add_theme_page( sprintf( esc_html__( 'Welcome to %1$s ', 'doc-text' ), esc_html( DOCCG_THEME_NAME ), esc_html( DOCCG_THEME_VERSION ) ), $title, 'edit_theme_options', 'mrw-getting-started', 'doc_getting_started_page' );
+		add_theme_page( sprintf( esc_html__( 'Welcome to %1$s ', 'doc-text' ), esc_html( DOCCG_THEME_NAME ), esc_html( DOCCG_THEME_VERSION ) ), $title, 'edit_theme_options', 'docgetting-started', 'doc_getting_started_page' );
 	}
 endif;
 add_action( 'admin_menu', 'doc_getting_started_menu' );
@@ -16,8 +16,8 @@ add_action( 'admin_menu', 'doc_getting_started_menu' );
 if ( !function_exists( 'doc_getting_started_admin_scripts' ) ):
 	function doc_getting_started_admin_scripts( $hook ) {
 
-		if ( 'appearance_page_mrw-getting-started' != $hook ) return;
-		wp_enqueue_style( 'mrw-getting-started', get_template_directory_uri() . '/inc/admin/getting-started.css', false, DOCCG_THEME_VERSION );
+		if ( 'appearance_page_docgetting-started' != $hook ) return;
+		wp_enqueue_style( 'docgetting-started', get_template_directory_uri() . '/inc/admin/getting-started.css', false, DOCCG_THEME_VERSION );
 		wp_enqueue_script( 'updates' );
 
 	}
@@ -49,14 +49,14 @@ if ( !function_exists( 'doc_getting_started_page' ) ):
 				<h4>
 					<?php esc_html_e( 'Use documentation', 'doc-text' ); ?>
 				</h4>
-				<a class="button button-primary" target="_blank" href="https://www.wangtingbiao.com/mrw-docs/">
+				<a class="button button-primary" target="_blank" href="https://www.wangtingbiao.com/docdocs/">
 				<?php esc_html_e( 'See details', 'doc-text' ); ?>
 				</a> </div>
 			<div class="panel-aside panel-column">
 				<h4>
 					<?php esc_html_e( 'Your feedback is valuable to us', 'doc-text' ); ?>
 				</h4>
-				<a class="button button-primary" target="_blank" href="https://www.wangtingbiao.com/mrw-docs/#comment">
+				<a class="button button-primary" target="_blank" href="https://www.wangtingbiao.com/docdocs/#comment">
 				<?php esc_html_e( 'Submit feedback', 'doc-text' ); ?>
 				</a> </div>
 		</div>
@@ -81,15 +81,15 @@ class doc_screen {
 	/* Show administrator notification linked to welcome screen */
 	public function doc_admin_notice() {
 		?>
-<div class="updated notice is-dismissible mrw-notice">
+<div class="updated notice is-dismissible docnotice">
 	<h1>
 		<?php
 		$theme_info = wp_get_theme();
 		printf( esc_html__( 'Congratulations on the successful installation, welcome to use %1$s theme version %2$s', 'doc-text' ), esc_html( $theme_info->Name ), esc_html( $theme_info->Version ) );
 		?>
 	</h1>
-	<p><?php echo sprintf( esc_html__("Thank you for your choice. To make full use of all the features of the theme, you have to go to our %1\$s welcome page %2\$s", 'doc-text'), '<a href="' . esc_url( admin_url( 'themes.php?page=mrw-getting-started' ) ) . '">', '</a>' ); ?></p>
-	<p><a href="<?php echo esc_url( admin_url( 'themes.php?page=mrw-getting-started' ) ); ?>" class="button button-blue-secondary button_info" style="text-decoration: none;"><?php echo esc_html__('Start using','doc-text'); ?></a></p>
+	<p><?php echo sprintf( esc_html__("Thank you for your choice. To make full use of all the features of the theme, you have to go to our %1\$s welcome page %2\$s", 'doc-text'), '<a href="' . esc_url( admin_url( 'themes.php?page=docgetting-started' ) ) . '">', '</a>' ); ?></p>
+	<p><a href="<?php echo esc_url( admin_url( 'themes.php?page=docgetting-started' ) ); ?>" class="button button-blue-secondary button_info" style="text-decoration: none;"><?php echo esc_html__('Start using','doc-text'); ?></a></p>
 </div>
 <?php
 }
