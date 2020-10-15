@@ -248,7 +248,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_record',
 				array(
-					'selector' => '.mrw-record',
+					'selector' => '.docrecord',
 					'settings' => 'doc_record',
 					'render_callback' => function () {
 						return get_theme_mod( 'doc_record' );
