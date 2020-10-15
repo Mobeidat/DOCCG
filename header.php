@@ -23,7 +23,7 @@
 <![endif]-->
 <div id="warp">
 <header id="site-hea" role="header" itemscope itemtype="http://schema.org/WPHeader">
-	<div class="site-hea-left"><a href="#" id="menu-toggle" class="toggle"><i class="fa fa-bars"></i></a>
+	<div class="site-hea-left"><a id="menu-toggle" class="toggle"><i class="fa fa-bars"></i></a>
 		<?php doc_custom_logo();?>
 	</div>
 	<div class="site-hea-right" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
