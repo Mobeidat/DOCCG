@@ -22,11 +22,11 @@
 	<div class="browse-happy" role="dialog">It is strongly recommended to upgrade the<a href="http://browsehappy.com/">browser</a> for a better experience</div>
 <![endif]-->
 <div id="warp">
-<header id="site-hea">
+<header id="site-hea" role="header" itemscope itemtype="http://schema.org/WPHeader">
 	<div class="site-hea-left"><a href="#" id="menu-toggle" class="toggle"><i class="fa fa-bars"></i></a>
 		<?php doc_custom_logo();?>
 	</div>
-	<div class="site-hea-right">
+	<div class="site-hea-right" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
 		<?php
 		wp_nav_menu( array(
 			'theme_location' => 'topnav',
@@ -36,10 +36,9 @@
 			'depth' => 2,
 			'fallback_cb' => 0,
 		) );
+		echo '<a href="' . esc_url( home_url( '/?s=' ) ) . '" id="search-toggle" class="toggle"><i class="fa fa-search"></i></a>';
 		?>
-		<a href="#" id="search-toggle" class="toggle"><i class="fa fa-search"></i></a> </div>
+	</div>
 </header>
-<main id="site-main">
-<section class="breadcrumbs">
-	<div class="max-width"> <a href="">首页</a><span> &raquo; </span><span>wordpress</span> </div>
-</section>
+<?php doc_breadcrumbs();?>
+<main id="site-main" role="main" itemscope itemtype="http://schema.org/Blog">
