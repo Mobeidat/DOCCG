@@ -13,13 +13,13 @@ if ( !function_exists( 'doc_category_foreach' ) ) {
 if ( !function_exists( 'doc_get_reading_time' ) ) {
 
 	function doc_get_reading_time( $content ) {
-		$mrw_format = '%min%分%sec%秒阅读';
-		$mrw_chars_per_minute = 300; // 估算1分种阅读字数
-		$mrw_format = str_replace( '%num%', $mrw_chars_per_minute, $mrw_format );
+		$doc_format = '%min%分%sec%秒阅读';
+		$doc_chars_per_minute = 300; // 估算1分种阅读字数
+		$doc_format = str_replace( '%num%', $doc_chars_per_minute, $doc_format );
 		$words = mb_strlen( preg_replace( '/\s/', '', html_entity_decode( strip_tags( $content ) ) ), 'UTF-8' );
-		$minutes = floor( $words / $mrw_chars_per_minute );
-		$seconds = floor( $words % $mrw_chars_per_minute / ( $mrw_chars_per_minute / 60 ) );
-		return str_replace( '%sec%', $seconds, str_replace( '%min%', $minutes, $mrw_format ) );
+		$minutes = floor( $words / $doc_chars_per_minute );
+		$seconds = floor( $words % $doc_chars_per_minute / ( $doc_chars_per_minute / 60 ) );
+		return str_replace( '%sec%', $seconds, str_replace( '%min%', $minutes, $doc_format ) );
 	}
 
 }
@@ -117,9 +117,19 @@ function doc_theme_comments( $comment, $args, $depth ) {
 				echo __( '<i>Comments waiting for approval! </i>', 'doc-text' );
 			endif;
 			?>
-			<div class="comment-meta"><span class="left"><?php printf ( __( '%1$s', 'doc-text' ), get_comment_date( 'Y-m-d A G:i:s' ) ); doc_delete_comment_link( get_comment_ID() );?></span><span class="comment-reply">
-				<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args[ 'max_depth' ] ) ), $comment->comment_ID ); ?>
-				</span></div>
+			<div class="comment-meta">
+				<p class="left">
+					<?php
+					echo '<span>';
+					printf( __( '%1$s', 'doc-text' ), get_comment_date( 'Y-m-d A G:i:s' ) );
+					echo '</span>';
+					doc_delete_comment_link( get_comment_ID() );
+					?>
+				</p>
+				<p class="comment-reply">
+					<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args[ 'max_depth' ] ) ), $comment->comment_ID ); ?>
+				</p>
+			</div>
 		</div>
 	</div>
 	<?php
