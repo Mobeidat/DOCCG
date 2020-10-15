@@ -12,29 +12,27 @@ get_header();
 	<?php while ( have_posts() ):the_post();?>
 	<article class="single-post">
 		<header class="single-hea">
-			<div class="single-meta">
-				<?php
-				// Time
-				echo '<time class="single-time" datetime="' . get_the_time( 'Y-m-d A G:i:s' ) . '" itemprop="datePublished"><i class="fa fa-calendar-o"></i>' . get_the_time( 'Y-m-d' ) . '</time>';
-
-				// Read time
-				echo '<span class="single-read"><i class="fa fa-calendar-o"></i>';
-				echo doc_get_reading_time( $content );
-				echo '</span>';
-
-				// Comment
-				echo '<span class="single-comment" itemprop="comment"><i class="fa fa-comment"></i>' . get_comments_number() . '</span>';
-
-				// Category
-				echo '<span class="single-cat" itemprop="keywords">';
-				doc_category_foreach();
-				echo '</span> ';
-
-				?>
-			</div>
 			<?php
+
+			// Category
+			echo '<div class="single-category" itemprop="keywords">';
+			doc_category_foreach();
+			echo '</div> ';
+			
+			// Time / Read time / Comment
+			echo '<div class="single-meta">';
+			echo '<time class="single-time" datetime="' . get_the_time( 'Y-m-d A G:i:s' ) . '" itemprop="datePublished"><i class="fa fa-calendar-o"></i>' . get_the_time( 'Y-m-d' ) . '</time>';
+			echo '<span class="single-read"><i class="fa fa-calendar-o"></i>';
+			echo doc_get_reading_time( $content );
+			echo '</span>';
+			echo '<span class="single-comment" itemprop="comment"><i class="fa fa-comment"></i><a class="comment-toggle">' . get_comments_number() . '</a></span>';
+			echo '</div>';
+
+			// Title
 			the_title( '<h3 class="single-title" itemprop="headline">', '</h3>' );
-			edit_post_link( __( 'Edit', 'mrw-text' ) );
+
+			// Edit
+			edit_post_link( __( 'Edit', 'doctext' ) );
 			?>
 		</header>
 		<main class="single-content" itemprop="articleBody">
@@ -44,24 +42,38 @@ get_header();
 			?>
 		</main>
 		<?php
-		$mrw_sin_share_open = get_theme_mod( 'mrw_sin_share_open', 'ture' );
-		$mrw_sin_share = get_theme_mod( 'mrw_sin_share', 'weibo,qzone,qq,wechat' );
+		echo '<div class="single-meta">';
+
+		// Time
+		echo '<time class="single-time" datetime="' . get_the_time( 'Y-m-d A G:i:s' ) . '" itemprop="datePublished"><i class="fa fa-calendar-o"></i>' . get_the_time( 'Y-m-d' ) . '</time>';
+
+		// Read time
+		echo '<span class="single-read"><i class="fa fa-calendar-o"></i>';
+		echo doc_get_reading_time( $content );
+		echo '</span>';
+
+		// Comment
+		echo '<span class="single-comment" itemprop="comment"><i class="fa fa-comment"></i><a class="comment-toggle">' . get_comments_number() . '</a></span>';
+		echo '</div>';
+
+		$doc_sin_share_open = get_theme_mod( 'doc_sin_share_open', 'ture' );
+		$doc_sin_share = get_theme_mod( 'doc_sin_share', 'weibo,qzone,qq,wechat' );
 
 		// Single share
-		if ( $mrw_sin_share_open ) {
-			echo '<div class="single-share share-component" data-sites="' . $mrw_sin_share . '"></div>';
+		if ( $doc_sin_share_open ) {
+			echo '<div class="single-share share-component" data-sites="' . $doc_sin_share . '"></div>';
 		}
 
 		// Single tags
 		the_tags( '<div class="single-tag">', ' ', '</div>' );
+
+		// Comment
+		echo '<footer class="single-foo" itemprop="comment"><div class="single-foo-box max-width"><a class="single-foo-close comment-toggle"><span>' . __( 'Comment', 'doc-text' ) . '</span><i class="fa fa-close"></i></a>';
+		if ( comments_open() || get_comments_number() ) {
+			comments_template();
+		}
+		echo '</div></footer>';
 		?>
-		<footer class="single-foo">
-			<?php
-			if ( comments_open() || get_comments_number() ) {
-				comments_template();
-			}
-			?>
-		</footer>
 	</article>
 	<?php endwhile;?>
 </section>
