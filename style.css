@@ -220,7 +220,7 @@ input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="url"]:focus,
 input[type="search"]:focus,
-textarea:focus{
+textarea:focus {
     background-color: white;
     outline: #0057ff solid medium;
     outline-offset: -3px;
@@ -314,6 +314,7 @@ table tr td strong {
     margin-left: 3vw;
     margin-right: 3vw;
 }
+
 .sort-box {
     padding-top: 1rem;
 }
@@ -360,7 +361,11 @@ table tr td strong {
 @media only screen and (min-width: 900px) {
     .sort-box {
         padding-top: 3rem;
-    }.sort-box h2{font-size: 2rem;}
+    }
+
+    .sort-box h2 {
+        font-size: 2rem;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -589,16 +594,16 @@ table tr td strong {
 .breadcrumbs div {
     display: flex;
     align-items: center;
-	overflow: hidden;
-	text-overflow:ellipsis;
-	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .breadcrumbs span,
 .breadcrumbs a {
-	display: inline-block;
+    display: inline-block;
     color: #232323;
-	line-height: 1;
+    line-height: 1;
     opacity: .6;
 }
 
@@ -692,19 +697,19 @@ table tr td strong {
 
 .article-cat a {
     display: inline-block;
-	margin-left: .5rem;
+    margin-left: .5rem;
     padding: .1rem .5rem;
     color: white;
     background-color: #0057ff;
     border-radius: .3rem;
 }
 
-.article-cat a:first-child{
-	margin-left: 0;
+.article-cat a:first-child {
+    margin-left: 0;
 }
 
-.article-cat a:hover{
-	background-color: #232323;
+.article-cat a:hover {
+    background-color: #232323;
 }
 
 .article-time,
@@ -980,7 +985,7 @@ table tr td strong {
 
 .site-next a:first-child,
 .site-next a:last-child,
-.site-next .current{
+.site-next .current {
     color: white;
     background-color: #0057ff;
 }
@@ -991,7 +996,7 @@ table tr td strong {
     }
 
     .site-next a,
-	.site-next span {
+    .site-next span {
         padding: .5rem 1rem;
         font-size: .9rem;
     }
@@ -1040,11 +1045,11 @@ table tr td strong {
 }
 
 .single-meta a {
-	margin-left: .5rem;
+    margin-left: .5rem;
 }
 
 .single-meta a:first-child {
-	margin-left: 0;
+    margin-left: 0;
 }
 
 .single-meta a:hover {
