@@ -1,0 +1,442 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: DOCCG languages\n"
+"POT-Creation-Date: 2020-10-16 22:46+0800\n"
+"PO-Revision-Date: 2020-10-16 22:46+0800\n"
+"Last-Translator: \n"
+"Language-Team: DOCCG.COM\n"
+"Language: en_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: inc/wp-clean-up\n"
+
+#: comments.php:12
+msgid "0 Comment"
+msgstr "0 评论"
+
+#: comments.php:12
+msgid "1 Comment"
+msgstr "1 评论"
+
+#: comments.php:12
+msgid "Comments"
+msgstr "评论"
+
+#: comments.php:13
+msgid "To comment"
+msgstr "写评论"
+
+#: comments.php:28
+msgid "&laquo;"
+msgstr ""
+
+#: comments.php:29
+msgid "&raquo;"
+msgstr ""
+
+#: comments.php:38
+msgid "Comments are closed."
+msgstr "评论被关闭。"
+
+#: footer.php:15 inc/customizer/customizer.php:355
+msgid ""
+"Thank you for visiting my small site. I am a designer and front-end "
+"development enthusiast. These are some resources and materials that I "
+"usually collect. hope it helps you."
+msgstr ""
+"感谢您访问我的小网站。我是一个设计师和前端开发爱好者。这些是我通常收集的一些"
+"资源和材料。希望它能帮助你。"
+
+#: footer.php:26 inc/customizer/customizer.php:378
+msgid "Express"
+msgstr "快讯"
+
+#: functions.php:134
+msgid "Top Menu"
+msgstr "顶部菜单"
+
+#: functions.php:135
+msgid "Bottom Menu"
+msgstr "底部菜单"
+
+#: inc/article.php:58 inc/customizer/customizer.php:264
+msgid ""
+"This article is collected from the Internet, and the copyright belongs to "
+"the original author or organization. If this page violates your rights, "
+"please contact us via email hi@doccg.com!"
+msgstr ""
+"本文是从Internet上收集的，版权属于原始作者或组织。 如果此页面侵犯了您的权"
+"利，请通过电子邮件hi@doccg.com与我们联系！"
+
+#: inc/article.php:108
+msgid "Delete"
+msgstr "删除"
+
+#: inc/article.php:109
+msgid "Rubbish"
+msgstr "垃圾"
+
+#: inc/article.php:139
+msgid "Author"
+msgstr "作者"
+
+#: inc/article.php:147
+msgid "Comments waiting for approval!"
+msgstr "评论被关闭！"
+
+#: inc/custom-archive-article.php:10 inc/custom-archive-article.php:11
+#: inc/custom-archive-article.php:12 inc/custom-archive-article.php:13
+msgid "Topic"
+msgstr "专题"
+
+#: inc/custom-archive-article.php:14 inc/custom-archive-article.php:15
+msgid "Add New topic"
+msgstr "添加新专题"
+
+#: inc/custom-archive-article.php:16
+msgid "New topic"
+msgstr "新专题"
+
+#: inc/custom-archive-article.php:17
+msgid "Edit topic"
+msgstr "编辑专题"
+
+#: inc/custom-archive-article.php:18
+msgid "View topic"
+msgstr "查看专题"
+
+#: inc/custom-archive-article.php:19
+msgid "All topic"
+msgstr "所有专题"
+
+#: inc/custom-archive-article.php:20
+msgid "Search topic"
+msgstr "搜索专题"
+
+#: inc/custom-archive-article.php:21
+msgid "Parent topic"
+msgstr "分级专题"
+
+#: inc/custom-archive-article.php:22
+msgid "No topic found"
+msgstr "无专题"
+
+#: inc/custom-archive-article.php:23
+msgid "No topic found in Trash"
+msgstr "回收站无专题"
+
+#: inc/custom-archive-article.php:52 inc/custom-archive-article.php:53
+#: inc/custom-archive-article.php:62
+msgid "Category"
+msgstr "分类"
+
+#: inc/custom-archive-article.php:54
+msgid "Search category"
+msgstr "搜索分类"
+
+#: inc/custom-archive-article.php:55
+msgid "All category"
+msgstr "所有分类"
+
+#: inc/custom-archive-article.php:56 inc/custom-archive-article.php:57
+msgid "Parent category"
+msgstr "分级分类"
+
+#: inc/custom-archive-article.php:58
+msgid "Edit category"
+msgstr "编辑分类"
+
+#: inc/custom-archive-article.php:59
+msgid "Update category"
+msgstr "更新分类"
+
+#: inc/custom-archive-article.php:60
+msgid "Add New category"
+msgstr "添加新分类"
+
+#: inc/custom-archive-article.php:61
+msgid "New category Name"
+msgstr "新分类名称"
+
+#: inc/custom-login-register.php:131
+msgid "Password"
+msgstr "密码"
+
+#: inc/custom-login-register.php:137
+msgid "Repeat password"
+msgstr "重复密码"
+
+#: inc/custom-login-register.php:146
+msgid "<strong>Error</strong>: Password must be the same"
+msgstr "<strong>错误</strong>：密码必须相同"
+
+#: inc/custom-login-register.php:149
+msgid "<strong>Error</strong>: Password must be six digits"
+msgstr "<strong>错误</strong>：密码必须是六位数"
+
+#: inc/customizer/customizer.php:30 inc/customizer/customizer.php:44
+msgid "Website title display"
+msgstr "显示网站标题"
+
+#: inc/customizer/customizer.php:59
+msgid "Site title annotation"
+msgstr "网站标题注释"
+
+#: inc/customizer/customizer.php:85
+msgid "keywords"
+msgstr "关键词"
+
+#: inc/customizer/customizer.php:86
+msgid ""
+"Good keywords can improve rankings, use English commas to separate each word"
+msgstr "好的关键字可以提高排名，使用英文逗号分隔每个单词"
+
+#: inc/customizer/customizer.php:101
+msgid "Theme setting"
+msgstr "主题设置"
+
+#: inc/customizer/customizer.php:111
+msgid "Article list"
+msgstr "文章列表"
+
+#: inc/customizer/customizer.php:124
+msgid "Display thumbnail"
+msgstr "显示缩略图"
+
+#: inc/customizer/customizer.php:138
+msgid "Display category"
+msgstr "显示分类"
+
+#: inc/customizer/customizer.php:152
+msgid "Display time"
+msgstr "显示发布时间"
+
+#: inc/customizer/customizer.php:166
+msgid "Display excerpt"
+msgstr "显示摘要"
+
+#: inc/customizer/customizer.php:180
+msgid "Display button"
+msgstr "显示按钮"
+
+#: inc/customizer/customizer.php:189 template-parts/content.php:17
+msgid "Read more"
+msgstr "查看更多"
+
+#: inc/customizer/customizer.php:195
+msgid "Display button text"
+msgstr "按钮文字"
+
+#: inc/customizer/customizer.php:214
+msgid "Article page"
+msgstr "文章页面"
+
+#: inc/customizer/customizer.php:227
+msgid "Display top category"
+msgstr "显示分类"
+
+#: inc/customizer/customizer.php:241
+msgid "Display top meta"
+msgstr "顶部元数据"
+
+#: inc/customizer/customizer.php:255
+msgid "Display copyright"
+msgstr "显示版权"
+
+#: inc/customizer/customizer.php:270
+msgid "Copyrighted content"
+msgstr "版权内容"
+
+#: inc/customizer/customizer.php:292
+msgid "Display bottom meta"
+msgstr "底部元数据"
+
+#: inc/customizer/customizer.php:306
+msgid "Display share"
+msgstr "显示分享"
+
+#: inc/customizer/customizer.php:321
+msgid "Shared button setting"
+msgstr "分享按钮设置"
+
+#: inc/customizer/customizer.php:322
+msgid ""
+"Optional[ weibo,qq,wechat,tencent,douban,qzone,linkedin,diandian,facebook,"
+"twitter,google ] https://github.com/overtrue/share.js/"
+msgstr ""
+"可选[ weibo,qq,wechat,tencent,douban,qzone,linkedin,diandian,facebook,"
+"twitter,google ] https://github.com/overtrue/share.js/"
+
+#: inc/customizer/customizer.php:336
+msgid "Display tag"
+msgstr "显示标签"
+
+#: inc/customizer/customizer.php:347
+msgid "Site footer"
+msgstr "站点底部"
+
+#: inc/customizer/customizer.php:361
+msgid "Site footer introductiont"
+msgstr "站点页尾介绍"
+
+#: inc/customizer/customizer.php:384
+msgid "Express title"
+msgstr "快讯标题"
+
+#: inc/customizer/customizer.php:407
+msgid "China record number"
+msgstr "备案号"
+
+#: inc/customizer/customizer.php:430
+msgid "Statistical code"
+msgstr "统计代码"
+
+#: inc/customizer/customizer.php:442
+msgid "Site float"
+msgstr "站点浮动"
+
+#: inc/customizer/customizer.php:456
+msgid "Online service url"
+msgstr "在线客服链接版"
+
+#: inc/customizer/customizer.php:457 inc/customizer/customizer.php:473
+msgid "Recommend https://yzf.qq.com/ Choose one of URL and JS"
+msgstr "推荐 https://yzf.qq.com/ URL和JS二选一"
+
+#: inc/customizer/customizer.php:472
+msgid "Online service js"
+msgstr "在线客服JS版"
+
+#: inc/customizer/customizer.php:487
+msgid "Display back to top"
+msgstr "显示返回顶部"
+
+#: inc/customizer/customizer.php:498
+msgid "Site Socialization"
+msgstr "社会化"
+
+#: inc/customizer/customizer.php:511
+msgid "Display socialization"
+msgstr "显示社会化"
+
+#: inc/customizer/customizer.php:520
+msgid "Socialization"
+msgstr "社会化"
+
+#: inc/customizer/customizer.php:526 inc/settings.php:231
+msgid "Socialization title"
+msgstr "社会化标题"
+
+#: inc/customizer/customizer.php:549
+msgid "Behance"
+msgstr ""
+
+#: inc/customizer/customizer.php:563
+msgid "Display QR code"
+msgstr "显示二维码"
+
+#: inc/customizer/customizer.php:572 inc/settings.php:236
+msgid "QR code"
+msgstr "二维码"
+
+#: inc/customizer/customizer.php:578
+msgid "QR code title"
+msgstr "二维码标题"
+
+#: inc/customizer/customizer.php:600
+msgid "QR code image"
+msgstr "二维码图片"
+
+#: inc/settings.php:63
+msgid "2020"
+msgstr ""
+
+#: inc/settings.php:94
+msgid "Home"
+msgstr "首页"
+
+#: inc/settings.php:161
+#, php-format
+msgid "Search Results for: %s"
+msgstr "搜索结果：%s"
+
+#: inc/settings.php:166
+#, php-format
+msgid "Tag Archives: %s"
+msgstr "标签归档：%s"
+
+#: inc/settings.php:173
+#, php-format
+msgid "Author Archives: %s"
+msgstr "作者归档：%s"
+
+#: inc/settings.php:178
+msgid "Not Found"
+msgstr "无结果"
+
+#: inc/settings.php:183
+#, php-format
+msgid "( Page %s )"
+msgstr "( 页面 %s )"
+
+#: inc/settings.php:205
+#, php-format
+msgid ""
+"<span>\" %1$s \"</span>found articles, there are<span>\" %2$s \"</"
+"span>articles in total."
+msgstr "找到<span>“ %1$s ”</span>相关文章，共有<span>“ %2$s ”</span>篇。"
+
+#: inc/settings.php:207
+#, php-format
+msgid ""
+"No<span>\" %s \"</span>related articles were found, please fill in the "
+"keywords again and search again!"
+msgstr ""
+"找不到与<span>” %s “</span>相关的文章，请再次填写关键字，然后再次搜索！"
+
+#: page.php:24 single.php:83
+msgid "Comment"
+msgstr "评论"
+
+#: searchform.php:11
+msgid "Try to search"
+msgstr "试试搜点什么"
+
+#: single.php:37 single.php:68
+msgid "Edit"
+msgstr "编辑"
+
+#: template-parts/content-none.php:2
+msgid "Sorry, no search criteria are met. Please try some other keywords."
+msgstr "抱歉，没有符合搜索条件。 请尝试其他一些关键字。"
+
+#~ msgid "Select the button to display. https://github.com/overtrue/share.js/"
+#~ msgstr "选择要显示的按钮。https://github.com/overtrue/share.js/"
+
+#~ msgid ""
+#~ "weibo、QQqone、QQ、WeChat、Douban、Facebook、Twitter、Linkedin、Google+、"
+#~ "diandian"
+#~ msgstr ""
+#~ "weibo、QQqone、QQ、WeChat、Douban、Facebook、Twitter、Linkedin、Google+、"
+#~ "diandian 等"
+
+#~ msgid "Recommend https://yzf.qq.com/ Choose one of url and JS"
+#~ msgstr "推荐 https://yzf.qq.com/ URL和JS二选一"
+
+#~ msgid "QRcode"
+#~ msgstr "二维码"
+
+#~ msgid "Parent category:"
+#~ msgstr "父级分类"
+
+#~ msgid "试试搜点什么"
+#~ msgstr "试试搜点什么"
+
+#~ msgid "Shared site"
+#~ msgstr "分享按钮设置"
