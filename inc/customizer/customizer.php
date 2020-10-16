@@ -82,8 +82,8 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_control(
 				'doc_keywords',
 				array(
-					'label' => __( '排名关键词', 'doc-text' ),
-					'description' => __( '好的关键字可以提高排名，使用英文逗号分隔每个单词', 'doc-text' ),
+					'label' => __( 'keywords', 'doc-text' ),
+					'description' => __( 'Good keywords can improve rankings, use English commas to separate each word', 'doc-text' ),
 					'section' => 'title_tagline',
 					'type' => 'textarea',
 					'priority' => '10',
@@ -309,17 +309,17 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'type' => 'checkbox',
 				) );
 
-			// Shared site
+			// Shared button setting
 			$wp_customize->add_setting( 'doc_sin_share',
 				array(
-					'default' => 'weibo,qzone,qq,wechat',
+					'default' => 'weibo,qq,wechat,tencent,qzone,facebook,twitter,google',
 					'sanitize_callback' => 'sanitize_text_field',
 					'transport' => '',
 				) );
 			$wp_customize->add_control( 'doc_sin_share',
 				array(
-					'label' => __( 'Shared site', 'doc-text' ),
-					'description' => __( 'weibo、QQqone、QQ、WeChat、Douban、Facebook、Twitter、Linkedin、Google+、diandian', 'doc-text' ),
+					'label' => __( 'Shared button setting', 'doc-text' ),
+					'description' => __( 'Optional[ weibo,qq,wechat,tencent,douban,qzone,linkedin,diandian,facebook,twitter,google ] https://github.com/overtrue/share.js/', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
 					'priority' => '',
 					'type' => 'text',
@@ -454,7 +454,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_control( 'doc_back_totop_bell_url',
 				array(
 					'label' => __( 'Online service url', 'doc-text' ),
-					'description' => __( 'Recommend https://yzf.qq.com/', 'doc-text' ),
+					'description' => __( 'Recommend https://yzf.qq.com/ Choose one of URL and JS', 'doc-text' ),
 					'section' => 'doc_float_menu',
 					'priority' => '',
 					'type' => 'text',
@@ -470,7 +470,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_control( 'doc_back_totop_bell_js',
 				array(
 					'label' => __( 'Online service js', 'doc-text' ),
-					'description' => __( 'Recommend https://yzf.qq.com/', 'doc-text' ),
+					'description' => __( 'Recommend https://yzf.qq.com/ Choose one of URL and JS', 'doc-text' ),
 					'section' => 'doc_float_menu',
 					'priority' => '',
 					'type' => 'textarea',
@@ -498,6 +498,20 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'title' => __( 'Site Socialization', 'doc-text' ),
 					'panel' => 'doc_panels',
 					'priority' => '',
+				) );
+
+			// Display socialization
+			$wp_customize->add_setting( 'doc_socialization_open',
+				array(
+					'default' => true,
+					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
+				) );
+			$wp_customize->add_control( 'doc_socialization_open',
+				array(
+					'label' => __( 'Display socialization', 'doc-text' ),
+					'section' => 'doc_socialization_menu',
+					'priority' => '',
+					'type' => 'checkbox',
 				) );
 
 			// Socialization title
@@ -541,7 +555,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Display QR code
 			$wp_customize->add_setting( 'doc_qrcode_open',
 				array(
-					'default' => false,
+					'default' => true,
 					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
 				) );
 			$wp_customize->add_control( 'doc_qrcode_open',
@@ -552,7 +566,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'type' => 'checkbox',
 				) );
 
-			// Socialization title
+			// QR code title
 			$wp_customize->add_setting( 'doc_qrcode_title',
 				array(
 					'default' => __( 'QR code', 'doc-text' ),
@@ -583,7 +597,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'doc_qrcode',
 				array(
-					'label' => __( 'QRcode', 'doc-text' ),
+					'label' => __( 'QR code image', 'doc-text' ),
 					'section' => 'doc_socialization_menu',
 					'priority' => '',
 				) ) );
