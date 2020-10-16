@@ -18,9 +18,9 @@ function doc_topic_init() {
 		'view_item' => __( 'View topic', 'doc-text' ),
 		'all_items' => __( 'All topic', 'doc-text' ),
 		'search_items' => __( 'Search topic', 'doc-text' ),
-		'parent_item_colon' => __( 'Parent topic:', 'doc-text' ),
-		'not_found' => __( 'No topic found.', 'doc-text' ),
-		'not_found_in_trash' => __( 'No topic found in Trash.', 'doc-text' )
+		'parent_item_colon' => __( 'Parent topic', 'doc-text' ),
+		'not_found' => __( 'No topic found', 'doc-text' ),
+		'not_found_in_trash' => __( 'No topic found in Trash', 'doc-text' )
 	);
 
 	$args = array(
@@ -54,7 +54,7 @@ function doc_topicox_taxonomies() {
 		'search_items' => __( 'Search category', 'doc-text' ),
 		'all_items' => __( 'All category', 'doc-text' ),
 		'parent_item' => __( 'Parent category', 'doc-text' ),
-		'parent_item_colon' => __( 'Parent category:', 'doc-text' ),
+		'parent_item_colon' => __( 'Parent category', 'doc-text' ),
 		'edit_item' => __( 'Edit category', 'doc-text' ),
 		'update_item' => __( 'Update category', 'doc-text' ),
 		'add_new_item' => __( 'Add New category', 'doc-text' ),
