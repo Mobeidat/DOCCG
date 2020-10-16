@@ -1014,14 +1014,17 @@ table tr td strong {
 /*-----------------------------------------------------------------
 * Page/Post
 -----------------------------------------------------------------*/
+.single-posts {
+    margin: 1rem 0;
+}
+
 .single-meta,
 .single-title,
 .single-category,
 .single-content,
 .single-share,
 .single-tag,
-.single-foo,
-.single-pnext {
+.single-foo {
     margin-top: 1rem !important;
 }
 
@@ -1324,6 +1327,9 @@ table tr td strong {
 }
 
 @media only screen and (min-width: 900px) {
+    .single-posts {
+        margin: 3rem 0;
+    }
 
     .single-meta,
     .single-title,
@@ -1331,8 +1337,7 @@ table tr td strong {
     .single-content,
     .single-share,
     .single-tag,
-    .single-foo,
-    .single-pnext {
+    .single-foo {
         margin-top: 3rem !important;
     }
 
@@ -1971,11 +1976,12 @@ Comment
 
 #fixed-box a {
     position: relative;
+    width: 2.5rem;
+    height: 2.5rem;
     margin-top: .5rem;
-    padding: .6rem;
     font-size: 1.2rem;
     color: white;
-    line-height: 1;
+    line-height: 2;
     text-align: center;
     cursor: pointer;
     border-radius: 50%;
@@ -1983,17 +1989,18 @@ Comment
 }
 
 #fixed-box a:hover {
-    background-color: #191919 !important;
+    background-color: #191919;
 }
 
 #fixed-box .single-comment span {
     position: absolute;
     right: 0;
-    bottom: 80%;
+    bottom: 75%;
     z-index: 1;
     padding: .2rem;
     font-size: .7rem;
     color: white;
+    line-height: 1;
     background-color: firebrick;
     border-radius: 1rem;
 }
