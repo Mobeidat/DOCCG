@@ -400,13 +400,13 @@ table tr td strong {
 }
 
 .site-title a,
-.site-title span {
+.site-title-span {
     display: inline-block;
     color: white;
     line-height: 1;
 }
 
-.site-title span {
+.site-title-span {
     margin-left: .5rem;
     padding: .2rem .3rem;
     font-size: .9rem;
@@ -514,7 +514,7 @@ table tr td strong {
         font-size: 2rem;
     }
 
-    .site-title span {
+    .site-title-span {
         padding: .3rem .5rem;
         font-size: 1rem;
     }
@@ -1041,7 +1041,8 @@ table tr td strong {
     color: #232323;
 }
 
-.single-meta span {
+.single-meta span,
+.single-meta a {
     margin-left: .5rem;
 }
 
@@ -1049,11 +1050,11 @@ table tr td strong {
     margin-right: .3rem;
 }
 
-.single-comment a {
+.single-meta a {
     cursor: pointer;
 }
 
-.single-comment a:hover {
+.single-meta a:hover {
     color: #0057ff;
 }
 
@@ -1089,8 +1090,8 @@ table tr td strong {
 .single-content h4,
 .single-content h5,
 .single-content h6,
-.single-content ol,
-.single-content ul,
+.single-content > ol,
+.single-content > ul,
 .wp-block-image,
 .wp-block-video,
 .wp-block-audio,
@@ -1109,31 +1110,17 @@ table tr td strong {
     margin-bottom: 1rem !important;
 }
 
-.single-content h1,
-.single-content h2,
-.single-content h3,
-.single-content h4,
-.single-content h5,
-.single-content h6,
-.single-content ol,
-.single-content ul,
-.single-content p,
-.wp-block-audio,
-.wp-block-cover,
-.wp-block-preformatted,
-.wp-block-verse,
-.wp-block-media-text,
-.wp-block-quote,
-.wp-block-columns,
-.wp-block-group,
-.wp-block-buttons,
-.wp-block-file,
-.wp-block-code,
-.wp-block-table,
-.wp-block-separator {
+.single-content > * {
     max-width: 720px;
     margin-left: auto !important;
     margin-right: auto !important;
+}
+
+.wp-block-image,
+.wp-block-video,
+.wp-block-audio,
+.wp-block-gallery {
+    max-width: 100% !important;
 }
 
 .single-content ol li,
@@ -1151,11 +1138,6 @@ table tr td strong {
 
 .wp-block-image,
 .wp-block-video {
-    max-width: 100% !important;
-}
-
-.wp-block-image,
-.wp-block-video {
     text-align: center;
     line-height: 1;
 }
@@ -1165,10 +1147,7 @@ table tr td strong {
     width: 100%;
 }
 
-.wp-block-gallery,
-.wp-block-gallery ul {
-    margin-bottom: 0;
-}
+.wp-block-gallery {}
 
 .wp-block-cover {}
 
@@ -1234,7 +1213,7 @@ table tr td strong {
 .wp-block-code {
     overflow-x: auto;
     padding: 1.5rem;
-    color: #666;
+    color: #999;
     background-color: #232323;
     border-radius: .3rem;
 }
@@ -1293,41 +1272,55 @@ table tr td strong {
     padding: .2rem .5rem;
     margin: .2rem;
     color: #232323;
-    opacity: .3;
     border: thin solid #ccc;
     border-radius: 1rem;
+    opacity: .6;
 }
 
 .single-tag a:hover {
     opacity: 1;
 }
 
-.single-pnext {
+.single-pnext p {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background-color: #0057ff;
+    transition: .5s;
+}
+
+.single-pnext p:last-child {
+    border-top: thin solid #232323;
+}
+
+.single-pnext p:hover {
+    background-color: #191919;
+}
+
+.single-pnext i,
+.single-pnext a {
+    color: white;
+}
+
+.single-pnext i {
+    font-size: 1rem;
 }
 
 .single-pnext a {
-    flex: 1;
-    display: inline-block;
-    padding: 1rem;
-    color: #666;
-    background-color: #fafafa;
+    margin-left: 1rem;
 }
 
-.single-pnext a:last-child {
-    border-top: thin solid #ccc;
+.single-pnext p:hover a {
+    margin-left: 2rem;
 }
 
-.single-pnext a:hover {
-    color: white;
-    background-color: #0057ff;
+.single-pnext p:last-child a {
+    margin-right: 1rem;
+    margin-left: 0;
 }
 
-.single-pnext a:last-child {
-    text-align: right;
-    border-top: none;
-    border-left: thin solid #ccc;
+.single-pnext p:last-child:hover a {
+    margin-right: 2rem;
 }
 
 @media only screen and (min-width: 900px) {
@@ -1343,7 +1336,8 @@ table tr td strong {
         margin-top: 3rem !important;
     }
 
-    .single-meta span {
+    .single-meta span,
+    .single-meta a {
         margin-left: 1.5rem;
     }
 
@@ -1361,8 +1355,8 @@ table tr td strong {
     .single-content h4,
     .single-content h5,
     .single-content h6,
-    .single-content ol,
-    .single-content ul,
+    .single-content > ol,
+    .single-content > ul,
     .wp-block-image,
     .wp-block-video,
     .wp-block-audio,
@@ -1400,12 +1394,23 @@ table tr td strong {
     }
 
     .single-pnext {
-        flex-direction: row;
+        display: flex;
+    }
+
+    .single-pnext p {
+        flex: 1;
+        padding: 2rem;
+    }
+
+    .single-pnext p:last-child {
+        justify-content: flex-end;
+        text-align: right;
+        border-top: none;
+        border-left: thin solid #232323;
     }
 
     .single-pnext a {
         font-size: 1rem;
-        padding: 2rem;
     }
 }
 
