@@ -13,7 +13,8 @@
 		$doc_list_card_open = get_theme_mod( 'doc_list_card_open', 'true' );
 		$doc_list_time_open = get_theme_mod( 'doc_list_time_open', 'true' );
 		$doc_list_excerpt_open = get_theme_mod( 'doc_list_excerpt_open', 'true' );
-		$doc_list_link_text = get_theme_mod( 'doc_list_link_text', __( '查看全文', 'doc-text' ) );
+		$doc_list_link_text_open = get_theme_mod( 'doc_list_link_text_open', 'true' );
+		$doc_list_link_text = get_theme_mod( 'doc_list_link_text', __( 'Read more', 'doc-text' ) );
 
 		echo '<div class="article-meta">';
 
@@ -40,7 +41,9 @@
 		}
 
 		// Link
-		echo '<div class="article-link" itemprop="url" ><a href="' . get_the_permalink() . '">' . $doc_list_link_text . '</a></div>';
+		if ( $doc_list_link_text_open ) {
+			echo '<div class="article-link" itemprop="url" ><a href="' . get_the_permalink() . '">' . $doc_list_link_text . '</a></div>';
+		}
 
 		?>
 	</div>
