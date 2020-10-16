@@ -144,15 +144,13 @@ function doc_theme_comments( $comment, $args, $depth ) {
 			<?php
 			comment_text();
 			if ( $comment->comment_approved == '0' ):
-				echo __( '<i>Comments waiting for approval! </i>', 'doc-text' );
+				echo '<i>' . __( 'Comments waiting for approval!', 'doc-text' ) . '</i>';
 			endif;
 			?>
 			<div class="comment-meta">
 				<p class="left">
 					<?php
-					echo '<span>';
-					printf( __( '%1$s', 'doc-text' ), get_comment_date( 'Y-m-d A G:i:s' ) );
-					echo '</span>';
+					echo '<span>' . get_comment_date( 'Y-m-d A G:i:s' ) . '</span>';
 					doc_delete_comment_link( get_comment_ID() );
 					?>
 				</p>
