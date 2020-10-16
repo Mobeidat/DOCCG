@@ -10,7 +10,7 @@ if ( post_password_required() ) {
 		<h3 class="comment-title" itemprop="commentCount">
 			<?php
 			comments_number( __( '0 Comment', 'doctext' ), __( '1 Comment', 'doctext' ), '% ' . __( 'Comments', 'doctext' ) );
-			echo '<a href="#respond">' . __( '写评论', 'doc-text' ) . '</a>';
+			echo '<a href="#respond">' . __( 'To comment', 'doc-text' ) . '</a>';
 			?>
 		</h3>
 		<ol class="comment-ol"  itemprop="comment">
