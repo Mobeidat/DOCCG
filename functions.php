@@ -7,6 +7,8 @@
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
+add_action( 'after_setup_theme', 'doc_theme_support' );
+
 function doc_theme_support() {
 
 	/*
@@ -72,7 +74,6 @@ function doc_theme_support() {
 
 
 }
-add_action( 'after_setup_theme', 'doc_theme_support' );
 
 /**
  * Register and Enqueue Styles.
