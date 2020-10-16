@@ -9,24 +9,39 @@
 	</section>
 	<?php } ?>
 	<section class="site-bottom">
-		<div class="site-bottom-list bottom-about">
-			<?php doc_custom_logo();?>
-			<p>10多年来，我一直为你们做，并分享我的萝卜的各种程序和实用程序，这是深受互联网用户的欢迎。在网站上，lrepacks.ru你会发现我的最新作品 - 来自埃尔丘帕卡布拉的 repkas 。</p>
-		</div>
+		<?php
+		echo '<div class="site-bottom-list bottom-about">';
+		doc_custom_logo();
+		$doc_bottom_about = get_theme_mod( 'doc_bottom_about', __( 'Thank you for visiting my small site. I am a designer and front-end development enthusiast. These are some resources and materials that I usually collect. hope it helps you.', 'doc-text' ) );
+		if ( $doc_bottom_about ) {
+			echo '<p>' . $doc_bottom_about . '</p>';
+		}
+		echo '</div>';
+
+		$new_query = array( 'posts_per_page' => 3 );
+		$news_query = new WP_Query( $new_query );
+		if ( $news_query->have_posts() ): ?>
 		<div class="site-bottom-list news-posts">
-			<h3 class="site-bottom-title">快讯</h3>
+			<?php
+			$doc_express_title = get_theme_mod( 'doc_express_title', __( 'Express', 'doc-text' ) );
+			echo '<h3 class="site-bottom-title">' . $doc_express_title . '</h3>';
+			?>
 			<div class="news-box">
-				<article class="news-list">
-					<h3 class="news-title"><a href="">RaimerSoft RadioMaximus 2.28.3 （重新包装和便携式）</a></h3>
-					<time class="news-time"><i class="fa fa-calendar-o"></i>2020-3-2-</time>
-				</article>
+				<?php
+				while ( $news_query->have_posts() ): $news_query->the_post();
+				echo '<article class="news-list">';
+				the_title( '<h3 class="news-title" itemprop="headline"><a href="' . esc_url( get_permalink() ) . '">', '</a></h3>' );
+				echo '<time class="news-time" datetime="' . get_the_time( 'Y-m-d A G:i:s' ) . '" itemprop="datePublished">' . get_the_time( 'Y-m-d' ) . '</time>';
+				echo '</article>';
+				endwhile;
+				?>
 			</div>
 		</div>
-		<div class="site-bottom-list bottom-link" itemprop="about">
-			<h3 class="site-bottom-title">联系我</h3>
-			<p class="link-icon"><a href=""><i class="fa fa-behance"></i></a><a href=""><i class="fa fa-dribbble"></i></a><a href=""><i class="fa fa-github"></i></a></p>
-			<p class="link-img"><span>小程序</span><img src="assets/images/buy_02.jpg" alt=""></p>
-		</div>
+		<?php
+		endif;
+		wp_reset_postdata();
+		doc_bottom_link();
+		?>
 	</section>
 	<?php doc_copyright_menu();?>
 </footer>
