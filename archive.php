@@ -13,7 +13,7 @@ if ( have_posts() ):
 <section itemprop="article" class="article-box max-width">
 	<?php
 	while ( have_posts() ): the_post();
-	get_template_part( 'template-parts/content', 'search' );
+	get_template_part( 'template-parts/content', '' );
 	endwhile;
 	?>
 </section>
