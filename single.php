@@ -10,7 +10,7 @@ get_header();
 ?>
 <section class="single-box max-width" role="article" itemscope itemtype="http://schema.org/Article">
 	<?php while ( have_posts() ):the_post();?>
-	<article class="single-post">
+	<article class="single-posts">
 		<header class="single-hea">
 			<?php
 			$doc_single_top_category_open = get_theme_mod( 'doc_single_top_category_open', 'ture' );
@@ -24,8 +24,8 @@ get_header();
 			}
 
 			// Time / Read time / Comment / Edit
+			echo '<div class="single-meta">';
 			if ( $doc_single_top_meta_open ) {
-				echo '<div class="single-meta">';
 				echo '<time class="single-time" datetime="' . get_the_time( 'Y-m-d A G:i:s' ) . '" itemprop="datePublished"><i class="fa fa-calendar-o"></i>' . get_the_time( 'Y-m-d' ) . '</time>';
 
 				echo '<span class="single-read"><i class="fa fa-calendar-o"></i>';
@@ -33,10 +33,9 @@ get_header();
 				echo '</span>';
 
 				echo '<a class="comment-toggle single-comment" itemprop="comment""><i class="fa fa-comment"></i>' . get_comments_number() . '</a>';
-
-				edit_post_link( __( 'Edit', 'doctext' ) );
-				echo '</div>';
 			}
+			edit_post_link( __( 'Edit', 'doctext' ) );
+			echo '</div>';
 
 			// Title
 			the_title( '<h3 class="single-title" itemprop="headline">', '</h3>' );
@@ -51,7 +50,7 @@ get_header();
 		<?php
 		$doc_single_bottom_meta_open = get_theme_mod( 'doc_single_bottom_meta_open', 'ture' );
 		$doc_sin_share_open = get_theme_mod( 'doc_sin_share_open', 'ture' );
-		$doc_sin_share = get_theme_mod( 'doc_sin_share', 'weibo,qzone,qq,wechat' );
+		$doc_sin_share = get_theme_mod( 'doc_sin_share', 'weibo,qq,wechat,tencent,qzone,facebook,twitter,google' );
 		$doc_sin_tag_open = get_theme_mod( 'doc_sin_tag_open', 'ture' );
 
 		// Time / Read time / Comment / Edit
@@ -80,7 +79,7 @@ get_header();
 		}
 
 		// Comment
-		echo '<footer class="single-foo" itemprop="comment"><div class="single-foo-box max-width"><a class="single-foo-close comment-toggle"><span>' . __( 'Comment', 'doc-text' ) . '</span><i class="fa fa-close"></i></a>';
+		echo '<footer class="single-foo single-foo-fixed" itemprop="comment"><div class="single-foo-box max-width"><a class="single-foo-close comment-toggle"><span>' . __( 'Comment', 'doc-text' ) . '</span><i class="fa fa-close"></i></a>';
 		if ( comments_open() || get_comments_number() ) {
 			comments_template();
 		}
@@ -89,14 +88,10 @@ get_header();
 	</article>
 	<?php endwhile;?>
 </section>
-<section class="single-pnext">
+<section class="single-previous-next">
 	<?php
-	echo '<p>';
-	previous_post_link( '<i class="fa fa-arrow-left"></i> %link', ' %title', true );
-	echo '</p>';
-	echo '<p>';
-	next_post_link( '%link <i class="fa fa-arrow-right"></i>', '%title', true );
-	echo '</p>';
+	previous_post_link( '<p class="single-previous"><i class="fa fa-arrow-left"></i> %link </p>', ' %title', true );
+	next_post_link( '<p class="single-next"> %link <i class="fa fa-arrow-right"></i></p>', '%title', true );
 	?>
 </section>
 <?php get_footer();?>
