@@ -396,6 +396,7 @@ table tr td strong {
 /* Site title -------------------- */
 .site-title {
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
@@ -510,6 +511,10 @@ table tr td strong {
     }
 
     /* Site title -------------------- */
+    .site-title {
+        justify-content: flex-start;
+    }
+
     .site-title a {
         font-size: 2rem;
     }
@@ -1083,6 +1088,16 @@ table tr td strong {
     line-height: 1.8rem;
 }
 
+.single-content > * {
+    max-width: 720px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.single-content > a {
+    display: block;
+}
+
 .single-content p {
     margin-bottom: .5rem;
 }
@@ -1111,12 +1126,6 @@ table tr td strong {
 .wp-block-code,
 .wp-block-table {
     margin-bottom: 1rem !important;
-}
-
-.single-content > * {
-    max-width: 720px;
-    margin-left: auto !important;
-    margin-right: auto !important;
 }
 
 .wp-block-image,
@@ -1284,45 +1293,45 @@ table tr td strong {
     opacity: 1;
 }
 
-.single-pnext p {
+.single-previous-next p {
     display: flex;
+    justify-content: center;
     align-items: center;
     padding: 1rem;
     background-color: #0057ff;
     transition: .5s;
 }
 
-.single-pnext p:last-child {
-    border-top: thin solid #232323;
+.single-previous-next p:first-child {
+    border-bottom: thin solid #232323;
 }
 
-.single-pnext p:hover {
+.single-previous-next p:hover {
     background-color: #191919;
 }
 
-.single-pnext i,
-.single-pnext a {
+.single-previous-next i,
+.single-previous-next a {
     color: white;
 }
 
-.single-pnext i {
+.single-previous-next i {
     font-size: 1rem;
 }
 
-.single-pnext a {
+.single-previous a {
     margin-left: 1rem;
 }
 
-.single-pnext p:hover a {
+.single-previous:hover a {
     margin-left: 2rem;
 }
 
-.single-pnext p:last-child a {
+.single-next a {
     margin-right: 1rem;
-    margin-left: 0;
 }
 
-.single-pnext p:last-child:hover a {
+.single-next:hover a {
     margin-right: 2rem;
 }
 
@@ -1398,23 +1407,21 @@ table tr td strong {
         padding: .2rem 1rem;
     }
 
-    .single-pnext {
+    .single-previous-next {
         display: flex;
     }
 
-    .single-pnext p {
+    .single-previous-next p {
         flex: 1;
         padding: 2rem;
     }
 
-    .single-pnext p:last-child {
-        justify-content: flex-end;
-        text-align: right;
-        border-top: none;
-        border-left: thin solid #232323;
+    .single-previous-next p:first-child {
+        border-bottom: none;
+        border-right: thin solid #232323;
     }
 
-    .single-pnext a {
+    .single-previous-next a {
         font-size: 1rem;
     }
 }
@@ -1422,7 +1429,7 @@ table tr td strong {
 /*-----------------------------------------------------------------
 Comment
 -----------------------------------------------------------------*/
-.single-foo {
+.single-foo-fixed {
     position: fixed;
     left: 0;
     bottom: 0;
@@ -1446,6 +1453,10 @@ Comment
 }
 
 .single-foo-close {
+    display: none;
+}
+
+.single-foo-fixed .single-foo-close {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1468,9 +1479,13 @@ Comment
     color: #0057ff;
 }
 
+.single-foo-fixed .comments-area {
+    height: 72vh;
+}
+
 .comments-area {
     flex-grow: 1;
-    height: 72vh;
+    height: auto;
     overflow-y: auto;
     padding: 1.5rem 1rem;
 }
@@ -1657,8 +1672,11 @@ Comment
 }
 
 @media only screen and (min-width: 900px) {
-    .comments-area {
+    .single-foo-fixed .comments-area {
         height: 80vh;
+    }
+
+    .comments-area {
         padding: 3rem;
     }
 
