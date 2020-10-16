@@ -202,9 +202,9 @@ if ( !function_exists( 'doc_sort_box' ) ) {
 			get_search_form();
 			if ( have_posts() ) {
 				global $wp_query;
-				echo $p_before . sprintf( __( '<span>" %s "</span>found articles, there are<span>" %s "</span>articles in total.', 'doc-text' ), get_search_query(), $wp_query->found_posts ) . $p_after;
+				echo $p_before . printf( __( '<span>" %1$s "</span>found articles, there are<span>" %2$s "</span>articles in total.', 'doc-text' ), get_search_query(), $wp_query->found_posts ) . $p_after;
 			} else {
-				echo $p_before . sprintf( __( 'No<span>" %s "</span>related articles were found, please fill in the keywords again and search again!', 'doc-text' ), get_search_query() ) . $p_after;
+				echo $p_before . printf( __( 'No<span>" %s "</span>related articles were found, please fill in the keywords again and search again!', 'doc-text' ), get_search_query() ) . $p_after;
 			};
 		} elseif ( is_tag() ) {
 			echo $h2_before . '" ';
@@ -227,29 +227,38 @@ if ( !function_exists( 'doc_sort_box' ) ) {
  */
 if ( !function_exists( 'doc_bottom_link' ) ) {
 	function doc_bottom_link() {
-
+		$doc_socialization_open = get_theme_mod( 'doc_socialization_open', 'true' );
 		$doc_socialization_title = get_theme_mod( 'doc_socialization_title', __( 'Socialization title', 'doc-text' ) );
-		echo '<div class="site-bottom-list bottom-link" itemprop="about"><h3 class="site-bottom-title">' . $doc_socialization_title . '</h3>';
 
-		echo '<p class="link-icon">';
 		$doc_link_behance = get_theme_mod( 'doc_link_behance' );
-		if ( $doc_link_behance ) {
-			echo '<a href="' . $doc_link_behance . '"><i class="fa fa-behance"></i></a>';
-		}
-		echo '</p>';
 
-		$doc_qrcode_open = get_theme_mod( 'doc_qrcode_open' );
+		$doc_qrcode_open = get_theme_mod( 'doc_qrcode_open', 'true' );
 		$doc_qrcode_title = get_theme_mod( 'doc_qrcode_title', __( 'QR code', 'doc-text' ) );
 		$doc_qrcode = get_theme_mod( 'doc_qrcode' );
-		if ( $doc_qrcode_open ) {
-			echo '<p class="link-img">';
-			if ( $doc_qrcode_title ) {
-				echo '<span>' . $doc_qrcode_title . '</span>';
+		if ( $doc_socialization_open ) {
+
+			echo '<div class="site-bottom-list bottom-link" itemprop="about"><h3 class="site-bottom-title">' . $doc_socialization_title . '</h3>';
+
+			if ( $doc_link_behance ) {
+				echo '<p class="link-icon">';
+
+				if ( $doc_link_behance ) {
+					echo '<a href="' . $doc_link_behance . '"><i class="fa fa-behance"></i></a>';
+				}
+
+				echo '</p>';
 			}
-			echo '<img src="' . $doc_qrcode . '" alt="">';
-			echo '</p>';
+
+			if ( $doc_qrcode_open ) {
+				echo '<p class="link-img">';
+				if ( $doc_qrcode_title ) {
+					echo '<span>' . $doc_qrcode_title . '</span>';
+				}
+				echo '<img src="' . $doc_qrcode . '" alt="">';
+				echo '</p>';
+			}
+			echo '</div>';
 		}
-		echo '</div>';
 	}
 }
 
