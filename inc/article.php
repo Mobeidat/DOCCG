@@ -35,11 +35,11 @@ class Select_Category_Template {
 		?>
 <tr class="form-field">
 	<th scope="row" valign="top"><label for="term-template">
-			<?php _e('Category Template'); ?>
+			<?php _e('Category Template','doc-text'); ?>
 		</label></th>
 	<td><select name="select" id="term-template">
 			<option value='default'>
-			<?php _e('Default Template'); ?>
+			<?php _e('Default Template','doc-text'); ?>
 			</option>
 			<?php page_template_dropdown($template); ?>
 		</select>
@@ -125,7 +125,7 @@ if ( !function_exists( 'doc_get_single_meta' ) ) {
  */
 if ( !function_exists( 'doc_get_reading_time' ) ) {
 	function doc_get_reading_time( $content ) {
-		$doc_format = __( '%min%分%sec%秒阅读', 'doc-text' );
+		$doc_format = __( '%min%min%sec%seconds reading', 'doc-text' );
 		$doc_chars_per_minute = 300;
 		$doc_format = str_replace( '%num%', $doc_chars_per_minute, $doc_format );
 		$words = mb_strlen( preg_replace( '/\s/', '', html_entity_decode( strip_tags( $content ) ) ), 'UTF-8' );
