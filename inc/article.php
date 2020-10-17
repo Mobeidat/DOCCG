@@ -1,4 +1,75 @@
 <?php
+/**
+ * Article related code.
+ *
+ * Category selection template
+ * The first picture in the article is a thumbnail
+ * The category loop of the post
+ * Article page metadata
+ * Statistic estimated reading time
+ * Number of articles read
+ * Add custom post content
+ * Add alt and title attributes to the img tag of the post picture
+ * Post page custom comment submission/list function
+ *
+ *
+ * @package TingBiao Wang
+ */
+
+/**
+ * Category selection template
+ */
+class Select_Category_Template {
+	public function __construct() {
+		add_filter( 'category_template', array( $this, 'get_custom_category_template' ) );
+		add_action( 'edit_category_form_fields', array( $this, 'category_template_meta_box' ) );
+		add_action( 'category_add_form_fields', array( & $this, 'category_template_meta_box' ) );
+		add_action( 'created_category', array( & $this, 'save_category_template' ) );
+		add_action( 'edited_category', array( $this, 'save_category_template' ) );
+		do_action( 'Custom_Category_Template_constructor', $this );
+	}
+	public function category_template_meta_box( $tag ) {
+		$t_id = $tag->term_id;
+		$cat_meta = get_option( "category_templates" );
+		$template = isset( $cat_meta[ $t_id ] ) ? $cat_meta[ $t_id ] : false;
+		?>
+<tr class="form-field">
+	<th scope="row" valign="top"><label for="term-template">
+			<?php _e('Category Template'); ?>
+		</label></th>
+	<td><select name="select" id="term-template">
+			<option value='default'>
+			<?php _e('Default Template'); ?>
+			</option>
+			<?php page_template_dropdown($template); ?>
+		</select>
+		<p></p></td>
+</tr>
+<?php
+do_action( 'Custom_Category_Template_ADD_FIELDS', $tag );
+}
+public function save_category_template( $term_id ) {
+	if ( isset( $_POST[ 'cat_template' ] ) ) {
+		$cat_meta = get_option( "category_templates" );
+		$cat_meta[ $term_id ] = $_POST[ 'cat_template' ];
+		update_option( "category_templates", $cat_meta );
+		do_action( 'Custom_Category_Template_SAVE_FIELDS', $term_id );
+	}
+}
+
+function get_custom_category_template( $category_template ) {
+	$cat_ID = absint( get_query_var( 'cat' ) );
+	$cat_meta = get_option( 'category_templates' );
+	if ( isset( $cat_meta[ $cat_ID ] ) && $cat_meta[ $cat_ID ] != 'default' ) {
+		$temp = locate_template( $cat_meta[ $cat_ID ] );
+		if ( !empty( $temp ) )
+			return apply_filters( "Custom_Category_Template_found", $temp );
+	}
+	return $category_template;
+}
+}
+
+$cat_template = new Select_Category_Template();
 
 /**
  * The first picture in the article is a thumbnail
@@ -25,11 +96,27 @@ add_action( 'future_to_publish', 'doc_featured_image' );
 /**
  * The category loop of the post
  */
-if ( !function_exists( 'doc_category_foreach' ) ) {
-	function doc_category_foreach() {
+if ( !function_exists( 'doc_get_category' ) ) {
+	function doc_get_category() {
 		foreach ( ( get_the_category() ) as $category ) {
 			echo '<a href="' . get_category_link( $category->term_id ) . '">' . $category->cat_name . '</a>';
 		}
+	}
+}
+
+/**
+ * Article page metadata
+ */
+if ( !function_exists( 'doc_get_single_meta' ) ) {
+	function doc_get_single_meta() {
+		echo '<div class="single-meta">';
+		echo '<time class="single-time" datetime="' . get_the_time( 'Y-m-d A G:i:s' ) . '" itemprop="datePublished"><i class="fa fa-calendar-o"></i>' . get_the_time( 'Y-m-d' ) . '</time>';
+		echo '<span class="single-read"><i class="fa fa-calendar-o"></i>';
+		echo doc_get_reading_time( $content );
+		echo '</span>';
+		echo '<a class="comment-toggle single-comment" itemprop="comment""><i class="fa fa-comment"></i>' . get_comments_number() . '</a>';
+		edit_post_link( __( 'Edit', 'doctext' ) );
+		echo '</div>';
 	}
 }
 
@@ -38,8 +125,8 @@ if ( !function_exists( 'doc_category_foreach' ) ) {
  */
 if ( !function_exists( 'doc_get_reading_time' ) ) {
 	function doc_get_reading_time( $content ) {
-		$doc_format = '%min%分%sec%秒阅读';
-		$doc_chars_per_minute = 300; // 估算1分种阅读字数
+		$doc_format = __( '%min%分%sec%秒阅读', 'doc-text' );
+		$doc_chars_per_minute = 300;
 		$doc_format = str_replace( '%num%', $doc_chars_per_minute, $doc_format );
 		$words = mb_strlen( preg_replace( '/\s/', '', html_entity_decode( strip_tags( $content ) ) ), 'UTF-8' );
 		$minutes = floor( $words / $doc_chars_per_minute );
@@ -49,15 +136,46 @@ if ( !function_exists( 'doc_get_reading_time' ) ) {
 }
 
 /**
+ * Number of articles read
+ */
+function doc_get_post_views( $post_id ) {
+	$count_key = 'views';
+	$count = get_post_meta( $post_id, $count_key, true );
+	if ( $count == '' ) {
+		delete_post_meta( $post_id, $count_key );
+		add_post_meta( $post_id, $count_key, '0' );
+		$count = '0';
+	}
+	echo number_format_i18n( $count );
+}
+
+function doc_set_post_views() {
+	global $post;
+	$post_id = $post->ID;
+	$count_key = 'views';
+	$count = get_post_meta( $post_id, $count_key, true );
+	if ( is_single() || is_page() ) {
+		if ( $count == '' ) {
+			delete_post_meta( $post_id, $count_key );
+			add_post_meta( $post_id, $count_key, '0' );
+		} else {
+			update_post_meta( $post_id, $count_key, $count + 1 );
+		}
+
+	}
+}
+add_action( 'get_header', 'doc_set_post_views' );
+
+/**
  * Add custom post content
  */
 if ( !function_exists( 'doc_post_content_copytight' ) ) {
 	function doc_post_content_copytight( $content ) {
 		if ( is_singular( 'post' ) ) {
-			$doc_single_copytight_open = get_theme_mod( 'doc_single_copytight_open', 'ture' );
-			$doc_single_copytight = get_theme_mod( 'doc_single_copytight', __( 'This article is collected from the Internet, and the copyright belongs to the original author or organization. If this page violates your rights, please contact us via email hi@doccg.com!', 'doc-text' ) );
-			if ( $doc_single_copytight_open ) {
-				$content .= '<p class="wp-block-copytight single-copytight" itemscope itemtype="http://schema.org/Organization" itemprop="copyrightHolder"><i class="fa fa-flag"></i><span>' . $doc_single_copytight . '</span></p>';
+			$doc_sin_copytight_open = get_theme_mod( 'doc_sin_copytight_open', 'ture' );
+			$doc_sin_copytight = get_theme_mod( 'doc_sin_copytight', __( 'This article is collected from the Internet, and the copyright belongs to the original author or organization. If this page violates your rights, please contact us via email hi@doccg.com!', 'doc-text' ) );
+			if ( $doc_sin_copytight_open ) {
+				$content .= '<p class="wp-block-copytight single-copytight" itemscope itemtype="http://schema.org/Organization" itemprop="copyrightHolder"><i class="fa fa-flag"></i><span>' . $doc_sin_copytight . '</span></p>';
 			}
 		}
 		return $content;
