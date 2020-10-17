@@ -1,3 +1,13 @@
+/**
+ * Theme custom JS.
+ *
+ * Menu toggle
+ * Submenu toggle
+ * Comment toggle
+ * Totop scroll click
+ * 
+ * @package TingBiao Wang
+ */
 /*global $*/
 $(document).ready(function () {
 	"use strict";
@@ -16,7 +26,7 @@ $(document).ready(function () {
 		event.stoppropagation();
 	});
 
-	// Submenu
+	// Submenu toggle
 	SubMenu.siblings("a").after('<i class="fa fa-angle-down"></i>');
 	SubMenu.siblings("i").on("click", function (event) {
 		$(this).next().slideToggle();
@@ -31,13 +41,13 @@ $(document).ready(function () {
 		event.stoppropagation();
 	});
 
-	// Comment
+	// Comment toggle
 	$("a.comment-toggle").on("click", function (event) {
 		$("footer.single-foo").toggleClass("comment-open");
 		event.stoppropagation();
 	});
 
-	// Totop scroll
+	// Totop scroll click
 	$(window).scroll(function () {
 		var Scrolls = $(this).scrollTop();
 		if (Scrolls > 100) {
