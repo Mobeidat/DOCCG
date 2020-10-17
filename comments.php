@@ -16,7 +16,7 @@ if ( post_password_required() ) {
 	<div class="comment-box">
 		<h3 class="comment-title" itemprop="commentCount">
 			<?php
-			comments_number( __( '0 Comment', 'doctext' ), __( '1 Comment', 'doctext' ), '% ' . __( 'Comments', 'doctext' ) );
+			comments_number( __( '0 Comment', 'doctext' ), __( '1 Comment', 'doctext' ), '% ' . _x( 'Comment', 'doctext' ) );
 			echo '<a href="#respond">' . __( 'To comment', 'doc-text' ) . '</a>';
 			?>
 		</h3>
@@ -40,11 +40,7 @@ if ( post_password_required() ) {
 	<?php
 	endif;
 	if ( !comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) {
-		?>
-	<p class="no-comments">
-		<?php _e( 'Comments are closed.', 'doctext'); ?>
-	</p>
-	<?php
+		echo '<p class="no-comments">' . __( 'Comments are closed.', 'doctext' ) . '</p>';
 	}
 	comment_form( array(
 		'title_reply_before' => '<h3 class="comment-title" itemprop="comment">',
