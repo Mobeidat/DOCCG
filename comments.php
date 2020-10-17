@@ -1,4 +1,11 @@
 <?php
+/**
+ * Comment template file.
+ *
+ * Customize the comment template to fit the current theme.
+ *
+ * @package TingBiao Wang
+ */
 if ( post_password_required() ) {
 	return;
 }
