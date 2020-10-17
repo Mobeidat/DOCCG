@@ -1,4 +1,20 @@
 <?php
+/**
+ * Global basic settings.
+ *
+ * Hide the black bar at the top of WordPress to remove the administrator login toolbar
+ * Delete the Class selector
+ * Website keyword description
+ * Website custom logo
+ * Custom breadcrumb navigation
+ * Global information at the top of the site
+ * Website social and custom QRcode
+ * The copyright year will be updated automatically
+ * Website copyright notice and bottom menu
+ * Website statistics and floating buttons
+ *
+ * @package TingBiao Wang
+ */
 
 /**
  * Hide the black bar at the top of WordPress to remove the administrator login toolbar
@@ -16,7 +32,7 @@ add_filter( 'nav_menu_item_id', 'doc_css_attributes_filter', 100, 1 );
 add_filter( 'page_css_class', 'doc_css_attributes_filter', 100, 1 );
 
 /**
- * Website keyword description.
+ * Website keyword description
  */
 if ( !function_exists( 'doc_keywords' ) ) {
 	function doc_keywords() {
@@ -51,10 +67,10 @@ function doc_keywords_description() {
 add_action( 'wp_head', 'doc_keywords_description' );
 
 /**
- * Website custom logo.
+ * Website custom logo
  */
-if ( !function_exists( 'doc_custom_logo' ) ) {
-	function doc_custom_logo() {
+if ( !function_exists( 'doc_get_custom_logo' ) ) {
+	function doc_get_custom_logo() {
 
 		$custom_logo_id = get_theme_mod( 'custom_logo' );
 		$logo = wp_get_attachment_image_src( $custom_logo_id, 'full' );
@@ -78,10 +94,10 @@ if ( !function_exists( 'doc_custom_logo' ) ) {
 }
 
 /**
- * Custom breadcrumb navigation.
+ * Custom breadcrumb navigation
  */
-if ( !function_exists( 'doc_breadcrumbs' ) ) {
-	function doc_breadcrumbs() {
+if ( !function_exists( 'doc_get_breadcrumbs' ) ) {
+	function doc_get_breadcrumbs() {
 
 		$delimiter = '<span>&nbsp;&raquo;&nbsp;</span>';
 		$before = '<span class="current">';
@@ -187,7 +203,7 @@ if ( !function_exists( 'doc_breadcrumbs' ) ) {
 	}
 }
 /**
- * Global information at the top of the site.
+ * Global information at the top of the site
  */
 if ( !function_exists( 'doc_sort_box' ) ) {
 	function doc_sort_box() {
@@ -223,7 +239,7 @@ if ( !function_exists( 'doc_sort_box' ) ) {
 }
 
 /**
- * Website copyright notice and bottom menu.
+ * Website social and custom QRcode
  */
 if ( !function_exists( 'doc_bottom_link' ) ) {
 	function doc_bottom_link() {
@@ -263,7 +279,7 @@ if ( !function_exists( 'doc_bottom_link' ) ) {
 }
 
 /**
- * The copyright year will be updated automatically.
+ * The copyright year will be updated automatically
  */
 if ( !function_exists( 'doc_copyright_date' ) ) {
 	function doc_copyright_date() {
@@ -282,7 +298,7 @@ if ( !function_exists( 'doc_copyright_date' ) ) {
 }
 
 /**
- * Website copyright notice and bottom menu.
+ * Website copyright notice and bottom menu
  */
 if ( !function_exists( 'doc_copyright_menu' ) ) {
 	function doc_copyright_menu() {
@@ -314,7 +330,7 @@ if ( !function_exists( 'doc_copyright_menu' ) ) {
 }
 
 /**
- * Website statistics and floating buttons.
+ * Website statistics and floating buttons
  */
 if ( !function_exists( 'doc_statistics_fixed_box' ) ) {
 	function doc_statistics_fixed_box() {
