@@ -1,8 +1,8 @@
 <?php
 /**
- * Search page template files.
+ * Global header template file.
  *
- * No thumbnails are displayed on the search page, all posts on the website will be searched by default.
+ * Show on all pages, share template.
  *
  * @package TingBiao Wang
  */
@@ -24,7 +24,7 @@
 <div id="warp">
 <header id="site-hea" role="header" itemscope itemtype="http://schema.org/WPHeader">
 	<div class="site-hea-left"><a id="menu-toggle" class="toggle"><i class="fa fa-bars"></i></a>
-		<?php doc_custom_logo();?>
+		<?php doc_get_custom_logo();?>
 	</div>
 	<div class="site-hea-right" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
 		<?php
@@ -40,5 +40,5 @@
 		?>
 	</div>
 </header>
-<?php doc_breadcrumbs();?>
+<?php doc_get_breadcrumbs();?>
 <main id="site-main" role="main" itemscope itemtype="http://schema.org/Blog">
