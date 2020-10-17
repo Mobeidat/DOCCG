@@ -56,7 +56,7 @@ get_header();
 		endif;
 
 		// Comment
-		echo '<footer class="single-foo single-foo-fixed" itemprop="comment"><div class="single-foo-box max-width"><a class="single-foo-close comment-toggle"><span>' . __( 'Comment', 'doc-text' ) . '</span><i class="fa fa-close"></i></a>';
+		echo '<footer class="single-foo single-foo-fixed" itemprop="comment"><div class="single-foo-box max-width"><a class="single-foo-close comment-toggle"><span>' . _x( 'Comment', 'doc-text' ) . '</span><i class="fa fa-close"></i></a>';
 		if ( comments_open() || get_comments_number() ) {
 			comments_template();
 		}
