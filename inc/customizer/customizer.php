@@ -1,4 +1,16 @@
 <?php
+/**
+ * Theme customization settings.
+ *
+ * wp default menu and add custom attributes
+ * Add panel
+ * Article list
+ * Article page
+ * Site float
+ * Site Socialization
+ * 
+ * @package TingBiao Wang
+ */
 /*refresh*/
 
 if ( !class_exists( 'doc_customizer' ) ) {
@@ -15,7 +27,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				'blogname',
 				array(
 					'selector' => '.custom-logo-text',
-					'render_callback' => 'doc_custom_logo_text',
+					'render_callback' => 'doc_get_custom_logo_text',
 				)
 			);
 
@@ -128,12 +140,12 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 
 			// Display category
-			$wp_customize->add_setting( 'doc_list_card_open',
+			$wp_customize->add_setting( 'doc_list_category_open',
 				array(
 					'default' => true,
 					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
 				) );
-			$wp_customize->add_control( 'doc_list_card_open',
+			$wp_customize->add_control( 'doc_list_category_open',
 				array(
 					'label' => __( 'Display category', 'doc-text' ),
 					'section' => 'doc_post_list_menu',
@@ -217,12 +229,12 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 
 			// Display top category
-			$wp_customize->add_setting( 'doc_single_top_category_open',
+			$wp_customize->add_setting( 'doc_sin_top_category_open',
 				array(
 					'default' => true,
 					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
 				) );
-			$wp_customize->add_control( 'doc_single_top_category_open',
+			$wp_customize->add_control( 'doc_sin_top_category_open',
 				array(
 					'label' => __( 'Display top category', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
@@ -231,12 +243,12 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 
 			// Display top meta
-			$wp_customize->add_setting( 'doc_single_top_meta_open',
+			$wp_customize->add_setting( 'doc_sin_top_meta_open',
 				array(
 					'default' => true,
 					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
 				) );
-			$wp_customize->add_control( 'doc_single_top_meta_open',
+			$wp_customize->add_control( 'doc_sin_top_meta_open',
 				array(
 					'label' => __( 'Display top meta', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
@@ -245,12 +257,12 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 
 			// Display copyright
-			$wp_customize->add_setting( 'doc_single_copytight_open',
+			$wp_customize->add_setting( 'doc_sin_copytight_open',
 				array(
 					'default' => true,
 					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
 				) );
-			$wp_customize->add_control( 'doc_single_copytight_open',
+			$wp_customize->add_control( 'doc_sin_copytight_open',
 				array(
 					'label' => __( 'Display copyright', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
@@ -259,35 +271,35 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 
 			// Copyrighted content
-			$wp_customize->add_setting( 'doc_single_copytight',
+			$wp_customize->add_setting( 'doc_sin_copytight',
 				array(
 					'default' => __( 'This article is collected from the Internet, and the copyright belongs to the original author or organization. If this page violates your rights, please contact us via email hi@doccg.com!', 'doc-text' ),
 					'sanitize_callback' => 'wp_filter_nohtml_kses',
 					'transport' => 'postMessage',
 				) );
-			$wp_customize->add_control( 'doc_single_copytight',
+			$wp_customize->add_control( 'doc_sin_copytight',
 				array(
 					'label' => __( 'Copyrighted content', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
 					'priority' => '',
 					'type' => 'textarea',
 				) );
-			$wp_customize->selective_refresh->add_partial( 'doc_single_copytight',
+			$wp_customize->selective_refresh->add_partial( 'doc_sin_copytight',
 				array(
 					'selector' => '.single-copytight span',
-					'settings' => 'doc_single_copytight',
+					'settings' => 'doc_sin_copytight',
 					'render_callback' => function () {
-						return get_theme_mod( 'doc_single_copytight' );
+						return get_theme_mod( 'doc_sin_copytight' );
 					},
 				) );
 
 			// Display bottom meta
-			$wp_customize->add_setting( 'doc_single_bottom_meta_open',
+			$wp_customize->add_setting( 'doc_sin_bottom_meta_open',
 				array(
 					'default' => true,
 					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
 				) );
-			$wp_customize->add_control( 'doc_single_bottom_meta_open',
+			$wp_customize->add_control( 'doc_sin_bottom_meta_open',
 				array(
 					'label' => __( 'Display bottom meta', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
@@ -623,8 +635,8 @@ require get_template_directory() . '/inc/customizer/customizer-sanitize.php';
 /**
  * Partial refresh function
  */
-if ( !function_exists( 'doc_custom_logo_text' ) ) {
-	function doc_custom_logo_text() {
+if ( !function_exists( 'doc_get_custom_logo_text' ) ) {
+	function doc_get_custom_logo_text() {
 		bloginfo( 'name' );
 	}
 }
