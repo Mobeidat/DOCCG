@@ -3,17 +3,15 @@
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
- * as indicating support for post thumbnails.
+ * Note that this function is hooked into the after_setup_theme hook, which runs before the init hook. The init hook is too late for some features, such as indicating support for post thumbnails.
+ *
+ * @package TingBiao Wang
  */
 add_action( 'after_setup_theme', 'doc_theme_support' );
 
 function doc_theme_support() {
 
-	/*
-	 * Make theme available for translation. Translations can be filed in the /languages/ directory.
-	 */
+	// Make theme available for translation. Translations can be filed in the /languages/ directory.
 	load_theme_textdomain( 'doc-text', get_template_directory() . '/languages' );
 
 	/* 
@@ -48,9 +46,7 @@ function doc_theme_support() {
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
 
-	/*
-	 * Switch default core markup for search form, comment form, and comments to output valid HTML5.
-	 */
+	// Switch default core markup for search form, comment form, and comments to output valid HTML5.
 	add_theme_support(
 		'html5',
 		array(
@@ -64,34 +60,31 @@ function doc_theme_support() {
 		)
 	);
 
-	/*
-	 * Let WordPress manage the document title. By adding theme support, we declare that this theme does not use a hard-coded <title> tag in the document head, and expect WordPress to provide it for us.
-	 */
+	// Let WordPress manage the document title. By adding theme support, we declare that this theme does not use a hard-coded <title> tag in the document head, and expect WordPress to provide it for us.
 	add_theme_support( 'title-tag' );
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
 
-
 }
 
 /**
- * Register and Enqueue Styles.
+ * Register and load CSS
  */
 function doc_register_styles() {
-
 	$theme_version = wp_get_theme()->get( 'Version' );
 
+	// Load the main CSS
 	wp_enqueue_style( 'mrwstyle', get_stylesheet_uri(), array(), $theme_version );
 	wp_style_add_data( 'mrwtyle', 'rtl', 'replace' );
 
-	// Add import normalize.css
+	// Load normalize CSS
 	wp_enqueue_style( 'normalize', get_template_directory_uri() . '/assets/css/normalize.min.css', $theme_version );
 
-	// Add import random color
+	// Load font icon CSS
 	wp_enqueue_style( 'awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css', $theme_version );
 
-	// Add introduction share css
+	// Load shared CSS
 	if ( is_single() ) {
 		wp_enqueue_style( 'share', get_template_directory_uri() . '/assets/css/share.min.css', $theme_version );
 	}
@@ -101,18 +94,19 @@ function doc_register_styles() {
 add_action( 'wp_enqueue_scripts', 'doc_register_styles' );
 
 /**
- * Register and Enqueue Scripts.
+ * Register and load JS
  */
 function doc_register_scripts() {
-
 	$theme_version = wp_get_theme()->get( 'Version' );
 
+	// Load the main JQ
 	wp_enqueue_script( 'jquerymin', get_template_directory_uri() . '/assets/js/jquery.min.js', array(), $theme_version, true );
 	wp_script_add_data( 'jquerymin', 'async', true );
 
+	// Load custom JS
 	wp_enqueue_script( 'custom', get_template_directory_uri() . '/assets/js/custom.js', array(), $theme_version, true );
 
-	// Add introduction share js
+	// Load shared JS
 	if ( is_single() ) {
 		wp_enqueue_script( 'share', get_template_directory_uri() . '/assets/js/jquery.share.min.js', array(), $theme_version, true );
 	}
@@ -150,6 +144,9 @@ if ( !function_exists( 'wp_body_open' ) ) {
 	}
 }
 
+/**
+ * Load other PHP files
+ */
 require get_template_directory() . '/inc/wp-clean-up/wp-clean-up.php';
 
 require get_template_directory() . '/inc/core.php';
@@ -181,7 +178,9 @@ function doc_customize_control_js() {
 add_action( 'customize_controls_enqueue_scripts', 'doc_customize_control_js' );
 */
 
-// After installing the theme, jump to the theme introduction
+/**
+ * After installing the theme, jump to the theme introduction
+ */
 $doc_theme_start = wp_get_theme();
 if ( 'DOCCG' == $doc_theme_start->name ) {
 	if ( is_admin() ) {
@@ -189,7 +188,9 @@ if ( 'DOCCG' == $doc_theme_start->name ) {
 	}
 }
 
-// Theme name and version
+/**
+ * Theme name and version
+ */
 $doc_theme = wp_get_theme();
 define( 'DOCCG_THEME_VERSION', $doc_theme->get( 'Version' ) );
 define( 'DOCCG_THEME_NAME', $doc_theme->get( 'Name' ) );
