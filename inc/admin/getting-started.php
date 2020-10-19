@@ -1,6 +1,17 @@
 <?php
-
-/* Add a getting started page in the management menu */
+/**
+ * Settings page after installing the theme.
+ *
+ * Add a getting started page in the management menu
+ * Load the starter style in the admin
+ * The callback function of the management page 
+ * Administrator notice
+ *
+ * @package TingBiao Wang
+ */
+/**
+ * Add a getting started page in the management menu
+ */
 if ( !function_exists( 'doc_getting_started_menu' ) ):
 	function doc_getting_started_menu() {
 
@@ -12,7 +23,9 @@ if ( !function_exists( 'doc_getting_started_menu' ) ):
 endif;
 add_action( 'admin_menu', 'doc_getting_started_menu' );
 
-/* Load the starter style in the admin */
+/**
+ * Load the starter style in the admin
+ */
 if ( !function_exists( 'doc_getting_started_admin_scripts' ) ):
 	function doc_getting_started_admin_scripts( $hook ) {
 
@@ -24,16 +37,16 @@ if ( !function_exists( 'doc_getting_started_admin_scripts' ) ):
 endif;
 add_action( 'admin_enqueue_scripts', 'doc_getting_started_admin_scripts' );
 
-/* The callback function of the management page */
+/**
+ * The callback function of the management page 
+ */
 if ( !function_exists( 'doc_getting_started_page' ) ):
 	function doc_getting_started_page() {
 		?>
 <div class="wrap getting-started">
 	<div class="intro">
-		<h3> <?php printf( esc_html__( 'Welcome to %1$s-version %2$s', 'doc-text' ), esc_html( DOCCG_THEME_NAME ), esc_html( DOCCG_THEME_VERSION ) ); ?> </h3>
-		<p>
-			<?php esc_html_e( 'MRW Blog is a clean, modern and fast loading responsive WordPress blog theme. The theme supports custom title, logo or background, easy to use.', 'doc-text' ); ?>
-		</p>
+		<h3> <?php printf( esc_html__( 'Welcome to %1$s - version %2$s', 'doc-text' ), esc_html( DOCCG_THEME_NAME ), esc_html( DOCCG_THEME_VERSION ) ); ?> </h3>
+		<p> <?php printf( esc_html__( '%1$s is a clean, modern and fast loading responsive WordPress blog theme. The theme supports custom title, logo or background, easy to use.', 'doc-text' ),esc_html( DOCCG_THEME_NAME )); ?> </p>
 	</div>
 	<div class="clearfix"></div>
 	<div class="panels">
@@ -66,19 +79,19 @@ if ( !function_exists( 'doc_getting_started_page' ) ):
 }
 endif;
 
-/* Administrator notice */
+/**
+ * Administrator notice
+ */
 class doc_screen {
 	public function __construct() {
 		add_action( 'load-themes.php', array( $this, 'doc_activation_admin_notice' ) );
 	}
 	public function doc_activation_admin_notice() {
 		global $pagenow;
-
 		if ( is_admin() && ( 'themes.php' == $pagenow ) && isset( $_GET[ 'activated' ] ) ) {
 			add_action( 'admin_notices', array( $this, 'doc_admin_notice' ), 99 );
 		}
 	}
-	/* Show administrator notification linked to welcome screen */
 	public function doc_admin_notice() {
 		?>
 <div class="updated notice is-dismissible docnotice">
