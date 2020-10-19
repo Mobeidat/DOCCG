@@ -256,7 +256,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'type' => 'checkbox',
 				) );
 
-			// Display copyright
+			// Display article copyright
 			$wp_customize->add_setting( 'doc_sin_copytight_open',
 				array(
 					'default' => true,
@@ -264,13 +264,13 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_sin_copytight_open',
 				array(
-					'label' => __( 'Display copyright', 'doc-text' ),
+					'label' => __( 'Display article copyright', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
 					'priority' => '',
 					'type' => 'checkbox',
 				) );
 
-			// Copyrighted content
+			// Article copyright content
 			$wp_customize->add_setting( 'doc_sin_copytight',
 				array(
 					'default' => __( 'This article is collected from the Internet, and the copyright belongs to the original author or organization. If this page violates your rights, please contact us via email hi@doccg.com!', 'doc-text' ),
@@ -279,7 +279,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_sin_copytight',
 				array(
-					'label' => __( 'Copyrighted content', 'doc-text' ),
+					'label' => __( 'Article copyright content', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
 					'priority' => '',
 					'type' => 'textarea',
@@ -331,7 +331,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_control( 'doc_sin_share',
 				array(
 					'label' => __( 'Shared button setting', 'doc-text' ),
-					'description' => __( 'Optional[ weibo,qq,wechat,tencent,douban,qzone,linkedin,diandian,facebook,twitter,google ] https://github.com/overtrue/share.js/', 'doc-text' ),
+					'description' => __( 'Optional[ weibo,qq,wechat,tencent,douban,qzone ] [ linkedin,diandian,facebook,twitter,google ] https://github.com/overtrue/share.js/', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
 					'priority' => '',
 					'type' => 'text',
@@ -466,7 +466,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_control( 'doc_back_totop_bell_url',
 				array(
 					'label' => __( 'Online service url', 'doc-text' ),
-					'description' => __( 'Recommend https://yzf.qq.com/ Choose one of URL and JS', 'doc-text' ),
+					'description' => __( 'Choose one of URL and JS, Recommend https://yzf.qq.com/', 'doc-text' ),
 					'section' => 'doc_float_menu',
 					'priority' => '',
 					'type' => 'text',
@@ -482,7 +482,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_control( 'doc_back_totop_bell_js',
 				array(
 					'label' => __( 'Online service js', 'doc-text' ),
-					'description' => __( 'Recommend https://yzf.qq.com/ Choose one of URL and JS', 'doc-text' ),
+					'description' => __( 'Choose one of URL and JS, Recommend https://yzf.qq.com/', 'doc-text' ),
 					'section' => 'doc_float_menu',
 					'priority' => '',
 					'type' => 'textarea',
@@ -529,7 +529,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Socialization title
 			$wp_customize->add_setting( 'doc_socialization_title',
 				array(
-					'default' => __( 'Socialization', 'doc-text' ),
+					'default' => __( 'Follow us', 'doc-text' ),
 					'sanitize_callback' => 'sanitize_text_field',
 					'transport' => 'postMessage',
 				) );
@@ -581,7 +581,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// QR code title
 			$wp_customize->add_setting( 'doc_qrcode_title',
 				array(
-					'default' => __( 'QR code', 'doc-text' ),
+					'default' => __( 'Scan it', 'doc-text' ),
 					'sanitize_callback' => 'sanitize_text_field',
 					'transport' => 'postMessage',
 				) );
@@ -601,19 +601,44 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					},
 				) );
 
-			// QR code for site/company/person
-			$wp_customize->add_setting( 'doc_qrcode',
+			// QR code
+			$wp_customize->add_setting( 'doc_qrcode_img',
 				array(
 					'default' => '',
 					'sanitize_callback' => 'doc_sanitize_image',
 				) );
-			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'doc_qrcode',
+			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'doc_qrcode_img',
 				array(
 					'label' => __( 'QR code image', 'doc-text' ),
 					'section' => 'doc_socialization_menu',
 					'priority' => '',
 				) ) );
 
+			// QR code 2
+			$wp_customize->add_setting( 'doc_qrcode_img_2',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'doc_sanitize_image',
+				) );
+			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'doc_qrcode_img_2',
+				array(
+					'label' => __( 'QR code image 2', 'doc-text' ),
+					'section' => 'doc_socialization_menu',
+					'priority' => '',
+				) ) );
+
+			// QR code 3
+			$wp_customize->add_setting( 'doc_qrcode_img_3',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'doc_sanitize_image',
+				) );
+			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'doc_qrcode_img_3',
+				array(
+					'label' => __( 'QR code image 3', 'doc-text' ),
+					'section' => 'doc_socialization_menu',
+					'priority' => '',
+				) ) );
 
 		}
 
