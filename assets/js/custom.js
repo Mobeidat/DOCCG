@@ -3,11 +3,11 @@
  *
  * Menu toggle
  * Submenu toggle
- * Comment toggle
  * Totop scroll click
  * 
  * @package TingBiao Wang
  */
+
 /*global $*/
 $(document).ready(function () {
 	"use strict";
@@ -38,12 +38,6 @@ $(document).ready(function () {
 		} else {
 			$(this).removeClass("fa-angle-up").addClass("fa-angle-down");
 		}
-		event.stoppropagation();
-	});
-
-	// Comment toggle
-	$("a.comment-toggle").on("click", function (event) {
-		$("footer.single-foo").toggleClass("comment-open");
 		event.stoppropagation();
 	});
 
