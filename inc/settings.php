@@ -2,6 +2,7 @@
 /**
  * Global basic settings.
  *
+ * Exclude all pages from search results
  * Hide the black bar at the top of WordPress to remove the administrator login toolbar
  * Delete the Class selector
  * Website keyword description
@@ -15,6 +16,17 @@
  *
  * @package TingBiao Wang
  */
+
+/**
+ * Exclude all pages from search results
+ */
+function search_filter_page( $query ) {
+	if ( $query->is_search ) {
+		$query->set( 'post_type', 'post' );
+	}
+	return $query;
+}
+add_filter( 'pre_get_posts', 'search_filter_page' );
 
 /**
  * Hide the black bar at the top of WordPress to remove the administrator login toolbar
