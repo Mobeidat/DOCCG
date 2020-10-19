@@ -11,7 +11,7 @@
 
 <footer id="site-foo" role="footer" itemscope itemtype="http://schema.org/WPFooter">
 	<?php
-	$doc_global_bottom_ad_open = get_theme_mod( 'doc_global_bottom_ad_open' );
+	$doc_global_bottom_ad_open = get_theme_mod( 'doc_global_bottom_ad_open', 'false' );
 	$doc_global_bottom_ad_title = get_theme_mod( 'doc_global_bottom_ad_title' );
 	$doc_global_bottom_ad_p = get_theme_mod( 'doc_global_bottom_ad_p' );
 	$doc_global_bottom_ad_url_text = get_theme_mod( 'doc_global_bottom_ad_url_text' );
