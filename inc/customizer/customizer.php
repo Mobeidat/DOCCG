@@ -8,6 +8,7 @@
  * Article page
  * Site float
  * Site Socialization
+ * Site advertisement
  * 
  * @package TingBiao Wang
  */
@@ -637,6 +638,127 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				array(
 					'label' => __( 'QR code image 3', 'doc-text' ),
 					'section' => 'doc_socialization_menu',
+					'priority' => '',
+				) ) );
+
+			/* -------------------------------------------------------------------------- */
+			/*	Site advertisement
+			/* -------------------------------------------------------------------------- */
+			$wp_customize->add_section( 'doc_advertisement_menu',
+				array(
+					'title' => __( 'Site advertisement', 'doc-text' ),
+					'panel' => 'doc_panels',
+					'priority' => '',
+				) );
+
+			// Display global bottom ads
+			$wp_customize->add_setting( 'doc_global_bottom_ad_open',
+				array(
+					'default' => true,
+					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
+				) );
+			$wp_customize->add_control( 'doc_global_bottom_ad_open',
+				array(
+					'label' => __( 'Display global bottom ads', 'doc-text' ),
+					'section' => 'doc_advertisement_menu',
+					'priority' => '',
+					'type' => 'checkbox',
+				) );
+
+			// Ad title
+			$wp_customize->add_setting( 'doc_global_bottom_ad_title',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport' => 'postMessage',
+				) );
+			$wp_customize->add_control( 'doc_global_bottom_ad_title',
+				array(
+					'label' => __( 'Ad title', 'doc-text' ),
+					'section' => 'doc_advertisement_menu',
+					'priority' => '',
+					'type' => 'text',
+				) );
+			$wp_customize->selective_refresh->add_partial( 'doc_global_bottom_ad_title',
+				array(
+					'selector' => '.link-img span',
+					'settings' => 'doc_global_bottom_ad_title',
+					'render_callback' => function () {
+						return get_theme_mod( 'doc_global_bottom_ad_title' );
+					},
+				) );
+
+			// Ad description
+			$wp_customize->add_setting( 'doc_global_bottom_ad_p',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport' => 'postMessage',
+				) );
+			$wp_customize->add_control( 'doc_global_bottom_ad_p',
+				array(
+					'label' => __( 'Ad description', 'doc-text' ),
+					'section' => 'doc_advertisement_menu',
+					'priority' => '',
+					'type' => 'text',
+				) );
+			$wp_customize->selective_refresh->add_partial( 'doc_global_bottom_ad_p',
+				array(
+					'selector' => '.link-img span',
+					'settings' => 'doc_global_bottom_ad_p',
+					'render_callback' => function () {
+						return get_theme_mod( 'doc_global_bottom_ad_p' );
+					},
+				) );
+
+			// Ad url text
+			$wp_customize->add_setting( 'doc_global_bottom_ad_url_text',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport' => 'postMessage',
+				) );
+			$wp_customize->add_control( 'doc_global_bottom_ad_url_text',
+				array(
+					'label' => __( 'Ad description', 'doc-text' ),
+					'section' => 'doc_advertisement_menu',
+					'priority' => '',
+					'type' => 'text',
+				) );
+			$wp_customize->selective_refresh->add_partial( 'doc_global_bottom_ad_url_text',
+				array(
+					'selector' => '.link-img span',
+					'settings' => 'doc_global_bottom_ad_url_text',
+					'render_callback' => function () {
+						return get_theme_mod( 'doc_global_bottom_ad_url_text' );
+					},
+				) );
+
+			// Ad url
+			$wp_customize->add_setting( 'doc_global_bottom_ad_url',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport' => '',
+				) );
+			$wp_customize->add_control( 'doc_global_bottom_ad_url',
+				array(
+					'label' => __( 'Ad description', 'doc-text' ),
+					'section' => 'doc_advertisement_menu',
+					'priority' => '',
+					'type' => 'text',
+				) );
+
+			// Ad background image
+			$wp_customize->add_setting( 'doc_global_bottom_ad_img',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'doc_sanitize_image',
+				) );
+			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'doc_global_bottom_ad_img',
+				array(
+					'label' => __( 'Ad background image', 'doc-text' ),
+					'section' => 'doc_advertisement_menu',
 					'priority' => '',
 				) ) );
 
