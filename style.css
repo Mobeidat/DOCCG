@@ -116,7 +116,12 @@ body {
 }
 
 a {
+	color: #0057ff;
     text-decoration: none;
+}
+
+a:hover {
+	color: #191919;
 }
 
 a,
@@ -996,7 +1001,7 @@ table tr td strong {
 
     .site-next a:first-child:hover,
     .site-next a:last-child:hover {
-        background-color: #232323;
+        background-color: #191919;
     }
 }
 
@@ -1114,8 +1119,9 @@ table tr td strong {
 
 .wp-block-image,
 .wp-block-video,
-.wp-block-audio,
-.wp-block-gallery {
+.wp-block-gallery,
+.wp-block-cover,
+.wp-block-media-text {
     max-width: 100% !important;
 }
 
@@ -1619,7 +1625,7 @@ table tr td strong {
 }
 
 @media only screen and (min-width: 600px) {
-    .single-foo-close {
+    .single-foo-fixed .single-foo-close {
         padding: 1rem 2rem;
     }
 
