@@ -10,13 +10,29 @@
 </main>
 
 <footer id="site-foo" role="footer" itemscope itemtype="http://schema.org/WPFooter">
-	<?php if ( is_single() || is_page() ) {} else {?>
-	<section class="site-bottom-ad" itemscope itemtype="http://schema.org/WPAdBlock">
-		<h2>非常棒的主题</h2>
-		<p>你想要这些吗</p>
-		<div class="site-bottom-ad-link"><a href="">查看更多</a></div>
-	</section>
-	<?php } ?>
+	<?php
+	$doc_global_bottom_ad_open = get_theme_mod( 'doc_global_bottom_ad_open' );
+	$doc_global_bottom_ad_title = get_theme_mod( 'doc_global_bottom_ad_title' );
+	$doc_global_bottom_ad_p = get_theme_mod( 'doc_global_bottom_ad_p' );
+	$doc_global_bottom_ad_url_text = get_theme_mod( 'doc_global_bottom_ad_url_text' );
+	$doc_global_bottom_ad_url = get_theme_mod( 'doc_global_bottom_ad_url' );
+	$doc_global_bottom_ad_img = get_theme_mod( 'doc_global_bottom_ad_img' );
+	if ( $doc_global_bottom_ad_open ) {
+		if ( is_single() || is_page() ) {} else {
+			echo '<section class="site-bottom-ad" itemscope itemtype="http://schema.org/WPAdBlock" style="background-image: url(' . $doc_global_bottom_ad_img . ')">';
+			if ( $doc_global_bottom_ad_title ) {
+				echo '<h2>' . $doc_global_bottom_ad_title . '</h2>';
+			}
+			if ( $doc_global_bottom_ad_p ) {
+				echo '<p>' . $doc_global_bottom_ad_p . '</p>';
+			}
+			if ( $doc_global_bottom_ad_url ) {
+				echo '<div class="site-bottom-ad-link"><a href="' . $doc_global_bottom_ad_url . '">' . $doc_global_bottom_ad_url_text . '</a></div>';
+			}
+			echo '</section>';
+		}
+	}
+	?>
 	<section class="site-bottom">
 		<?php
 		echo '<div class="site-bottom-list bottom-about">';
