@@ -218,9 +218,9 @@ if ( !function_exists( 'doc_sort_box' ) ) {
 			get_search_form();
 			if ( have_posts() ) {
 				global $wp_query;
-				echo $p_before . printf( __( '<span>" %1$s "</span>found articles, there are<span>" %2$s "</span>articles in total.', 'doc-text' ), get_search_query(), $wp_query->found_posts ) . $p_after;
+				echo $p_before . sprintf( __( '<span>" %1$s "</span>found articles, there are<span>" %2$s "</span>articles in total.', 'doc-text' ), get_search_query(), $wp_query->found_posts ) . $p_after;
 			} else {
-				echo $p_before . printf( __( 'No<span>" %s "</span>related articles were found, please fill in the keywords again and search again!', 'doc-text' ), get_search_query() ) . $p_after;
+				echo $p_before . sprintf( __( 'No<span>" %s "</span>related articles were found, please fill in the keywords again and search again!', 'doc-text' ), get_search_query() ) . $p_after;
 			};
 		} elseif ( is_tag() ) {
 			echo $h2_before . '" ';
