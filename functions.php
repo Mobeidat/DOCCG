@@ -75,18 +75,18 @@ function doc_register_styles() {
 	$theme_version = wp_get_theme()->get( 'Version' );
 
 	// Load the main CSS
-	wp_enqueue_style( 'mrwstyle', get_stylesheet_uri(), array(), $theme_version );
-	wp_style_add_data( 'mrwtyle', 'rtl', 'replace' );
+	wp_enqueue_style( 'style', get_stylesheet_uri(), array(), $theme_version );
+	wp_style_add_data( 'style', 'rtl', 'replace' );
 
 	// Load normalize CSS
-	wp_enqueue_style( 'normalize', get_template_directory_uri() . '/assets/css/normalize.min.css', $theme_version );
+	wp_enqueue_style( 'normalize-css', get_template_directory_uri() . '/assets/css/normalize.min.css', $theme_version );
 
 	// Load font icon CSS
-	wp_enqueue_style( 'awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css', $theme_version );
+	wp_enqueue_style( 'awesome-css', get_template_directory_uri() . '/assets/css/font-awesome.min.css', $theme_version );
 
 	// Load shared CSS
 	if ( is_single() ) {
-		wp_enqueue_style( 'share', get_template_directory_uri() . '/assets/css/share.min.css', $theme_version );
+		wp_enqueue_style( 'share-css', get_template_directory_uri() . '/assets/css/share.min.css', $theme_version );
 	}
 
 }
@@ -100,15 +100,16 @@ function doc_register_scripts() {
 	$theme_version = wp_get_theme()->get( 'Version' );
 
 	// Load the main JQ
-	wp_enqueue_script( 'jquerymin', get_template_directory_uri() . '/assets/js/jquery.min.js', array(), $theme_version, true );
-	wp_script_add_data( 'jquerymin', 'async', true );
+	wp_enqueue_script( 'jquery-min', get_template_directory_uri() . '/assets/js/jquery.min.js', array(), $theme_version, true );
+	wp_script_add_data( 'jquery-min', 'async', true );
 
 	// Load custom JS
-	wp_enqueue_script( 'custom', get_template_directory_uri() . '/assets/js/custom.js', array(), $theme_version, true );
+	wp_enqueue_script( 'custom-js', get_template_directory_uri() . '/assets/js/custom.js', array(), $theme_version, true );
 
-	// Load shared JS
+	// Load shared and float JS 
 	if ( is_single() ) {
-		wp_enqueue_script( 'share', get_template_directory_uri() . '/assets/js/jquery.share.min.js', array(), $theme_version, true );
+		wp_enqueue_script( 'share-js', get_template_directory_uri() . '/assets/js/jquery.share.min.js', array(), $theme_version, true );
+		wp_enqueue_script( 'single-js', get_template_directory_uri() . '/assets/js/single.js', array(), $theme_version, true );
 	}
 
 	if ( ( !is_admin() ) && is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
