@@ -31,7 +31,7 @@ get_header();
 			the_title( '<h3 class="single-title" itemprop="headline">', '</h3>' );
 			?>
 		</header>
-		<main class="single-content" itemprop="articleBody">
+		<main id="single-content" class="single-content" itemprop="articleBody">
 			<?php
 			the_content();
 			wp_link_pages();
