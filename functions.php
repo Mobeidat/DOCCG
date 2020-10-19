@@ -108,8 +108,8 @@ function doc_register_scripts() {
 
 	// Load shared and float JS 
 	if ( is_single() ) {
-		wp_enqueue_script( 'share-js', get_template_directory_uri() . '/assets/js/jquery.share.min.js', array(), $theme_version, true );
 		wp_enqueue_script( 'single-js', get_template_directory_uri() . '/assets/js/single.js', array(), $theme_version, true );
+		wp_enqueue_script( 'share-js', get_template_directory_uri() . '/assets/js/share.min.js', array(), $theme_version, true );
 	}
 
 	if ( ( !is_admin() ) && is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
