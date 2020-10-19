@@ -76,7 +76,7 @@ if ( !function_exists( 'doc_get_custom_logo' ) ) {
 		$logo = wp_get_attachment_image_src( $custom_logo_id, 'full' );
 		$custom_logo_text_open = get_theme_mod( 'custom_logo_text_open', 'true' );
 		$custom_logo_text_span_open = get_theme_mod( 'custom_logo_text_span_open', 'true' );
-		$custom_logo_text_span = get_theme_mod( 'custom_logo_text_span', __( '2020', 'doc-text' ) );
+		$custom_logo_text_span = get_theme_mod( 'custom_logo_text_span', '2020' );
 
 		echo '<h1 itemscope itemtype="http://schema.org/Organization" class="site-title"><a itemprop="url" rel="home" class="custom-logo-text" href="' . esc_url( home_url( '/' ) ) . '">';
 		if ( has_custom_logo() ) {
@@ -244,13 +244,15 @@ if ( !function_exists( 'doc_sort_box' ) ) {
 if ( !function_exists( 'doc_bottom_link' ) ) {
 	function doc_bottom_link() {
 		$doc_socialization_open = get_theme_mod( 'doc_socialization_open', 'true' );
-		$doc_socialization_title = get_theme_mod( 'doc_socialization_title', __( 'Socialization title', 'doc-text' ) );
+		$doc_socialization_title = get_theme_mod( 'doc_socialization_title', __( 'Follow us', 'doc-text' ) );
 
 		$doc_link_behance = get_theme_mod( 'doc_link_behance' );
 
 		$doc_qrcode_open = get_theme_mod( 'doc_qrcode_open', 'true' );
-		$doc_qrcode_title = get_theme_mod( 'doc_qrcode_title', __( 'QR code', 'doc-text' ) );
-		$doc_qrcode = get_theme_mod( 'doc_qrcode' );
+		$doc_qrcode_title = get_theme_mod( 'doc_qrcode_title', __( 'Scan it', 'doc-text' ) );
+		$doc_qrcode_img = get_theme_mod( 'doc_qrcode_img' );
+		$doc_qrcode_img_2 = get_theme_mod( 'doc_qrcode_img_2' );
+		$doc_qrcode_img_3 = get_theme_mod( 'doc_qrcode_img_3' );
 		if ( $doc_socialization_open ) {
 
 			echo '<div class="site-bottom-list bottom-link" itemprop="about"><h3 class="site-bottom-title">' . $doc_socialization_title . '</h3>';
@@ -270,7 +272,9 @@ if ( !function_exists( 'doc_bottom_link' ) ) {
 				if ( $doc_qrcode_title ) {
 					echo '<span>' . $doc_qrcode_title . '</span>';
 				}
-				echo '<img src="' . $doc_qrcode . '" alt="">';
+				echo '<img src="' . $doc_qrcode_img . '" alt="">';
+				echo '<img src="' . $doc_qrcode_img_2 . '" alt="">';
+				echo '<img src="' . $doc_qrcode_img_3 . '" alt="">';
 				echo '</p>';
 			}
 			echo '</div>';
@@ -306,7 +310,7 @@ if ( !function_exists( 'doc_copyright_menu' ) ) {
 
 		doc_copyright_date();
 		bloginfo( 'name' );
-		echo ' | Powered by </span><a href="https://cn.wordpress.org/" target="_blank">Wordpress</a><span> | Theme by </span><a href="https://www.wangtingbiao.com" target="_blank" itemprop="copyrightHolder">TingBiao Wang</a>';
+		echo ' | ' . __( 'Powered by', 'doc-text' ) . ' </span><a href="https://cn.wordpress.org/" target="_blank">Wordpress</a><span> | ' . __( 'Theme by', 'doc-text' ) . ' </span><a href="https://www.wangtingbiao.com" target="_blank" itemprop="copyrightHolder">TingBiao Wang</a>';
 		$doc_record = get_theme_mod( 'doc_record' );
 		if ( $doc_record ) {
 			echo '<span> | </span><a href="http://www.beian.miit.gov.cn/" class="docrecord" target="_blank">' . $doc_record . '</a>';
