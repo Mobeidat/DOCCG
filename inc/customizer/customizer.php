@@ -401,7 +401,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_express_title',
 				array(
-					'selector' => '.news-posts h3',
+					'selector' => '.news-posts .site-bottom-title',
 					'settings' => 'doc_express_title',
 					'render_callback' => function () {
 						return get_theme_mod( 'doc_express_title' );
@@ -543,11 +543,26 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_socialization_title',
 				array(
-					'selector' => '.bottom-link h3',
+					'selector' => '.bottom-link .site-bottom-title',
 					'settings' => 'doc_socialization_title',
 					'render_callback' => function () {
 						return get_theme_mod( 'doc_socialization_title' );
 					},
+				) );
+
+			// Behance
+			$wp_customize->add_setting( 'doc_link_behance',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport' => '',
+				) );
+			$wp_customize->add_control( 'doc_link_behance',
+				array(
+					'label' => __( 'Behance', 'doc-text' ),
+					'section' => 'doc_socialization_menu',
+					'priority' => '',
+					'type' => 'text',
 				) );
 
 			// Behance
@@ -654,7 +669,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Display global bottom ads
 			$wp_customize->add_setting( 'doc_global_bottom_ad_open',
 				array(
-					'default' => true,
+					'default' => false,
 					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
 				) );
 			$wp_customize->add_control( 'doc_global_bottom_ad_open',
@@ -720,7 +735,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_global_bottom_ad_url_text',
 				array(
-					'label' => __( 'Ad description', 'doc-text' ),
+					'label' => __( 'Ad url text', 'doc-text' ),
 					'section' => 'doc_advertisement_menu',
 					'priority' => '',
 					'type' => 'text',
@@ -743,7 +758,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_global_bottom_ad_url',
 				array(
-					'label' => __( 'Ad description', 'doc-text' ),
+					'label' => __( 'Ad url', 'doc-text' ),
 					'section' => 'doc_advertisement_menu',
 					'priority' => '',
 					'type' => 'text',
