@@ -5,6 +5,7 @@
  * Category selection template
  * The first picture in the article is a thumbnail
  * The category loop of the post
+ * Article content directory
  * Article page metadata
  * Statistic estimated reading time
  * Number of articles read
@@ -103,6 +104,58 @@ if ( !function_exists( 'doc_get_category' ) ) {
 		}
 	}
 }
+
+/**
+ * Article content directory
+ */
+function doc_single_menu( $content ) {
+	if ( !is_singular() ) {
+		return $content;
+	}
+	$index = '';
+	$ol = '';
+	$arr = array();
+	$pattern = '/<h([2-6]).*?\>(.*?)<\/h[2-6]>/is';
+	if ( preg_match_all( $pattern, $content, $arr ) ): $count = count( $arr[ 0 ] );
+	foreach ( $arr[ 1 ] as $k => $v ) {
+		if ( $k <= 0 ) {
+			$index = '<ol>';
+		} else {
+			if ( $v > $arr[ 1 ][ $k - 1 ] ) {
+				if ( $v - $arr[ 1 ][ $k - 1 ] == 1 ) {
+					$index .= '<ol>';
+				} elseif ( $v == $arr[ 1 ][ $k - 1 ] ) {
+
+				}
+				else {
+					$index .= __( 'Directory is illegal', 'doc-text' );
+					return false;
+				}
+			}
+		}
+
+		$title = strip_tags( $arr[ 2 ][ $k ] );
+		$content = str_replace( $arr[ 0 ][ $k ], '<h' . $v . ' id="index-' . $k . '">' . $title . '</h' . $v . '>', $content );
+		$index .= '<li class="h' . $v . '"><a rel="contents chapter" href="#index-' . $k . '">' . $title . '</a></li>';
+		if ( $k < $count - 1 ) {
+			if ( $v > $arr[ 1 ][ $k + 1 ] ) {
+				$c = $v - $arr[ 1 ][ $k + 1 ];
+				for ( $i = 0; $i < $c; $i++ ) {
+					$ol .= '</ol>';
+					$index .= $ol;
+					$ol = '';
+				}
+			}
+		} else {
+			$index .= '</ol>';
+		}
+	}
+	$index = '<div id="single-float" class="single-float"><div class="single-toggle"><a id="single-toggle"><i class="fa fa-bars"></i></a></div><nav class="single-menu" role="navigation">' . $index . '</nav></div>';
+	$content = $index . $content;
+	endif;
+	return $content;
+}
+add_filter( "the_content", "doc_single_menu" );
 
 /**
  * Article page metadata
