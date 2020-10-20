@@ -39,9 +39,9 @@ get_header();
 		</main>
 		<?php
 
-		// Time / Read time / Comment / Edit
+		// Comment
 		$doc_sin_comment_button_open = get_theme_mod( 'doc_sin_comment_button_open', 'ture' );
-		if ( $doc_sin_comment_button_open ): doc_get_single_meta();
+		if ( $doc_sin_comment_button_open ): echo '<div class="single-comment-button"><a class="comment-toggle"><i class="fa fa-comment"></i>' . __( 'View comments', 'doc-text' ) . '</a></div>';
 		endif;
 
 		// Single share
