@@ -7,11 +7,19 @@
  * @package TingBiao Wang
  */
 get_header();
-?>
-<section class="banner" style="background-image: url(assets/images/pic.jpg)">
-	<div class="banner-content max-width">
-		<h2>fds</h2>
-		<p>aa</p>
-	</div>
+if ( have_posts() ):
+	?>
+<section itemprop="article" class="article-box max-width">
+	<?php
+	while ( have_posts() ): the_post();
+	get_template_part( 'template-parts/content', '' );
+	endwhile;
+	?>
 </section>
-<?php get_footer();?>
+<?php
+get_template_part( 'template-parts/content', 'next' );
+else :
+	get_template_part( 'template-parts/content', 'none' );
+endif;
+get_footer();
+?>
