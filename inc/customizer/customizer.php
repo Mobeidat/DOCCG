@@ -32,7 +32,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				)
 			);
 
-			// Website title display
+			// Show site title
 			$wp_customize->add_setting( 'custom_logo_text_open',
 				array(
 					'default' => true,
@@ -40,13 +40,13 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'custom_logo_text_open',
 				array(
-					'label' => __( 'Website title display', 'doc-text' ),
+					'label' => __( 'Show site title', 'doc-text' ),
 					'section' => 'title_tagline',
 					'priority' => '9',
 					'type' => 'checkbox',
 				) );
 
-			// Site title annotation display
+			// Show site title annotation
 			$wp_customize->add_setting( 'custom_logo_text_span_open',
 				array(
 					'default' => true,
@@ -54,22 +54,22 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'custom_logo_text_span_open',
 				array(
-					'label' => __( 'Website title display', 'doc-text' ),
+					'label' => __( 'Show site title annotation', 'doc-text' ),
 					'section' => 'title_tagline',
 					'priority' => '10',
 					'type' => 'checkbox',
 				) );
 
-			// Site title annotation
+			// Site title annotation content
 			$wp_customize->add_setting( 'custom_logo_text_span',
 				array(
-					'default' => '2020',
+					'default' => '',
 					'sanitize_callback' => 'sanitize_text_field',
 					'transport' => 'postMessage',
 				) );
 			$wp_customize->add_control( 'custom_logo_text_span',
 				array(
-					'label' => __( 'Site title annotation', 'doc-text' ),
+					'label' => __( 'Site title annotation content', 'doc-text' ),
 					'section' => 'title_tagline',
 					'priority' => '10',
 					'type' => 'text',
@@ -83,23 +83,24 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					},
 				) );
 
-			// Ranking keywords
-			$wp_customize->add_setting(
-				'doc_keywords',
+			// Site keywords
+			$wp_customize->add_setting( 'doc_keywords',
 				array(
 					'default' => '',
 					'sanitize_callback' => 'sanitize_textarea_field',
 					'transport' => '',
 				)
 			);
-			$wp_customize->add_control(
-				'doc_keywords',
+			$wp_customize->add_control( 'doc_keywords',
 				array(
-					'label' => __( 'keywords', 'doc-text' ),
+					'label' => __( 'Site keywords', 'doc-text' ),
 					'description' => __( 'Good keywords can improve rankings, use English commas to separate each word', 'doc-text' ),
 					'section' => 'title_tagline',
 					'type' => 'textarea',
 					'priority' => '10',
+					'input_attrs' => array(
+						'placeholder' => __( 'WordPress,Web Design,DOCCG.COM', 'doc-text' ),
+					),
 				)
 			);
 
@@ -108,8 +109,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			/*	Add panel
 			/* -------------------------------------------------------------------------- */
 
-			$wp_customize->add_panel(
-				'doc_panels',
+			$wp_customize->add_panel( 'doc_panels',
 				array(
 					'title' => __( 'Theme setting', 'doc-text' ),
 					'priority' => 0,
@@ -126,7 +126,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'priority' => ''
 				) );
 
-			// Display thumbnail
+			// Show thumbnail
 			$wp_customize->add_setting( 'doc_list_pic_open',
 				array(
 					'default' => true,
@@ -134,13 +134,13 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_list_pic_open',
 				array(
-					'label' => __( 'Display thumbnail', 'doc-text' ),
+					'label' => __( 'Show thumbnail', 'doc-text' ),
 					'section' => 'doc_post_list_menu',
 					'priority' => '',
 					'type' => 'checkbox',
 				) );
 
-			// Display category
+			// Show category
 			$wp_customize->add_setting( 'doc_list_category_open',
 				array(
 					'default' => true,
@@ -148,13 +148,13 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_list_category_open',
 				array(
-					'label' => __( 'Display category', 'doc-text' ),
+					'label' => __( 'Show category', 'doc-text' ),
 					'section' => 'doc_post_list_menu',
 					'priority' => '',
 					'type' => 'checkbox',
 				) );
 
-			// Display time
+			// Show release time
 			$wp_customize->add_setting( 'doc_list_time_open',
 				array(
 					'default' => true,
@@ -162,13 +162,13 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_list_time_open',
 				array(
-					'label' => __( 'Display time', 'doc-text' ),
+					'label' => __( 'Show release time', 'doc-text' ),
 					'section' => 'doc_post_list_menu',
 					'priority' => '',
 					'type' => 'checkbox',
 				) );
 
-			// Display excerpt
+			// Show excerpt
 			$wp_customize->add_setting( 'doc_list_excerpt_open',
 				array(
 					'default' => true,
@@ -176,13 +176,13 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_list_excerpt_open',
 				array(
-					'label' => __( 'Display excerpt', 'doc-text' ),
+					'label' => __( 'Show excerpt', 'doc-text' ),
 					'section' => 'doc_post_list_menu',
 					'priority' => '',
 					'type' => 'checkbox',
 				) );
 
-			// Display button
+			// Show button
 			$wp_customize->add_setting( 'doc_list_link_text_open',
 				array(
 					'default' => true,
@@ -190,25 +190,28 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_list_link_text_open',
 				array(
-					'label' => __( 'Display button', 'doc-text' ),
+					'label' => __( 'Show button', 'doc-text' ),
 					'section' => 'doc_post_list_menu',
 					'priority' => '',
 					'type' => 'checkbox',
 				) );
 
-			// Display button text
+			// Button text content
 			$wp_customize->add_setting( 'doc_list_link_text',
 				array(
-					'default' => __( 'Read more', 'doc-text' ),
+					'default' => '',
 					'sanitize_callback' => 'sanitize_text_field',
 					'transport' => 'postMessage',
 				) );
 			$wp_customize->add_control( 'doc_list_link_text',
 				array(
-					'label' => __( 'Display button text', 'doc-text' ),
+					'label' => __( 'Button text content', 'doc-text' ),
 					'section' => 'doc_post_list_menu',
 					'priority' => '10',
 					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => __( 'Read more', 'doc-text' ),
+					),
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_list_link_text',
 				array(
@@ -229,7 +232,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'priority' => ''
 				) );
 
-			// Display top category
+			// Show article category
 			$wp_customize->add_setting( 'doc_sin_top_category_open',
 				array(
 					'default' => true,
@@ -237,27 +240,27 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_sin_top_category_open',
 				array(
-					'label' => __( 'Display top category', 'doc-text' ),
+					'label' => __( 'Show article category', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
 					'priority' => '',
 					'type' => 'checkbox',
 				) );
 
-			// Display top meta
-			$wp_customize->add_setting( 'doc_sin_top_meta_open',
+			// Show article date, readings, comments, etc
+			$wp_customize->add_setting( 'doc_sin_meta_open',
 				array(
 					'default' => true,
 					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
 				) );
-			$wp_customize->add_control( 'doc_sin_top_meta_open',
+			$wp_customize->add_control( 'doc_sin_meta_open',
 				array(
-					'label' => __( 'Display top meta', 'doc-text' ),
+					'label' => __( 'Show article date, readings, comments, etc', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
 					'priority' => '',
 					'type' => 'checkbox',
 				) );
 
-			// Display article copyright
+			// Show article copyright
 			$wp_customize->add_setting( 'doc_sin_copytight_open',
 				array(
 					'default' => true,
@@ -265,7 +268,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_sin_copytight_open',
 				array(
-					'label' => __( 'Display article copyright', 'doc-text' ),
+					'label' => __( 'Show article copyright', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
 					'priority' => '',
 					'type' => 'checkbox',
@@ -274,7 +277,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Article copyright content
 			$wp_customize->add_setting( 'doc_sin_copytight',
 				array(
-					'default' => __( 'This article is collected from the Internet, and the copyright belongs to the original author or organization. If this page violates your rights, please contact us via email hi@doccg.com!', 'doc-text' ),
+					'default' => '',
 					'sanitize_callback' => 'wp_filter_nohtml_kses',
 					'transport' => 'postMessage',
 				) );
@@ -284,6 +287,9 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'section' => 'doc_post_page_menu',
 					'priority' => '',
 					'type' => 'textarea',
+					'input_attrs' => array(
+						'placeholder' => __( 'This article is collected from the Internet, and the copyright belongs to the original author or organization. If this page violates your rights, please contact us via email hi@doccg.com!', 'doc-text' ),
+					),
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_sin_copytight',
 				array(
@@ -294,21 +300,21 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					},
 				) );
 
-			// Display bottom meta
-			$wp_customize->add_setting( 'doc_sin_bottom_meta_open',
+			// Show article comment button
+			$wp_customize->add_setting( 'doc_sin_comment_button_open',
 				array(
 					'default' => true,
 					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
 				) );
-			$wp_customize->add_control( 'doc_sin_bottom_meta_open',
+			$wp_customize->add_control( 'doc_sin_comment_button_open',
 				array(
-					'label' => __( 'Display bottom meta', 'doc-text' ),
+					'label' => __( 'Show article comment button', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
 					'priority' => '',
 					'type' => 'checkbox',
 				) );
 
-			// Display share
+			// Show article sharing
 			$wp_customize->add_setting( 'doc_sin_share_open',
 				array(
 					'default' => true,
@@ -316,29 +322,32 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_sin_share_open',
 				array(
-					'label' => __( 'Display share', 'doc-text' ),
+					'label' => __( 'Show article sharing', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
 					'priority' => '',
 					'type' => 'checkbox',
 				) );
 
-			// Shared button setting
+			// Article sharing button settings
 			$wp_customize->add_setting( 'doc_sin_share',
 				array(
-					'default' => 'weibo,qq,wechat,tencent,qzone,facebook,twitter,google',
+					'default' => '',
 					'sanitize_callback' => 'sanitize_text_field',
 					'transport' => '',
 				) );
 			$wp_customize->add_control( 'doc_sin_share',
 				array(
-					'label' => __( 'Shared button setting', 'doc-text' ),
+					'label' => __( 'Article sharing button settings', 'doc-text' ),
 					'description' => __( 'Optional[ weibo,qq,wechat,tencent,douban,qzone ] [ linkedin,diandian,facebook,twitter,google ] https://github.com/overtrue/share.js/', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
 					'priority' => '',
 					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => 'weibo,qq,wechat,tencent,qzone',
+					),
 				) );
 
-			// Display tag
+			// Show article tags
 			$wp_customize->add_setting( 'doc_sin_tag_open',
 				array(
 					'default' => true,
@@ -346,14 +355,14 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_sin_tag_open',
 				array(
-					'label' => __( 'Display tag', 'doc-text' ),
+					'label' => __( 'Show article tags', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
 					'priority' => '',
 					'type' => 'checkbox',
 				) );
 
 			/* -------------------------------------------------------------------------- */
-			/*	Site float
+			/*	Site footer
 			/* -------------------------------------------------------------------------- */
 			$wp_customize->add_section( 'doc_footer_menu',
 				array(
@@ -365,7 +374,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Site footer introduction
 			$wp_customize->add_setting( 'doc_bottom_about',
 				array(
-					'default' => __( 'Thank you for visiting my small site. I am a designer and front-end development enthusiast. These are some resources and materials that I usually collect. hope it helps you.', 'doc-text' ),
+					'default' => '',
 					'sanitize_callback' => 'wp_filter_nohtml_kses',
 					'transport' => 'postMessage',
 				) );
@@ -375,6 +384,9 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'section' => 'doc_footer_menu',
 					'priority' => '',
 					'type' => 'textarea',
+					'input_attrs' => array(
+						'placeholder' => __( 'Thank you for visiting my small site. I am a designer and front-end development enthusiast. These are some resources and materials that I usually collect. hope it helps you.', 'doc-text' ),
+					),
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_bottom_about',
 				array(
@@ -385,19 +397,22 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					},
 				) );
 
-			// Express title
+			// Latest article title
 			$wp_customize->add_setting( 'doc_express_title',
 				array(
-					'default' => __( 'Express', 'doc-text' ),
+					'default' => '',
 					'sanitize_callback' => 'sanitize_text_field',
 					'transport' => 'postMessage',
 				) );
 			$wp_customize->add_control( 'doc_express_title',
 				array(
-					'label' => __( 'Express title', 'doc-text' ),
+					'label' => __( 'Latest article title', 'doc-text' ),
 					'section' => 'doc_footer_menu',
 					'priority' => '',
 					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => __( 'Express', 'doc-text' ),
+					),
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_express_title',
 				array(
@@ -421,6 +436,9 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'section' => 'doc_footer_menu',
 					'priority' => '',
 					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => '京ICP备xxxxxxxx号',
+					),
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_record',
 				array(
@@ -471,9 +489,12 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'section' => 'doc_float_menu',
 					'priority' => '',
 					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => 'https://yzf.qq.com/xv/web/static/chat/index.html?sign=37ef9b97d173059221459eeb1ab4b0608894ad265104845809fd80aa56ed7cae727195f2bd226dae3115d3f705d291c3dcd4185e',
+					),
 				) );
 
-			/* Statistical code JS */
+			// Statistical code JS
 			$wp_customize->add_setting( 'doc_back_totop_bell_js',
 				array(
 					'default' => '',
@@ -489,7 +510,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'type' => 'textarea',
 				) );
 
-			/* Display back to top */
+			// Show back to top
 			$wp_customize->add_setting( 'doc_back_totop_open',
 				array(
 					'default' => true,
@@ -497,7 +518,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_back_totop_open',
 				array(
-					'label' => __( 'Display back to top', 'doc-text' ),
+					'label' => __( 'Show back to top', 'doc-text' ),
 					'section' => 'doc_float_menu',
 					'priority' => '',
 					'type' => 'checkbox',
@@ -513,7 +534,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'priority' => '',
 				) );
 
-			// Display socialization
+			// Show social
 			$wp_customize->add_setting( 'doc_socialization_open',
 				array(
 					'default' => true,
@@ -521,25 +542,28 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_socialization_open',
 				array(
-					'label' => __( 'Display socialization', 'doc-text' ),
+					'label' => __( 'Show social', 'doc-text' ),
 					'section' => 'doc_socialization_menu',
 					'priority' => '',
 					'type' => 'checkbox',
 				) );
 
-			// Socialization title
+			// Social title
 			$wp_customize->add_setting( 'doc_socialization_title',
 				array(
-					'default' => __( 'Follow us', 'doc-text' ),
+					'default' => '',
 					'sanitize_callback' => 'sanitize_text_field',
 					'transport' => 'postMessage',
 				) );
 			$wp_customize->add_control( 'doc_socialization_title',
 				array(
-					'label' => __( 'Socialization title', 'doc-text' ),
+					'label' => __( 'Social title', 'doc-text' ),
 					'section' => 'doc_socialization_menu',
 					'priority' => '',
 					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => __( 'Follow us', 'doc-text' ),
+					),
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_socialization_title',
 				array(
@@ -550,19 +574,40 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					},
 				) );
 
-			// Behance
-			$wp_customize->add_setting( 'doc_link_behance',
+			// QQ
+			$wp_customize->add_setting( 'doc_link_qq',
 				array(
 					'default' => '',
 					'sanitize_callback' => 'sanitize_text_field',
-					'transport' => '',
+					'transport' => 'refresh',
 				) );
-			$wp_customize->add_control( 'doc_link_behance',
+			$wp_customize->add_control( 'doc_link_qq',
 				array(
-					'label' => __( 'Behance', 'doc-text' ),
+					'label' => 'QQ',
 					'section' => 'doc_socialization_menu',
 					'priority' => '',
 					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => '1234567',
+					),
+				) );
+
+			// Weibo
+			$wp_customize->add_setting( 'doc_link_weibo',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport' => 'refresh',
+				) );
+			$wp_customize->add_control( 'doc_link_weibo',
+				array(
+					'label' => __( 'Weibo', 'doc-text' ),
+					'section' => 'doc_socialization_menu',
+					'priority' => '',
+					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => 'https://twitter.com/yourname',
+					),
 				) );
 
 			// Behance
@@ -570,26 +615,309 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				array(
 					'default' => '',
 					'sanitize_callback' => 'sanitize_text_field',
-					'transport' => '',
+					'transport' => 'refresh',
 				) );
 			$wp_customize->add_control( 'doc_link_behance',
 				array(
-					'label' => __( 'Behance', 'doc-text' ),
+					'label' => 'Behance',
 					'section' => 'doc_socialization_menu',
 					'priority' => '',
 					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => 'https://www.behance.net/yourname',
+					),
 				) );
 
-			// Display QR code
+			// Dribbble
+			$wp_customize->add_setting( 'doc_link_dribbble',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport' => 'refresh',
+				) );
+			$wp_customize->add_control( 'doc_link_dribbble',
+				array(
+					'label' => 'Dribbble',
+					'section' => 'doc_socialization_menu',
+					'priority' => '',
+					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => 'https://dribbble.com/yourname',
+					),
+				) );
+
+			// Linkedin
+			$wp_customize->add_setting( 'doc_link_linkedin',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport' => 'refresh',
+				) );
+			$wp_customize->add_control( 'doc_link_linkedin',
+				array(
+					'label' => 'Linkedin',
+					'section' => 'doc_socialization_menu',
+					'priority' => '',
+					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => 'https://www.linkedin.com/in/yourname/',
+					),
+				) );
+
+			// Reddit
+			$wp_customize->add_setting( 'doc_link_reddit',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport' => 'refresh',
+				) );
+			$wp_customize->add_control( 'doc_link_reddit',
+				array(
+					'label' => 'Reddit',
+					'section' => 'doc_socialization_menu',
+					'priority' => '',
+					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => 'https://www.reddit.com/user/yourname',
+					),
+				) );
+
+			// Facebook
+			$wp_customize->add_setting( 'doc_link_facebook',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport' => 'refresh',
+				) );
+			$wp_customize->add_control( 'doc_link_facebook',
+				array(
+					'label' => 'Facebook',
+					'section' => 'doc_socialization_menu',
+					'priority' => '',
+					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => 'https://www.facebook.com/yourname',
+					),
+				) );
+
+			// Twitter
+			$wp_customize->add_setting( 'doc_link_twitter',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport' => 'refresh',
+				) );
+			$wp_customize->add_control( 'doc_link_twitter',
+				array(
+					'label' => 'Tumblr',
+					'section' => 'doc_socialization_menu',
+					'priority' => '',
+					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => 'https://twitter.com/yourname',
+					),
+				) );
+
+			// Telegram
+			$wp_customize->add_setting( 'doc_link_telegram',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport' => 'refresh',
+				) );
+			$wp_customize->add_control( 'doc_link_telegram',
+				array(
+					'label' => 'Telegram',
+					'section' => 'doc_socialization_menu',
+					'priority' => '',
+					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => 'https://t.me/yourname',
+					),
+				) );
+
+			// Pinterest
+			$wp_customize->add_setting( 'doc_link_pinterest',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport' => 'refresh',
+				) );
+			$wp_customize->add_control( 'doc_link_pinterest',
+				array(
+					'label' => 'Pinterest',
+					'section' => 'doc_socialization_menu',
+					'priority' => '',
+					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => 'https://www.pinterest.com/yourname/',
+					),
+				) );
+
+			// 500px
+			$wp_customize->add_setting( 'doc_link_500px',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport' => 'refresh',
+				) );
+			$wp_customize->add_control( 'doc_link_500px',
+				array(
+					'label' => '500px',
+					'section' => 'doc_socialization_menu',
+					'priority' => '',
+					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => 'https://500px.com/p/yourname?view=photos',
+					),
+				) );
+
+			// Instagram
+			$wp_customize->add_setting( 'doc_link_instagram',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport' => 'refresh',
+				) );
+			$wp_customize->add_control( 'doc_link_instagram',
+				array(
+					'label' => 'Instagram',
+					'section' => 'doc_socialization_menu',
+					'priority' => '',
+					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => 'https://www.instagram.com/yourname/',
+					),
+				) );
+
+			// Tumblr
+			$wp_customize->add_setting( 'doc_link_tumblr',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport' => 'refresh',
+				) );
+			$wp_customize->add_control( 'doc_link_tumblr',
+				array(
+					'label' => 'Tumblr',
+					'section' => 'doc_socialization_menu',
+					'priority' => '',
+					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => 'https://www.tumblr.com/blog/yourname',
+					),
+				) );
+
+			// Twitch
+			$wp_customize->add_setting( 'doc_link_twitch',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport' => 'refresh',
+				) );
+			$wp_customize->add_control( 'doc_link_twitch',
+				array(
+					'label' => 'Twitch',
+					'section' => 'doc_socialization_menu',
+					'priority' => '',
+					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => 'https://www.twitch.tv/yourname',
+					),
+				) );
+
+			// Vimeo
+			$wp_customize->add_setting( 'doc_link_vimeo',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport' => 'refresh',
+				) );
+			$wp_customize->add_control( 'doc_link_vimeo',
+				array(
+					'label' => 'Vimeo',
+					'section' => 'doc_socialization_menu',
+					'priority' => '',
+					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => 'https://vimeo.com/yourname',
+					),
+				) );
+
+			// Youtube
+			$wp_customize->add_setting( 'doc_link_youtube',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport' => 'refresh',
+				) );
+			$wp_customize->add_control( 'doc_link_youtube',
+				array(
+					'label' => 'Youtube',
+					'section' => 'doc_socialization_menu',
+					'priority' => '',
+					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => 'https://www.youtube.com/channel/yourname',
+					),
+				) );
+
+			// Github
+			$wp_customize->add_setting( 'doc_link_github',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport' => 'refresh',
+				) );
+			$wp_customize->add_control( 'doc_link_github',
+				array(
+					'label' => 'Github',
+					'section' => 'doc_socialization_menu',
+					'priority' => '',
+					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => 'https://github.com/yourname/projectname',
+					),
+				) );
+
+			// Steam
+			$wp_customize->add_setting( 'doc_link_steam',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport' => 'refresh',
+				) );
+			$wp_customize->add_control( 'doc_link_steam',
+				array(
+					'label' => 'Steam',
+					'section' => 'doc_socialization_menu',
+					'priority' => '',
+					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => 'https://steamcommunity.com/id/yourname/',
+					),
+				) );
+
+			/* -------------------------------------------------------------------------- */
+			/*	Site QR code
+			/* -------------------------------------------------------------------------- */
+			$wp_customize->add_section( 'doc_qrcode_menu',
+				array(
+					'title' => __( 'Site QR code', 'doc-text' ),
+					'panel' => 'doc_panels',
+					'priority' => '',
+				) );
+
+			// Show QR code
 			$wp_customize->add_setting( 'doc_qrcode_open',
 				array(
-					'default' => true,
+					'default' => false,
 					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
 				) );
 			$wp_customize->add_control( 'doc_qrcode_open',
 				array(
-					'label' => __( 'Display QR code', 'doc-text' ),
-					'section' => 'doc_socialization_menu',
+					'label' => __( 'Show QR code', 'doc-text' ),
+					'section' => 'doc_qrcode_menu',
 					'priority' => '',
 					'type' => 'checkbox',
 				) );
@@ -597,16 +925,19 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// QR code title
 			$wp_customize->add_setting( 'doc_qrcode_title',
 				array(
-					'default' => __( 'Scan it', 'doc-text' ),
+					'default' => '',
 					'sanitize_callback' => 'sanitize_text_field',
 					'transport' => 'postMessage',
 				) );
 			$wp_customize->add_control( 'doc_qrcode_title',
 				array(
 					'label' => __( 'QR code title', 'doc-text' ),
-					'section' => 'doc_socialization_menu',
+					'section' => 'doc_qrcode_menu',
 					'priority' => '',
 					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => __( 'Scan it', 'doc-text' ),
+					),
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_qrcode_title',
 				array(
@@ -617,7 +948,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					},
 				) );
 
-			// QR code
+			// QR code image
 			$wp_customize->add_setting( 'doc_qrcode_img',
 				array(
 					'default' => '',
@@ -626,11 +957,11 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'doc_qrcode_img',
 				array(
 					'label' => __( 'QR code image', 'doc-text' ),
-					'section' => 'doc_socialization_menu',
+					'section' => 'doc_qrcode_menu',
 					'priority' => '',
 				) ) );
 
-			// QR code 2
+			// QR code image 2
 			$wp_customize->add_setting( 'doc_qrcode_img_2',
 				array(
 					'default' => '',
@@ -639,11 +970,11 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'doc_qrcode_img_2',
 				array(
 					'label' => __( 'QR code image 2', 'doc-text' ),
-					'section' => 'doc_socialization_menu',
+					'section' => 'doc_qrcode_menu',
 					'priority' => '',
 				) ) );
 
-			// QR code 3
+			// QR code image 3
 			$wp_customize->add_setting( 'doc_qrcode_img_3',
 				array(
 					'default' => '',
@@ -652,7 +983,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'doc_qrcode_img_3',
 				array(
 					'label' => __( 'QR code image 3', 'doc-text' ),
-					'section' => 'doc_socialization_menu',
+					'section' => 'doc_qrcode_menu',
 					'priority' => '',
 				) ) );
 
@@ -666,7 +997,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'priority' => '',
 				) );
 
-			// Display global bottom ads
+			// Show global bottom ads
 			$wp_customize->add_setting( 'doc_global_bottom_ad_open',
 				array(
 					'default' => false,
@@ -674,7 +1005,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_global_bottom_ad_open',
 				array(
-					'label' => __( 'Display global bottom ads', 'doc-text' ),
+					'label' => __( 'Show global bottom ads', 'doc-text' ),
 					'section' => 'doc_advertisement_menu',
 					'priority' => '',
 					'type' => 'checkbox',
@@ -693,10 +1024,13 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'section' => 'doc_advertisement_menu',
 					'priority' => '',
 					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => 'DOCCG 2020',
+					),
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_global_bottom_ad_title',
 				array(
-					'selector' => '.link-img span',
+					'selector' => '.site-bottom-ad h2',
 					'settings' => 'doc_global_bottom_ad_title',
 					'render_callback' => function () {
 						return get_theme_mod( 'doc_global_bottom_ad_title' );
@@ -716,10 +1050,13 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'section' => 'doc_advertisement_menu',
 					'priority' => '',
 					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => __( 'Super easy to use WordPress theme', 'doc-text' ),
+					),
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_global_bottom_ad_p',
 				array(
-					'selector' => '.link-img span',
+					'selector' => '.site-bottom-ad p',
 					'settings' => 'doc_global_bottom_ad_p',
 					'render_callback' => function () {
 						return get_theme_mod( 'doc_global_bottom_ad_p' );
@@ -739,10 +1076,13 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'section' => 'doc_advertisement_menu',
 					'priority' => '',
 					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => __( 'Get it for free', 'doc-text' ),
+					),
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_global_bottom_ad_url_text',
 				array(
-					'selector' => '.link-img span',
+					'selector' => '.site-bottom-ad-link a',
 					'settings' => 'doc_global_bottom_ad_url_text',
 					'render_callback' => function () {
 						return get_theme_mod( 'doc_global_bottom_ad_url_text' );
@@ -762,6 +1102,9 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'section' => 'doc_advertisement_menu',
 					'priority' => '',
 					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => get_bloginfo( 'url' ),
+					),
 				) );
 
 			// Ad background image
