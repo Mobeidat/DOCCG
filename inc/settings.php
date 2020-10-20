@@ -95,11 +95,11 @@ if ( !function_exists( 'doc_get_custom_logo' ) ) {
 			echo '<img itemprop="logo" src="' . esc_url( $logo[ 0 ] ) . '" alt="' . get_bloginfo( 'name' ) . '">';
 		}
 		if ( $custom_logo_text_open ) {
-			echo bloginfo( 'name' );
+			echo '<span>' . get_bloginfo( 'name' ) . '</span>';
 		}
 		echo '</a>';
 		if ( $custom_logo_text_span_open ) {
-			echo '<span class="site-title-span">' . $custom_logo_text_span . '</span>';
+			echo '<p class="site-title-p">' . $custom_logo_text_span . '</p>';
 		}
 		echo '</h1>';
 	}
