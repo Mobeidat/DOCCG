@@ -255,30 +255,97 @@ if ( !function_exists( 'doc_sort_box' ) ) {
  */
 if ( !function_exists( 'doc_bottom_link' ) ) {
 	function doc_bottom_link() {
+
 		$doc_socialization_open = get_theme_mod( 'doc_socialization_open', 'true' );
 		$doc_socialization_title = get_theme_mod( 'doc_socialization_title', __( 'Follow us', 'doc-text' ) );
-
-		$doc_link_behance = get_theme_mod( 'doc_link_behance' );
-
-		$doc_qrcode_open = get_theme_mod( 'doc_qrcode_open', 'true' );
-		$doc_qrcode_title = get_theme_mod( 'doc_qrcode_title', __( 'Scan it', 'doc-text' ) );
-		$doc_qrcode_img = get_theme_mod( 'doc_qrcode_img' );
-		$doc_qrcode_img_2 = get_theme_mod( 'doc_qrcode_img_2' );
-		$doc_qrcode_img_3 = get_theme_mod( 'doc_qrcode_img_3' );
 		if ( $doc_socialization_open ) {
-
 			echo '<div class="site-bottom-list bottom-link" itemprop="about"><h3 class="site-bottom-title">' . $doc_socialization_title . '</h3>';
 
-			if ( $doc_link_behance ) {
+			$doc_link_qq = get_theme_mod( 'doc_link_qq' );
+			$doc_link_weibo = get_theme_mod( 'doc_link_weibo' );
+			$doc_link_behance = get_theme_mod( 'doc_link_behance' );
+			$doc_link_dribbble = get_theme_mod( 'doc_link_dribbble' );
+			$doc_link_linkedin = get_theme_mod( 'doc_link_linkedin' );
+			$doc_link_reddit = get_theme_mod( 'doc_link_reddit' );
+			$doc_link_facebook = get_theme_mod( 'doc_link_facebook' );
+			$doc_link_twitter = get_theme_mod( 'doc_link_twitter' );
+			$doc_link_telegram = get_theme_mod( 'doc_link_telegram' );
+			$doc_link_pinterest = get_theme_mod( 'doc_link_pinterest' );
+			$doc_link_500px = get_theme_mod( 'doc_link_500px' );
+			$doc_link_instagram = get_theme_mod( 'doc_link_instagram' );
+			$doc_link_tumblr = get_theme_mod( 'doc_link_tumblr' );
+			$doc_link_twitch = get_theme_mod( 'doc_link_twitch' );
+			$doc_link_vimeo = get_theme_mod( 'doc_link_vimeo' );
+			$doc_link_youtube = get_theme_mod( 'doc_link_youtube' );
+			$doc_link_github = get_theme_mod( 'doc_link_github' );
+			$doc_link_steam = get_theme_mod( 'doc_link_steam' );
+
+			if ( $doc_link_qq || $doc_link_weibo || $doc_link_behance || $doc_link_dribbble || $doc_link_linkedin || $doc_link_reddit || $doc_link_facebook || $doc_link_twitter || $doc_link_telegram || $doc_link_pinterest || $doc_link_500px || $doc_link_instagram || $doc_link_tumblr || $doc_link_twitch || $doc_link_vimeo || $doc_link_youtube || $doc_link_github || $doc_link_steam ) {
 				echo '<p class="link-icon">';
 
+				if ( $doc_link_qq ) {
+					echo '<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=' . $doc_link_qq . '&site=qq&menu=yes"><i class="fa fa-qq"></i></a>';
+				}
+				if ( $doc_link_weibo ) {
+					echo '<a target="_blank" href="' . $doc_link_weibo . '"><i class="fa fa-weibo"></i></a>';
+				}
 				if ( $doc_link_behance ) {
-					echo '<a href="' . $doc_link_behance . '"><i class="fa fa-behance"></i></a>';
+					echo '<a target="_blank" href="' . $doc_link_behance . '"><i class="fa fa-behance"></i></a>';
+				}
+				if ( $doc_link_dribbble ) {
+					echo '<a target="_blank" href="' . $doc_link_dribbble . '"><i class="fa fa-dribbble"></i></a>';
+				}
+				if ( $doc_link_linkedin ) {
+					echo '<a target="_blank" href="' . $doc_link_linkedin . '"><i class="fa fa-linkedin"></i></a>';
+				}
+				if ( $doc_link_reddit ) {
+					echo '<a target="_blank" href="' . $doc_link_reddit . '"><i class="fa fa-reddit-alien"></i></a>';
+				}
+				if ( $doc_link_facebook ) {
+					echo '<a target="_blank" href="' . $doc_link_facebook . '"><i class="fa fa-facebook"></i></a>';
+				}
+				if ( $doc_link_twitter ) {
+					echo '<a target="_blank" href="' . $doc_link_twitter . '"><i class="fa fa-twitter"></i></a>';
+				}
+				if ( $doc_link_telegram ) {
+					echo '<a target="_blank" href="' . $doc_link_telegram . '"><i class="fa fa-telegram"></i></a>';
+				}
+				if ( $doc_link_pinterest ) {
+					echo '<a target="_blank" href="' . $doc_link_pinterest . '"><i class="fa fa-pinterest"></i></a>';
+				}
+				if ( $doc_link_500px ) {
+					echo '<a target="_blank" href="' . $doc_link_500px . '"><i class="fa fa-500px"></i></a>';
+				}
+				if ( $doc_link_instagram ) {
+					echo '<a target="_blank" href="' . $doc_link_instagram . '"><i class="fa fa-instagram"></i></a>';
+				}
+				if ( $doc_link_tumblr ) {
+					echo '<a target="_blank" href="' . $doc_link_tumblr . '"><i class="fa fa-tumblr"></i></a>';
+				}
+				if ( $doc_link_twitch ) {
+					echo '<a target="_blank" href="' . $doc_link_twitch . '"><i class="fa fa-twitch"></i></a>';
+				}
+				if ( $doc_link_vimeo ) {
+					echo '<a target="_blank" href="' . $doc_link_vimeo . '"><i class="fa fa-vimeo"></i></a>';
+				}
+				if ( $doc_link_youtube ) {
+					echo '<a target="_blank" href="' . $doc_link_youtube . '"><i class="fa fa-youtube-play"></i></a>';
+				}
+				if ( $doc_link_github ) {
+					echo '<a target="_blank" href="' . $doc_link_github . '"><i class="fa fa-github"></i></a>';
+				}
+				if ( $doc_link_steam ) {
+					echo '<a target="_blank" href="' . $doc_link_steam . '"><i class="fa fa-steam"></i></a>';
 				}
 
 				echo '</p>';
 			}
 
+			$doc_qrcode_open = get_theme_mod( 'doc_qrcode_open', 'false' );
+			$doc_qrcode_title = get_theme_mod( 'doc_qrcode_title', __( 'Scan it', 'doc-text' ) );
+			$doc_qrcode_img = get_theme_mod( 'doc_qrcode_img' );
+			$doc_qrcode_img_2 = get_theme_mod( 'doc_qrcode_img_2' );
+			$doc_qrcode_img_3 = get_theme_mod( 'doc_qrcode_img_3' );
 			if ( $doc_qrcode_open ) {
 				echo '<p class="link-img">';
 				if ( $doc_qrcode_title ) {
