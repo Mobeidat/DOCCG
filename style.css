@@ -1341,6 +1341,9 @@ table tr th strong, table tr td strong {
 	padding: 2rem 3vw;
 	text-align: center;
 	background-color: #0057ff;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 .site-bottom-ad h2, .site-bottom-ad p {
 	color: white;
@@ -1449,16 +1452,9 @@ table tr th strong, table tr td strong {
 	margin-bottom: .5rem;
 	opacity: .6;
 }
-.link-img img {
-	max-width: 8rem;
-	margin: 0 .5rem 1rem;
-}
-.link-img img:last-child {
-	margin-bottom: 0 !important;
-}
 .link-icon a {
 	display: inline-block;
-	margin: 0 0 0 1rem;
+	margin: .5rem;
 	width: 2.5rem;
 	font-size: 1rem;
 	color: white;
@@ -1468,11 +1464,15 @@ table tr th strong, table tr td strong {
 	border: thin solid white;
 	opacity: .6;
 }
-.link-icon a:first-child {
-	margin-left: 0;
-}
 .link-icon a:hover {
 	opacity: 1;
+}
+.link-img img {
+	max-width: 8rem;
+	margin: 0 .5rem 1rem;
+}
+.link-img img:last-child {
+	margin-bottom: 0 !important;
 }
 @media only screen and (min-width: 600px) {
 	.site-bottom-list:first-child, .site-bottom-list:last-child {
@@ -1514,6 +1514,12 @@ table tr th strong, table tr td strong {
 	}
 	.bottom-link {
 		text-align: left;
+	}
+	.link-icon a {
+		margin: 0 1rem 1rem 0;
+	}
+	.link-icon a:last-child {
+		margin-right: 0;
 	}
 	.link-img img {
 		margin: 0 1rem 1rem 0;
