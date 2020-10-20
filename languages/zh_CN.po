@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: DOCCG languages\n"
-"POT-Creation-Date: 2020-10-20 16:00+0800\n"
-"PO-Revision-Date: 2020-10-20 16:00+0800\n"
+"POT-Creation-Date: 2020-10-20 17:18+0800\n"
+"PO-Revision-Date: 2020-10-20 17:18+0800\n"
 "Last-Translator: \n"
 "Language-Team: DOCCG.COM\n"
 "Language: en_CN\n"
@@ -427,79 +427,71 @@ msgstr "社交标题"
 msgid "Follow us"
 msgstr "关注我们"
 
-#: inc/customizer/customizer.php:766
-msgid "Renren"
-msgstr "人人网"
-
-#: inc/customizer/customizer.php:892
+#: inc/customizer/customizer.php:604
 msgid "Weibo"
 msgstr "新浪微博"
 
-#: inc/customizer/customizer.php:910
-msgid "Tencent weibo"
-msgstr "腾讯微博"
-
-#: inc/customizer/customizer.php:942
+#: inc/customizer/customizer.php:906
 msgid "Site QR code"
 msgstr "站点二维码"
 
-#: inc/customizer/customizer.php:955
+#: inc/customizer/customizer.php:919
 msgid "Show QR code"
 msgstr "显示二维码"
 
-#: inc/customizer/customizer.php:970
+#: inc/customizer/customizer.php:934
 msgid "QR code title"
 msgstr "二维码标题"
 
-#: inc/customizer/customizer.php:975 inc/settings.php:354
+#: inc/customizer/customizer.php:939 inc/settings.php:345
 msgid "Scan it"
 msgstr "扫一扫"
 
-#: inc/customizer/customizer.php:995
+#: inc/customizer/customizer.php:959
 msgid "QR code image"
 msgstr "二维码图片"
 
-#: inc/customizer/customizer.php:1008
+#: inc/customizer/customizer.php:972
 msgid "QR code image 2"
 msgstr "二维码图片2"
 
-#: inc/customizer/customizer.php:1021
+#: inc/customizer/customizer.php:985
 msgid "QR code image 3"
 msgstr "二维码图片2"
 
-#: inc/customizer/customizer.php:1031
+#: inc/customizer/customizer.php:995
 msgid "Site advertisement"
 msgstr "站点广告"
 
-#: inc/customizer/customizer.php:1044
+#: inc/customizer/customizer.php:1008
 msgid "Show global bottom ads"
 msgstr "显示全局底部广告"
 
-#: inc/customizer/customizer.php:1059
+#: inc/customizer/customizer.php:1023
 msgid "Ad title"
 msgstr "广告标题"
 
-#: inc/customizer/customizer.php:1085
+#: inc/customizer/customizer.php:1049
 msgid "Ad description"
 msgstr "广告内容"
 
-#: inc/customizer/customizer.php:1090
+#: inc/customizer/customizer.php:1054
 msgid "Super easy to use WordPress theme"
 msgstr "超级好用的WordPress主题"
 
-#: inc/customizer/customizer.php:1111
+#: inc/customizer/customizer.php:1075
 msgid "Ad url text"
 msgstr "广告链接文字"
 
-#: inc/customizer/customizer.php:1116
+#: inc/customizer/customizer.php:1080
 msgid "Get it for free"
 msgstr "免费获取"
 
-#: inc/customizer/customizer.php:1137
+#: inc/customizer/customizer.php:1101
 msgid "Ad url"
 msgstr "广告链接地址"
 
-#: inc/customizer/customizer.php:1154
+#: inc/customizer/customizer.php:1118
 msgid "Ad background image"
 msgstr "广告背景图片"
 
@@ -545,17 +537,21 @@ msgid ""
 "keywords again and search again!"
 msgstr "找不到与<span>“ %s ”</span>相关文章，请再次填写关键字，然后再次搜索！"
 
-#: inc/settings.php:401
+#: inc/settings.php:392
 msgid "Powered by"
-msgstr "程序"
+msgstr "开源程序"
 
-#: inc/settings.php:401
+#: inc/settings.php:392
 msgid "Theme by"
 msgstr "主题"
 
 #: searchform.php:11
 msgid "Try to search"
 msgstr "试试搜点什么"
+
+#: single.php:44
+msgid "View comments"
+msgstr "查看评论"
 
 #: template-parts/content-next.php:11
 msgid "Previous"
@@ -568,6 +564,12 @@ msgstr "下一页"
 #: template-parts/content-none.php:12
 msgid "Sorry, no search criteria are met. Please try some other keywords."
 msgstr "抱歉，没有符合搜索条件。 请尝试其他一些关键字。"
+
+#~ msgid "Renren"
+#~ msgstr "人人网"
+
+#~ msgid "Tencent weibo"
+#~ msgstr "腾讯微博"
 
 #~ msgid "Social"
 #~ msgstr "社会化"
