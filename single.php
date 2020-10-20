@@ -23,8 +23,8 @@ get_header();
 			}
 
 			// Time / Read time / Comment / Edit
-			$doc_sin_top_meta_open = get_theme_mod( 'doc_sin_top_meta_open', 'ture' );
-			if ( $doc_sin_top_meta_open ): doc_get_single_meta();
+			$doc_sin_meta_open = get_theme_mod( 'doc_sin_meta_open', 'ture' );
+			if ( $doc_sin_meta_open ): doc_get_single_meta();
 			endif;
 
 			// Title
@@ -40,13 +40,13 @@ get_header();
 		<?php
 
 		// Time / Read time / Comment / Edit
-		$doc_sin_bottom_meta_open = get_theme_mod( 'doc_sin_bottom_meta_open', 'ture' );
-		if ( $doc_sin_bottom_meta_open ): doc_get_single_meta();
+		$doc_sin_comment_button_open = get_theme_mod( 'doc_sin_comment_button_open', 'ture' );
+		if ( $doc_sin_comment_button_open ): doc_get_single_meta();
 		endif;
 
 		// Single share
 		$doc_sin_share_open = get_theme_mod( 'doc_sin_share_open', 'ture' );
-		$doc_sin_share = get_theme_mod( 'doc_sin_share', 'weibo,qq,wechat,tencent,qzone,facebook,twitter,google' );
+		$doc_sin_share = get_theme_mod( 'doc_sin_share', 'weibo,qq,wechat,tencent,qzone' );
 		if ( $doc_sin_share_open ): echo '<div class="single-share share-component" data-sites="' . $doc_sin_share . '"></div>';
 		endif;
 
