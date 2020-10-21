@@ -75,7 +75,7 @@ $cat_template = new Select_Category_Template();
 /**
  * The first picture in the article is a thumbnail
  */
-function doc_featured_image() {
+function doc_first_thumbnail() {
 	global $post;
 	$already_has_thumb = has_post_thumbnail( $post->ID );
 	if ( !$already_has_thumb ) {
@@ -87,12 +87,12 @@ function doc_featured_image() {
 		}
 	}
 }
-add_action( 'the_post', 'doc_featured_image' );
-add_action( 'save_post', 'doc_featured_image' );
-add_action( 'draft_to_publish', 'doc_featured_image' );
-add_action( 'new_to_publish', 'doc_featured_image' );
-add_action( 'pending_to_publish', 'doc_featured_image' );
-add_action( 'future_to_publish', 'doc_featured_image' );
+add_action( 'the_post', 'doc_first_thumbnail' );
+add_action( 'save_post', 'doc_first_thumbnail' );
+add_action( 'draft_to_publish', 'doc_first_thumbnail' );
+add_action( 'new_to_publish', 'doc_first_thumbnail' );
+add_action( 'pending_to_publish', 'doc_first_thumbnail' );
+add_action( 'future_to_publish', 'doc_first_thumbnail' );
 
 /**
  * The category loop of the post
