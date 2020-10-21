@@ -1,27 +1,85 @@
 <?php
 
-/* Email sanitization callback example */
-function doc_sanitize_email( $email, $setting ) {
-	$email = sanitize_email( $email );
-	return ( !null( $email ) ? $email : $setting->default );
+/**
+ * Only number
+ *
+ * 'sanitize_callback' => 'absint'
+ */
+
+/**
+ * Only email
+ *
+ * 'sanitize_callback' => 'sanitize_email'
+ */
+
+/**
+ * Text sanitization
+ *
+ * 'sanitize_callback' => 'doc_sanitize_text'
+ */
+if ( !function_exists( 'doc_sanitize_text' ) ) {
+	function doc_sanitize_text( $input ) {
+		if ( strpos( $input, ',' ) !== false ) {
+			$input = explode( ',', $input );
+		}
+		if ( is_array( $input ) ) {
+			foreach ( $input as $key => $value ) {
+				$input[ $key ] = sanitize_text_field( $value );
+			}
+			$input = implode( ',', $input );
+		} else {
+			$input = sanitize_text_field( $input );
+		}
+		return $input;
+	}
 }
 
-/* Drop-down Pages sanitization callback example */
-function doc_sanitize_dropdown_pages( $page_id, $setting ) {
-	$page_id = absint( $page_id );
-	return ( 'publish' == get_post_status( $page_id ) ? $page_id : $setting->default );
+/**
+ * Switch sanitization
+ *
+ * 'sanitize_callback' => 'doc_sanitize_switch'
+ */
+if ( !function_exists( 'doc_sanitize_switch' ) ) {
+	function doc_sanitize_switch( $input ) {
+		if ( true === $input ) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
 }
 
-/* Image sanitization callback example */
-function doc_sanitize_image( $image, $setting ) {
-	$mimes = array(
-		'jpg|jpeg|jpe' => 'image/jpeg',
-		'gif' => 'image/gif',
-		'png' => 'image/png',
-		'bmp' => 'image/bmp',
-		'tif|tiff' => 'image/tiff',
-		'ico' => 'image/x-icon'
-	);
-	$file = wp_check_filetype( $image, $mimes );
-	return ( $file[ 'ext' ] ? $image : $setting->default );
+/**
+ * Radio Button and Select sanitization
+ *
+ * 'sanitize_callback' => 'doc_sanitize_radio'
+ */
+if ( !function_exists( 'doc_sanitize_radio' ) ) {
+	function doc_sanitize_radio( $input, $setting ) {
+		$choices = $setting->manager->get_control( $setting->id )->choices;
+		if ( array_key_exists( $input, $choices ) ) {
+			return $input;
+		} else {
+			return $setting->default;
+		}
+	}
+}
+
+/**
+ * Date Time sanitization
+ *
+ * 'sanitize_callback' => 'doc_sanitize_time'
+ */
+if ( !function_exists( 'doc_sanitize_time' ) ) {
+	function doc_sanitize_time( $input, $setting ) {
+		$datetimeformat = 'Y-m-d';
+		if ( $setting->manager->get_control( $setting->id )->include_time ) {
+			$datetimeformat = 'Y-m-d H:i:s';
+		}
+		$date = DateTime::createFromFormat( $datetimeformat, $input );
+		if ( $date === false ) {
+			$date = DateTime::createFromFormat( $datetimeformat, $setting->default );
+		}
+		return $date->format( $datetimeformat );
+	}
 }
