@@ -4,6 +4,7 @@
  *
  * wp default menu and add custom attributes
  * Add panel
+ * Site home
  * Article list
  * Article page
  * Site float
@@ -24,19 +25,18 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			/*	wp default menu and add custom attributes
 			/* -------------------------------------------------------------------------- */
 			$wp_customize->get_setting( 'blogname' )->transport = 'postMessage';
-			$wp_customize->selective_refresh->add_partial(
-				'blogname',
+			$wp_customize->selective_refresh->add_partial( 'blogname',
 				array(
 					'selector' => '.custom-logo-text',
-					'render_callback' => 'doc_get_custom_logo_text',
+					'render_callback' => 'doc_custom_logo_text',
 				)
 			);
 
 			// Show site title
 			$wp_customize->add_setting( 'custom_logo_text_open',
 				array(
-					'default' => true,
-					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
+					'default' => 1,
+					'sanitize_callback' => 'doc_sanitize_switch',
 				) );
 			$wp_customize->add_control( 'custom_logo_text_open',
 				array(
@@ -49,14 +49,14 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Show site title annotation
 			$wp_customize->add_setting( 'custom_logo_text_span_open',
 				array(
-					'default' => true,
-					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
+					'default' => 1,
+					'sanitize_callback' => 'doc_sanitize_switch',
 				) );
 			$wp_customize->add_control( 'custom_logo_text_span_open',
 				array(
 					'label' => __( 'Show site title annotation', 'doc-text' ),
 					'section' => 'title_tagline',
-					'priority' => '10',
+					'priority' => 10,
 					'type' => 'checkbox',
 				) );
 
@@ -64,14 +64,14 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'custom_logo_text_span',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'postMessage',
 				) );
 			$wp_customize->add_control( 'custom_logo_text_span',
 				array(
 					'label' => __( 'Site title annotation content', 'doc-text' ),
 					'section' => 'title_tagline',
-					'priority' => '10',
+					'priority' => 10,
 					'type' => 'text',
 				) );
 			$wp_customize->selective_refresh->add_partial( 'custom_logo_text_span',
@@ -87,23 +87,22 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_keywords',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_textarea_field',
+					'sanitize_callback' => 'wp_filter_nohtml_kses',
 					'transport' => '',
 				)
 			);
 			$wp_customize->add_control( 'doc_keywords',
 				array(
 					'label' => __( 'Site keywords', 'doc-text' ),
-					'description' => __( 'Good keywords can improve rankings, use English commas to separate each word', 'doc-text' ),
+					'description' => esc_html__( 'Good keywords can improve rankings, use English commas to separate each word', 'doc-text' ),
 					'section' => 'title_tagline',
+					'priority' => 10,
 					'type' => 'textarea',
-					'priority' => '10',
 					'input_attrs' => array(
 						'placeholder' => __( 'WordPress,Web Design,DOCCG.COM', 'doc-text' ),
 					),
 				)
 			);
-
 
 			/* -------------------------------------------------------------------------- */
 			/*	Add panel
@@ -117,6 +116,104 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			);
 
 			/* -------------------------------------------------------------------------- */
+			/*	Site home
+			/* -------------------------------------------------------------------------- */
+			$wp_customize->add_section( 'doc_home_menu',
+				array(
+					'title' => __( 'Site home', 'doc-text' ),
+					'panel' => 'doc_panels',
+					'priority' => ''
+				) );
+
+			// Show carousel pictures
+			$wp_customize->add_setting( 'doc_banner_open',
+				array(
+					'default' => 0,
+					'sanitize_callback' => 'doc_sanitize_switch',
+				) );
+			$wp_customize->add_control( 'doc_banner_open',
+				array(
+					'label' => __( 'Show carousel pictures', 'doc-text' ),
+					'section' => 'doc_home_menu',
+					'priority' => '',
+					'type' => 'checkbox',
+				) );
+
+			// Number of Carousel Pictures
+			$wp_customize->add_setting( 'doc_banner_number',
+				array(
+					'default' => '3',
+					'sanitize_callback' => 'absint',
+					'transport' => 'refresh',
+				) );
+			$wp_customize->add_control( 'doc_banner_number',
+				array(
+					'label' => __( 'Number of Carousel Pictures', 'doc-text' ),
+					'section' => 'doc_home_menu',
+					'priority' => '',
+					'type' => 'text',
+				) );
+
+			// Carousel picture display mode
+			$wp_customize->add_setting( 'doc_banner_select',
+				array(
+					'default' => 'article',
+					'sanitize_callback' => 'doc_sanitize_radio',
+					'transport' => 'refresh',
+				)
+			);
+
+			$wp_customize->add_control( 'doc_banner_select',
+				array(
+					'label' => __( 'Carousel picture display mode', 'doc-text' ),
+					'section' => 'doc_home_menu',
+					'priority' => '',
+					'type' => 'select',
+					'choices' => array(
+						'category' => __( 'Category mode', 'doc-text' ),
+						'article' => __( 'Article mode', 'doc-text' )
+					)
+				)
+			);
+
+			// Category ID
+			$wp_customize->add_setting( 'doc_banner_category_id',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'doc_sanitize_text',
+					'transport' => 'refresh',
+				) );
+			$wp_customize->add_control( 'doc_banner_category_id',
+				array(
+					'label' => __( 'Category ID', 'doc-text' ),
+					'description' => esc_html__( 'You can fill in multiple IDs, separated by commas', 'doc-text' ),
+					'section' => 'doc_home_menu',
+					'priority' => '',
+					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => '1,2,3',
+					),
+				) );
+
+			// Article ID
+			$wp_customize->add_setting( 'doc_banner_post_id',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'doc_sanitize_text',
+					'transport' => 'refresh',
+				) );
+			$wp_customize->add_control( 'doc_banner_post_id',
+				array(
+					'label' => __( 'Article ID', 'doc-text' ),
+					'description' => esc_html__( 'You can fill in multiple IDs, separated by commas', 'doc-text' ),
+					'section' => 'doc_home_menu',
+					'priority' => '',
+					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => '1,2,3',
+					),
+				) );
+			/* -------------------------------------------------------------------------- */
 			/*	Article list
 			/* -------------------------------------------------------------------------- */
 			$wp_customize->add_section( 'doc_post_list_menu',
@@ -129,8 +226,8 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Show thumbnail
 			$wp_customize->add_setting( 'doc_list_pic_open',
 				array(
-					'default' => true,
-					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
+					'default' => 1,
+					'sanitize_callback' => 'doc_sanitize_switch',
 				) );
 			$wp_customize->add_control( 'doc_list_pic_open',
 				array(
@@ -143,8 +240,8 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Show category
 			$wp_customize->add_setting( 'doc_list_category_open',
 				array(
-					'default' => true,
-					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
+					'default' => 1,
+					'sanitize_callback' => 'doc_sanitize_switch',
 				) );
 			$wp_customize->add_control( 'doc_list_category_open',
 				array(
@@ -157,8 +254,8 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Show release time
 			$wp_customize->add_setting( 'doc_list_time_open',
 				array(
-					'default' => true,
-					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
+					'default' => 1,
+					'sanitize_callback' => 'doc_sanitize_switch',
 				) );
 			$wp_customize->add_control( 'doc_list_time_open',
 				array(
@@ -171,8 +268,8 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Show excerpt
 			$wp_customize->add_setting( 'doc_list_excerpt_open',
 				array(
-					'default' => true,
-					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
+					'default' => 1,
+					'sanitize_callback' => 'doc_sanitize_switch',
 				) );
 			$wp_customize->add_control( 'doc_list_excerpt_open',
 				array(
@@ -185,8 +282,8 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Show button
 			$wp_customize->add_setting( 'doc_list_link_text_open',
 				array(
-					'default' => true,
-					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
+					'default' => 1,
+					'sanitize_callback' => 'doc_sanitize_switch',
 				) );
 			$wp_customize->add_control( 'doc_list_link_text_open',
 				array(
@@ -200,14 +297,14 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_list_link_text',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'postMessage',
 				) );
 			$wp_customize->add_control( 'doc_list_link_text',
 				array(
 					'label' => __( 'Button text content', 'doc-text' ),
 					'section' => 'doc_post_list_menu',
-					'priority' => '10',
+					'priority' => '',
 					'type' => 'text',
 					'input_attrs' => array(
 						'placeholder' => __( 'Read more', 'doc-text' ),
@@ -235,8 +332,8 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Show article category
 			$wp_customize->add_setting( 'doc_sin_top_category_open',
 				array(
-					'default' => true,
-					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
+					'default' => 1,
+					'sanitize_callback' => 'doc_sanitize_switch',
 				) );
 			$wp_customize->add_control( 'doc_sin_top_category_open',
 				array(
@@ -249,8 +346,8 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Show article date, readings, comments, etc
 			$wp_customize->add_setting( 'doc_sin_meta_open',
 				array(
-					'default' => true,
-					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
+					'default' => 1,
+					'sanitize_callback' => 'doc_sanitize_switch',
 				) );
 			$wp_customize->add_control( 'doc_sin_meta_open',
 				array(
@@ -263,8 +360,8 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Show article copyright
 			$wp_customize->add_setting( 'doc_sin_copytight_open',
 				array(
-					'default' => true,
-					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
+					'default' => 1,
+					'sanitize_callback' => 'doc_sanitize_switch',
 				) );
 			$wp_customize->add_control( 'doc_sin_copytight_open',
 				array(
@@ -303,8 +400,8 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Show article comment button
 			$wp_customize->add_setting( 'doc_sin_comment_button_open',
 				array(
-					'default' => true,
-					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
+					'default' => 1,
+					'sanitize_callback' => 'doc_sanitize_switch',
 				) );
 			$wp_customize->add_control( 'doc_sin_comment_button_open',
 				array(
@@ -317,8 +414,8 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Show article sharing
 			$wp_customize->add_setting( 'doc_sin_share_open',
 				array(
-					'default' => true,
-					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
+					'default' => 1,
+					'sanitize_callback' => 'doc_sanitize_switch',
 				) );
 			$wp_customize->add_control( 'doc_sin_share_open',
 				array(
@@ -332,13 +429,13 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_sin_share',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => '',
 				) );
 			$wp_customize->add_control( 'doc_sin_share',
 				array(
 					'label' => __( 'Article sharing button settings', 'doc-text' ),
-					'description' => __( 'Optional[ weibo,qq,wechat,tencent,douban,qzone ] [ linkedin,diandian,facebook,twitter,google ] https://github.com/overtrue/share.js/', 'doc-text' ),
+					'description' => esc_html__( 'Optional[ weibo,qq,wechat,tencent,douban,qzone ] [ linkedin,diandian,facebook,twitter,google ] https://github.com/overtrue/share.js/', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
 					'priority' => '',
 					'type' => 'text',
@@ -350,8 +447,8 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Show article tags
 			$wp_customize->add_setting( 'doc_sin_tag_open',
 				array(
-					'default' => true,
-					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
+					'default' => 1,
+					'sanitize_callback' => 'doc_sanitize_switch',
 				) );
 			$wp_customize->add_control( 'doc_sin_tag_open',
 				array(
@@ -401,7 +498,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_express_title',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'postMessage',
 				) );
 			$wp_customize->add_control( 'doc_express_title',
@@ -427,7 +524,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_record',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'postMessage',
 				) );
 			$wp_customize->add_control( 'doc_record',
@@ -479,13 +576,13 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_back_totop_bell_url',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => '',
 				) );
 			$wp_customize->add_control( 'doc_back_totop_bell_url',
 				array(
 					'label' => __( 'Online service url', 'doc-text' ),
-					'description' => __( 'Choose one of URL and JS, Recommend https://yzf.qq.com/', 'doc-text' ),
+					'description' => esc_html__( 'Choose one of URL and JS, Recommend https://yzf.qq.com/', 'doc-text' ),
 					'section' => 'doc_float_menu',
 					'priority' => '',
 					'type' => 'text',
@@ -504,7 +601,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_control( 'doc_back_totop_bell_js',
 				array(
 					'label' => __( 'Online service js', 'doc-text' ),
-					'description' => __( 'Choose one of URL and JS, Recommend https://yzf.qq.com/', 'doc-text' ),
+					'description' => esc_html__( 'Choose one of URL and JS, Recommend https://yzf.qq.com/', 'doc-text' ),
 					'section' => 'doc_float_menu',
 					'priority' => '',
 					'type' => 'textarea',
@@ -513,8 +610,8 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Show back to top
 			$wp_customize->add_setting( 'doc_back_totop_open',
 				array(
-					'default' => true,
-					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
+					'default' => 1,
+					'sanitize_callback' => 'doc_sanitize_switch',
 				) );
 			$wp_customize->add_control( 'doc_back_totop_open',
 				array(
@@ -537,8 +634,8 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Show social
 			$wp_customize->add_setting( 'doc_socialization_open',
 				array(
-					'default' => true,
-					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
+					'default' => 1,
+					'sanitize_callback' => 'doc_sanitize_switch',
 				) );
 			$wp_customize->add_control( 'doc_socialization_open',
 				array(
@@ -552,7 +649,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_socialization_title',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'postMessage',
 				) );
 			$wp_customize->add_control( 'doc_socialization_title',
@@ -578,7 +675,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_link_qq',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'refresh',
 				) );
 			$wp_customize->add_control( 'doc_link_qq',
@@ -596,7 +693,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_link_weibo',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'refresh',
 				) );
 			$wp_customize->add_control( 'doc_link_weibo',
@@ -614,7 +711,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_link_behance',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'refresh',
 				) );
 			$wp_customize->add_control( 'doc_link_behance',
@@ -632,7 +729,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_link_dribbble',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'refresh',
 				) );
 			$wp_customize->add_control( 'doc_link_dribbble',
@@ -650,7 +747,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_link_linkedin',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'refresh',
 				) );
 			$wp_customize->add_control( 'doc_link_linkedin',
@@ -668,7 +765,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_link_reddit',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'refresh',
 				) );
 			$wp_customize->add_control( 'doc_link_reddit',
@@ -686,7 +783,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_link_facebook',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'refresh',
 				) );
 			$wp_customize->add_control( 'doc_link_facebook',
@@ -704,7 +801,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_link_twitter',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'refresh',
 				) );
 			$wp_customize->add_control( 'doc_link_twitter',
@@ -722,7 +819,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_link_telegram',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'refresh',
 				) );
 			$wp_customize->add_control( 'doc_link_telegram',
@@ -740,7 +837,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_link_pinterest',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'refresh',
 				) );
 			$wp_customize->add_control( 'doc_link_pinterest',
@@ -758,7 +855,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_link_500px',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'refresh',
 				) );
 			$wp_customize->add_control( 'doc_link_500px',
@@ -776,7 +873,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_link_instagram',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'refresh',
 				) );
 			$wp_customize->add_control( 'doc_link_instagram',
@@ -794,7 +891,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_link_tumblr',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'refresh',
 				) );
 			$wp_customize->add_control( 'doc_link_tumblr',
@@ -812,7 +909,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_link_twitch',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'refresh',
 				) );
 			$wp_customize->add_control( 'doc_link_twitch',
@@ -830,7 +927,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_link_vimeo',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'refresh',
 				) );
 			$wp_customize->add_control( 'doc_link_vimeo',
@@ -848,7 +945,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_link_youtube',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'refresh',
 				) );
 			$wp_customize->add_control( 'doc_link_youtube',
@@ -866,7 +963,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_link_github',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'refresh',
 				) );
 			$wp_customize->add_control( 'doc_link_github',
@@ -884,7 +981,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_link_steam',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'refresh',
 				) );
 			$wp_customize->add_control( 'doc_link_steam',
@@ -911,8 +1008,8 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Show QR code
 			$wp_customize->add_setting( 'doc_qrcode_open',
 				array(
-					'default' => false,
-					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
+					'default' => 0,
+					'sanitize_callback' => 'doc_sanitize_switch',
 				) );
 			$wp_customize->add_control( 'doc_qrcode_open',
 				array(
@@ -926,7 +1023,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_qrcode_title',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'postMessage',
 				) );
 			$wp_customize->add_control( 'doc_qrcode_title',
@@ -952,7 +1049,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_qrcode_img',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'doc_sanitize_image',
+					'sanitize_callback' => 'esc_url_raw',
 				) );
 			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'doc_qrcode_img',
 				array(
@@ -965,7 +1062,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_qrcode_img_2',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'doc_sanitize_image',
+					'sanitize_callback' => 'esc_url_raw',
 				) );
 			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'doc_qrcode_img_2',
 				array(
@@ -978,7 +1075,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_qrcode_img_3',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'doc_sanitize_image',
+					'sanitize_callback' => 'esc_url_raw',
 				) );
 			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'doc_qrcode_img_3',
 				array(
@@ -1000,8 +1097,8 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Show global bottom ads
 			$wp_customize->add_setting( 'doc_global_bottom_ad_open',
 				array(
-					'default' => false,
-					'sanitize_callback' => array( __CLASS__, 'doc_sanitize_checkbox' ),
+					'default' => 0,
+					'sanitize_callback' => 'doc_sanitize_switch',
 				) );
 			$wp_customize->add_control( 'doc_global_bottom_ad_open',
 				array(
@@ -1015,7 +1112,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_global_bottom_ad_title',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'postMessage',
 				) );
 			$wp_customize->add_control( 'doc_global_bottom_ad_title',
@@ -1041,7 +1138,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_global_bottom_ad_p',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'postMessage',
 				) );
 			$wp_customize->add_control( 'doc_global_bottom_ad_p',
@@ -1067,7 +1164,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_global_bottom_ad_url_text',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'postMessage',
 				) );
 			$wp_customize->add_control( 'doc_global_bottom_ad_url_text',
@@ -1093,7 +1190,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_global_bottom_ad_url',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => '',
 				) );
 			$wp_customize->add_control( 'doc_global_bottom_ad_url',
@@ -1111,7 +1208,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_global_bottom_ad_img',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'doc_sanitize_image',
+					'sanitize_callback' => 'esc_url_raw',
 				) );
 			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'doc_global_bottom_ad_img',
 				array(
@@ -1121,18 +1218,8 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) ) );
 
 		}
-
-		/**
-		 * Sanitize boolean for checkbox
-		 */
-		public static function doc_sanitize_checkbox( $checked ) {
-			return ( ( isset( $checked ) && true === $checked ) ? true : false );
-		}
-
 	}
-
 	add_action( 'customize_register', array( 'doc_customizer', 'register' ) );
-
 }
 
 require get_template_directory() . '/inc/customizer/customizer-sanitize.php';
@@ -1140,8 +1227,8 @@ require get_template_directory() . '/inc/customizer/customizer-sanitize.php';
 /**
  * Partial refresh function
  */
-if ( !function_exists( 'doc_get_custom_logo_text' ) ) {
-	function doc_get_custom_logo_text() {
+if ( !function_exists( 'doc_custom_logo_text' ) ) {
+	function doc_custom_logo_text() {
 		bloginfo( 'name' );
 	}
 }
