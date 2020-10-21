@@ -7,19 +7,6 @@
  * @package TingBiao Wang
  */
 get_header();
-if ( have_posts() ):
-	?>
-<section itemprop="article" class="article-box max-width">
-	<?php
-	while ( have_posts() ): the_post();
-	get_template_part( 'template-parts/content', '' );
-	endwhile;
-	?>
-</section>
-<?php
-get_template_part( 'template-parts/content', 'next' );
-else :
-	get_template_part( 'template-parts/content', 'none' );
-endif;
+doc_banner();
 get_footer();
 ?>
