@@ -11,7 +11,7 @@
 
 <footer id="site-foo" role="footer" itemscope itemtype="http://schema.org/WPFooter">
 	<?php
-	$doc_global_bottom_ad_open = get_theme_mod( 'doc_global_bottom_ad_open', 'false' );
+	$doc_global_bottom_ad_open = get_theme_mod( 'doc_global_bottom_ad_open', '0' );
 	$doc_global_bottom_ad_title = get_theme_mod( 'doc_global_bottom_ad_title' );
 	$doc_global_bottom_ad_p = get_theme_mod( 'doc_global_bottom_ad_p' );
 	$doc_global_bottom_ad_url_text = get_theme_mod( 'doc_global_bottom_ad_url_text' );
@@ -36,7 +36,7 @@
 	<section class="site-bottom">
 		<?php
 		echo '<div class="site-bottom-list bottom-about">';
-		doc_get_custom_logo();
+		doc_custom_logo();
 		$doc_bottom_about = get_theme_mod( 'doc_bottom_about', __( 'Thank you for visiting my small site. I am a designer and front-end development enthusiast. These are some resources and materials that I usually collect. hope it helps you.', 'doc-text' ) );
 		if ( $doc_bottom_about ) {
 			echo '<p>' . $doc_bottom_about . '</p>';
@@ -71,5 +71,29 @@
 	<?php doc_copyright_menu();?>
 </footer>
 </div>
-<?php wp_footer(); ?>
+<?php
+wp_footer();
+if ( is_home() ) {
+	?>
+<script>
+	var swiper = new Swiper('.swiper-container', {
+		slidesPerView: 1,
+		spaceBetween: 30,
+		loop: true,
+		centeredSlides: true,
+		autoplay: {
+			delay: 6000,
+			disableOnInteraction: false,
+		},
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true,
+		},
+		navigation: {
+			nextEl: '.swiper-next',
+			prevEl: '.swiper-prev',
+		},
+	});
+</script>
+<?php } ?>
 </body></html>
