@@ -81,13 +81,13 @@ add_action( 'wp_head', 'doc_keywords_description' );
 /**
  * Website custom logo
  */
-if ( !function_exists( 'doc_get_custom_logo' ) ) {
-	function doc_get_custom_logo() {
+if ( !function_exists( 'doc_custom_logo' ) ) {
+	function doc_custom_logo() {
 
 		$custom_logo_id = get_theme_mod( 'custom_logo' );
 		$logo = wp_get_attachment_image_src( $custom_logo_id, 'full' );
-		$custom_logo_text_open = get_theme_mod( 'custom_logo_text_open', 'true' );
-		$custom_logo_text_span_open = get_theme_mod( 'custom_logo_text_span_open', 'true' );
+		$custom_logo_text_open = get_theme_mod( 'custom_logo_text_open', 1 );
+		$custom_logo_text_span_open = get_theme_mod( 'custom_logo_text_span_open', 1 );
 		$custom_logo_text_span = get_theme_mod( 'custom_logo_text_span', '2020' );
 
 		echo '<h1 itemscope itemtype="http://schema.org/Organization" class="site-title"><a itemprop="url" rel="home" class="custom-logo-text" href="' . esc_url( home_url( '/' ) ) . '">';
@@ -108,8 +108,8 @@ if ( !function_exists( 'doc_get_custom_logo' ) ) {
 /**
  * Custom breadcrumb navigation
  */
-if ( !function_exists( 'doc_get_breadcrumbs' ) ) {
-	function doc_get_breadcrumbs() {
+if ( !function_exists( 'doc_breadcrumbs' ) ) {
+	function doc_breadcrumbs() {
 
 		$delimiter = '<span>&nbsp;&raquo;&nbsp;</span>';
 		$before = '<span class="current">';
@@ -214,6 +214,48 @@ if ( !function_exists( 'doc_get_breadcrumbs' ) ) {
 		}
 	}
 }
+
+/**
+ * Homepage Carousel Picture
+ */
+if ( !function_exists( 'doc_banner' ) ) {
+	function doc_banner() {
+		$doc_banner_open = get_theme_mod( 'doc_banner_open', 0 );
+		if ( $doc_banner_open ) {
+			echo '<section class="swiper-container"><div class="swiper-wrapper">';
+			$doc_banner_select = get_theme_mod( 'doc_banner_select' );
+			$doc_banner_number = get_theme_mod( 'doc_banner_number', '3' );
+			$doc_banner_category_id = explode( ",", get_theme_mod( 'doc_banner_category_id' ) );
+			$doc_banner_post_id = explode( ",", get_theme_mod( 'doc_banner_post_id' ) );
+
+			if ( $doc_banner_select == 'category' ) {
+
+				$banner_query = array( 'ignore_sticky_posts' => 1, 'posts_per_page' => $doc_banner_number, 'cat' => $doc_banner_category_id );
+
+			} elseif ( $doc_banner_select == 'article' ) {
+
+				$banner_query = array( 'ignore_sticky_posts' => 1, 'posts_per_page' => $doc_banner_number, 'post__in' => $doc_banner_post_id );
+
+			};
+			$banners_query = new WP_Query( $banner_query );
+			if ( $banners_query->have_posts() ):
+				while ( $banners_query->have_posts() ):
+					$banners_query->the_post();
+			if ( has_post_thumbnail() ) {
+				echo '<figure class="swiper-slide" itemprop="image"><a href="' . get_the_permalink() . '">' . get_the_post_thumbnail() . '</a></figure>';
+			}
+			endwhile;
+			endif;
+			wp_reset_postdata();
+			echo '</div>
+				<div class="swiper-pagination"></div>
+				<div class="swiper-prev"><i class="fa fa-angle-left"></i></div>
+				<div class="swiper-next"><i class="fa fa-angle-right"></i></div>
+			</section>';
+		}
+	}
+}
+
 /**
  * Global information at the top of the site
  */
@@ -256,7 +298,7 @@ if ( !function_exists( 'doc_sort_box' ) ) {
 if ( !function_exists( 'doc_bottom_link' ) ) {
 	function doc_bottom_link() {
 
-		$doc_socialization_open = get_theme_mod( 'doc_socialization_open', 'true' );
+		$doc_socialization_open = get_theme_mod( 'doc_socialization_open', 1 );
 		$doc_socialization_title = get_theme_mod( 'doc_socialization_title', __( 'Follow us', 'doc-text' ) );
 		if ( $doc_socialization_open ) {
 			echo '<div class="site-bottom-list bottom-link" itemprop="about"><h3 class="site-bottom-title">' . $doc_socialization_title . '</h3>';
@@ -341,7 +383,7 @@ if ( !function_exists( 'doc_bottom_link' ) ) {
 				echo '</p>';
 			}
 
-			$doc_qrcode_open = get_theme_mod( 'doc_qrcode_open', 'false' );
+			$doc_qrcode_open = get_theme_mod( 'doc_qrcode_open', '0' );
 			$doc_qrcode_title = get_theme_mod( 'doc_qrcode_title', __( 'Scan it', 'doc-text' ) );
 			$doc_qrcode_img = get_theme_mod( 'doc_qrcode_img' );
 			$doc_qrcode_img_2 = get_theme_mod( 'doc_qrcode_img_2' );
@@ -427,7 +469,7 @@ if ( !function_exists( 'doc_statistics_fixed_box' ) ) {
 
 		$doc_bell_url = get_theme_mod( 'doc_bell_url' );
 		$doc_bell_js = get_theme_mod( 'doc_bell_js' );
-		$doc_back_totop_open = get_theme_mod( 'doc_back_totop_open', 'true' );
+		$doc_back_totop_open = get_theme_mod( 'doc_back_totop_open', 1 );
 		if ( $doc_bell_url ) {
 			echo '<a href="' . $doc_bell_url . '" id="bell"><i class="fa fa-bell"></i></a>';
 		} elseif ( $doc_bell_js ) {
