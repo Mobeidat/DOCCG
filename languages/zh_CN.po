@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: DOCCG languages\n"
-"POT-Creation-Date: 2020-10-20 17:18+0800\n"
-"PO-Revision-Date: 2020-10-20 17:18+0800\n"
+"POT-Creation-Date: 2020-10-22 00:52+0800\n"
+"PO-Revision-Date: 2020-10-22 00:53+0800\n"
 "Last-Translator: \n"
 "Language-Team: DOCCG.COM\n"
 "Language: en_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_x;esc_html__;esc_html_e\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -43,7 +43,7 @@ msgstr ""
 msgid "Comments are closed."
 msgstr "评论被关闭。"
 
-#: footer.php:40 inc/customizer/customizer.php:388
+#: footer.php:40 inc/customizer/customizer.php:485
 msgid ""
 "Thank you for visiting my small site. I am a designer and front-end "
 "development enthusiast. These are some resources and materials that I "
@@ -52,15 +52,15 @@ msgstr ""
 "感谢您访问我的小网站。我是一个设计师和前端开发爱好者。这些是我通常收集的一些"
 "资源和材料。希望它能帮助你。"
 
-#: footer.php:51 inc/customizer/customizer.php:414
+#: footer.php:51 inc/customizer/customizer.php:511
 msgid "Express"
 msgstr "快讯"
 
-#: functions.php:129
+#: functions.php:139
 msgid "Top Menu"
 msgstr "顶部菜单"
 
-#: functions.php:130
+#: functions.php:140
 msgid "Bottom Menu"
 msgstr "底部菜单"
 
@@ -151,7 +151,7 @@ msgstr "编辑"
 msgid "%min%min%sec%seconds reading"
 msgstr "%min%分%sec%秒阅读"
 
-#: inc/article.php:229 inc/customizer/customizer.php:291
+#: inc/article.php:229 inc/customizer/customizer.php:388
 msgid ""
 "This article is collected from the Internet, and the copyright belongs to "
 "the original author or organization. If this page violates your rights, "
@@ -291,75 +291,112 @@ msgstr "好的关键字可以提高排名，使用英文逗号分隔每个单词
 msgid "WordPress,Web Design,DOCCG.COM"
 msgstr "WordPress,网页设计,DOCCG.COM"
 
-#: inc/customizer/customizer.php:114
+#: inc/customizer/customizer.php:113
 msgid "Theme setting"
 msgstr "主题设置"
 
-#: inc/customizer/customizer.php:124
+#: inc/customizer/customizer.php:123
+msgid "Site home"
+msgstr "站点首页"
+
+#: inc/customizer/customizer.php:136
+msgid "Show carousel pictures"
+msgstr "显示轮播图"
+
+#: inc/customizer/customizer.php:151
+msgid "Number of Carousel Pictures"
+msgstr "轮播图数量"
+
+#: inc/customizer/customizer.php:168
+msgid "Carousel picture display mode"
+msgstr "轮播图显示模式"
+
+#: inc/customizer/customizer.php:173
+msgid "Category mode"
+msgstr "分类模式"
+
+#: inc/customizer/customizer.php:174
+msgid "Article mode"
+msgstr "文章模式"
+
+#: inc/customizer/customizer.php:188
+msgid "Category ID"
+msgstr "分类ID"
+
+#: inc/customizer/customizer.php:189 inc/customizer/customizer.php:208
+msgid "You can fill in multiple IDs, separated by commas"
+msgstr "您可以填写多个ID，以英文逗号分隔。"
+
+#: inc/customizer/customizer.php:207
+msgid "Article ID"
+msgstr "文章ID"
+
+#: inc/customizer/customizer.php:221
 msgid "Article list"
 msgstr "文章列表"
 
-#: inc/customizer/customizer.php:137
+#: inc/customizer/customizer.php:234
 msgid "Show thumbnail"
 msgstr "显示缩略图"
 
-#: inc/customizer/customizer.php:151
+#: inc/customizer/customizer.php:248
 msgid "Show category"
 msgstr "显示类别"
 
-#: inc/customizer/customizer.php:165
+#: inc/customizer/customizer.php:262
 msgid "Show release time"
 msgstr "显示发布时间"
 
-#: inc/customizer/customizer.php:179
+#: inc/customizer/customizer.php:276
 msgid "Show excerpt"
 msgstr "显示摘要"
 
-#: inc/customizer/customizer.php:193
+#: inc/customizer/customizer.php:290
 msgid "Show button"
 msgstr "显示按钮"
 
-#: inc/customizer/customizer.php:208
+#: inc/customizer/customizer.php:305
 msgid "Button text content"
 msgstr "按钮文字内容"
 
-#: inc/customizer/customizer.php:213 template-parts/content.php:26
+#: inc/customizer/customizer.php:310 template-parts/content-home.php:26
+#: template-parts/content.php:26
 msgid "Read more"
 msgstr "阅读更多"
 
-#: inc/customizer/customizer.php:230
+#: inc/customizer/customizer.php:327
 msgid "Article page"
 msgstr "文章页面"
 
-#: inc/customizer/customizer.php:243
+#: inc/customizer/customizer.php:340
 msgid "Show article category"
 msgstr "显示文章类别"
 
-#: inc/customizer/customizer.php:257
+#: inc/customizer/customizer.php:354
 msgid "Show article date, readings, comments, etc"
 msgstr "显示文章日期，阅读，评论等"
 
-#: inc/customizer/customizer.php:271
+#: inc/customizer/customizer.php:368
 msgid "Show article copyright"
 msgstr "显示文章版权"
 
-#: inc/customizer/customizer.php:286
+#: inc/customizer/customizer.php:383
 msgid "Article copyright content"
 msgstr "文章版权内容"
 
-#: inc/customizer/customizer.php:311
+#: inc/customizer/customizer.php:408
 msgid "Show article comment button"
 msgstr "显示文章评论按钮"
 
-#: inc/customizer/customizer.php:325
+#: inc/customizer/customizer.php:422
 msgid "Show article sharing"
 msgstr "显示文章分享"
 
-#: inc/customizer/customizer.php:340
+#: inc/customizer/customizer.php:437
 msgid "Article sharing button settings"
 msgstr "文章分享按钮设置"
 
-#: inc/customizer/customizer.php:341
+#: inc/customizer/customizer.php:438
 msgid ""
 "Optional[ weibo,qq,wechat,tencent,douban,qzone ] [ linkedin,diandian,"
 "facebook,twitter,google ] https://github.com/overtrue/share.js/"
@@ -367,131 +404,131 @@ msgstr ""
 "可选 [ weibo,qq,wechat,tencent,douban,qzone ] [ linkedin,diandian,facebook,"
 "twitter,google ] https://github.com/overtrue/share.js/"
 
-#: inc/customizer/customizer.php:358
+#: inc/customizer/customizer.php:455
 msgid "Show article tags"
 msgstr "显示文章标签"
 
-#: inc/customizer/customizer.php:369
+#: inc/customizer/customizer.php:466
 msgid "Site footer"
 msgstr "站点底部"
 
-#: inc/customizer/customizer.php:383
+#: inc/customizer/customizer.php:480
 msgid "Site footer introductiont"
 msgstr "站点页尾介绍"
 
-#: inc/customizer/customizer.php:409
+#: inc/customizer/customizer.php:506
 msgid "Latest article title"
 msgstr "最新文章标题"
 
-#: inc/customizer/customizer.php:435
+#: inc/customizer/customizer.php:532
 msgid "China record number"
 msgstr "备案号"
 
-#: inc/customizer/customizer.php:461
+#: inc/customizer/customizer.php:558
 msgid "Statistical code"
 msgstr "统计代码"
 
-#: inc/customizer/customizer.php:473
+#: inc/customizer/customizer.php:570
 msgid "Site float"
 msgstr "站点浮动"
 
-#: inc/customizer/customizer.php:487
+#: inc/customizer/customizer.php:584
 msgid "Online service url"
 msgstr "在线客服URL版"
 
-#: inc/customizer/customizer.php:488 inc/customizer/customizer.php:507
+#: inc/customizer/customizer.php:585 inc/customizer/customizer.php:604
 msgid "Choose one of URL and JS, Recommend https://yzf.qq.com/"
 msgstr "URL和JS二选一，推荐 https://yzf.qq.com/"
 
-#: inc/customizer/customizer.php:506
+#: inc/customizer/customizer.php:603
 msgid "Online service js"
 msgstr "在线客服JS版"
 
-#: inc/customizer/customizer.php:521
+#: inc/customizer/customizer.php:618
 msgid "Show back to top"
 msgstr "显示返回顶部"
 
-#: inc/customizer/customizer.php:532
+#: inc/customizer/customizer.php:629
 msgid "Site Socialization"
 msgstr "站点社会化"
 
-#: inc/customizer/customizer.php:545
+#: inc/customizer/customizer.php:642
 msgid "Show social"
 msgstr "显示社交"
 
-#: inc/customizer/customizer.php:560
+#: inc/customizer/customizer.php:657
 msgid "Social title"
 msgstr "社交标题"
 
-#: inc/customizer/customizer.php:565 inc/settings.php:260
+#: inc/customizer/customizer.php:662 inc/settings.php:302
 msgid "Follow us"
 msgstr "关注我们"
 
-#: inc/customizer/customizer.php:604
+#: inc/customizer/customizer.php:701
 msgid "Weibo"
 msgstr "新浪微博"
 
-#: inc/customizer/customizer.php:906
+#: inc/customizer/customizer.php:1003
 msgid "Site QR code"
 msgstr "站点二维码"
 
-#: inc/customizer/customizer.php:919
+#: inc/customizer/customizer.php:1016
 msgid "Show QR code"
 msgstr "显示二维码"
 
-#: inc/customizer/customizer.php:934
+#: inc/customizer/customizer.php:1031
 msgid "QR code title"
 msgstr "二维码标题"
 
-#: inc/customizer/customizer.php:939 inc/settings.php:345
+#: inc/customizer/customizer.php:1036 inc/settings.php:387
 msgid "Scan it"
 msgstr "扫一扫"
 
-#: inc/customizer/customizer.php:959
+#: inc/customizer/customizer.php:1056
 msgid "QR code image"
 msgstr "二维码图片"
 
-#: inc/customizer/customizer.php:972
+#: inc/customizer/customizer.php:1069
 msgid "QR code image 2"
 msgstr "二维码图片2"
 
-#: inc/customizer/customizer.php:985
+#: inc/customizer/customizer.php:1082
 msgid "QR code image 3"
 msgstr "二维码图片2"
 
-#: inc/customizer/customizer.php:995
+#: inc/customizer/customizer.php:1092
 msgid "Site advertisement"
 msgstr "站点广告"
 
-#: inc/customizer/customizer.php:1008
+#: inc/customizer/customizer.php:1105
 msgid "Show global bottom ads"
 msgstr "显示全局底部广告"
 
-#: inc/customizer/customizer.php:1023
+#: inc/customizer/customizer.php:1120
 msgid "Ad title"
 msgstr "广告标题"
 
-#: inc/customizer/customizer.php:1049
+#: inc/customizer/customizer.php:1146
 msgid "Ad description"
 msgstr "广告内容"
 
-#: inc/customizer/customizer.php:1054
+#: inc/customizer/customizer.php:1151
 msgid "Super easy to use WordPress theme"
 msgstr "超级好用的WordPress主题"
 
-#: inc/customizer/customizer.php:1075
+#: inc/customizer/customizer.php:1172
 msgid "Ad url text"
 msgstr "广告链接文字"
 
-#: inc/customizer/customizer.php:1080
+#: inc/customizer/customizer.php:1177
 msgid "Get it for free"
 msgstr "免费获取"
 
-#: inc/customizer/customizer.php:1101
+#: inc/customizer/customizer.php:1198
 msgid "Ad url"
 msgstr "广告链接地址"
 
-#: inc/customizer/customizer.php:1118
+#: inc/customizer/customizer.php:1215
 msgid "Ad background image"
 msgstr "广告背景图片"
 
@@ -523,25 +560,25 @@ msgstr "无结果"
 msgid "( Page %s )"
 msgstr "( 页面 %s )"
 
-#: inc/settings.php:233
+#: inc/settings.php:275
 #, php-format
 msgid ""
 "<span>\" %1$s \"</span>found articles, there are<span>\" %2$s \"</"
 "span>articles in total."
 msgstr "找到与<span>“ %1$s ”</span>相关文章，共有<span>“ %2$s ”</span>篇。"
 
-#: inc/settings.php:235
+#: inc/settings.php:277
 #, php-format
 msgid ""
 "No<span>\" %s \"</span>related articles were found, please fill in the "
 "keywords again and search again!"
 msgstr "找不到与<span>“ %s ”</span>相关文章，请再次填写关键字，然后再次搜索！"
 
-#: inc/settings.php:392
+#: inc/settings.php:434
 msgid "Powered by"
 msgstr "开源程序"
 
-#: inc/settings.php:392
+#: inc/settings.php:434
 msgid "Theme by"
 msgstr "主题"
 
@@ -564,6 +601,9 @@ msgstr "下一页"
 #: template-parts/content-none.php:12
 msgid "Sorry, no search criteria are met. Please try some other keywords."
 msgstr "抱歉，没有符合搜索条件。 请尝试其他一些关键字。"
+
+#~ msgid "Article"
+#~ msgstr "文章"
 
 #~ msgid "Renren"
 #~ msgstr "人人网"
