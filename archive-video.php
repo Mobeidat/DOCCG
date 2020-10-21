@@ -12,7 +12,7 @@ get_header();
 doc_sort_box();
 if ( have_posts() ):
 	?>
-<section class="media-box max-width">
+<section itemprop="article" class="media-box max-width">
 	<?php
 	while ( have_posts() ): the_post();
 	get_template_part( 'template-parts/content', 'video' );
