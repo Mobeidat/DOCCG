@@ -483,6 +483,14 @@ table tr th strong, table tr td strong {
 /*-----------------------------------------------------------------
 * Banner
 -----------------------------------------------------------------*/
+.swiper-slide a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	max-height: 38rem;
+	overflow: hidden;
+}
 .swiper-slide img {
 	width: 100%;
 }
