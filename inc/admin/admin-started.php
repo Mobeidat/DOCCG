@@ -12,22 +12,22 @@
 /**
  * Add a getting started page in the management menu
  */
-if ( !function_exists( 'doc_getting_started_menu' ) ):
-	function doc_getting_started_menu() {
+if ( !function_exists( 'doc_admin_started_menu' ) ):
+	function doc_admin_started_menu() {
 
 		$plugin_count = '<span class="awaiting-mod action-count">' . esc_html( DOCCG_THEME_VERSION ) . '</span>';
 		$title = sprintf( esc_html__( '%1$s %2$s', 'doc-text' ), esc_html( DOCCG_THEME_NAME ), $plugin_count );
 
-		add_theme_page( sprintf( esc_html__( 'Welcome to %1$s ', 'doc-text' ), esc_html( DOCCG_THEME_NAME ), esc_html( DOCCG_THEME_VERSION ) ), $title, 'edit_theme_options', 'admin-started', 'doc_getting_started_page' );
+		add_theme_page( sprintf( esc_html__( 'Welcome to %1$s ', 'doc-text' ), esc_html( DOCCG_THEME_NAME ), esc_html( DOCCG_THEME_VERSION ) ), $title, 'edit_theme_options', 'admin-started', 'doc_admin_started_page' );
 	}
 endif;
-add_action( 'admin_menu', 'doc_getting_started_menu' );
+add_action( 'admin_menu', 'doc_admin_started_menu' );
 
 /**
  * Load the starter style in the admin
  */
-if ( !function_exists( 'doc_getting_started_admin_scripts' ) ):
-	function doc_getting_started_admin_scripts( $hook ) {
+if ( !function_exists( 'doc_admin_started_admin_scripts' ) ):
+	function doc_admin_started_admin_scripts( $hook ) {
 
 		if ( 'appearance_page_admin-started' != $hook ) return;
 		wp_enqueue_style( 'admin-started', get_template_directory_uri() . '/inc/admin/admin-started.css', false, DOCCG_THEME_VERSION );
@@ -35,13 +35,13 @@ if ( !function_exists( 'doc_getting_started_admin_scripts' ) ):
 
 	}
 endif;
-add_action( 'admin_enqueue_scripts', 'doc_getting_started_admin_scripts' );
+add_action( 'admin_enqueue_scripts', 'doc_admin_started_admin_scripts' );
 
 /**
  * The callback function of the management page 
  */
-if ( !function_exists( 'doc_getting_started_page' ) ):
-	function doc_getting_started_page() {
+if ( !function_exists( 'doc_admin_started_page' ) ):
+	function doc_admin_started_page() {
 		?>
 <div class="wrap admin-started">
 	<div class="intro">
