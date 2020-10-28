@@ -160,17 +160,19 @@ if ( !function_exists( 'wp_body_open' ) ) {
  */
 require get_template_directory() . '/inc/wp-clean-up/wp-clean-up.php';
 
-require get_template_directory() . '/inc/core.php';
+require get_template_directory() . '/inc/custom-core.php';
 
-require get_template_directory() . '/inc/article.php';
+require get_template_directory() . '/inc/custom-article.php';
 
-require get_template_directory() . '/inc/settings.php';
+require get_template_directory() . '/inc/custom-settings.php';
 
-//require get_template_directory() . '/custom-login-register.php' );
+require get_template_directory() . '/inc/custom-post-type.php';
 
-require get_template_directory() . '/inc/custom-archive-article.php';
+require get_template_directory() . '/inc/custom-taxonomy.php';
 
-require get_template_directory() . '/inc/admin/getting-started.php';
+require get_template_directory() . '/inc/custom-login-register.php';
+
+require get_template_directory() . '/inc/admin/admin-started.php';
 
 require get_template_directory() . '/inc/customizer/customizer.php';
 
@@ -195,7 +197,7 @@ add_action( 'customize_controls_enqueue_scripts', 'doc_customize_control_js' );
 $doc_theme_start = wp_get_theme();
 if ( 'DOCCG' == $doc_theme_start->name ) {
 	if ( is_admin() ) {
-		require get_template_directory() . '/admin/getting-started.php';
+		require get_template_directory() . '/admin/admin-started.php';
 	}
 }
 
