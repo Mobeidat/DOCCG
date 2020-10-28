@@ -319,7 +319,7 @@ table tr th strong, table tr td strong {
 .toggle {
 	padding: .5rem;
 	font-size: 1.2rem;
-	color: white;
+	color: white !important;
 	line-height: 1;
 	opacity: .6;
 	cursor: pointer;
@@ -665,12 +665,6 @@ table tr th strong, table tr td strong {
 /*-----------------------------------------------------------------
 * Media
 -----------------------------------------------------------------*/
-.medias {
-	background-color: #fff;
-}
-.medias-box {
-	display: flex;
-}
 .media-box {
 	padding: 1rem 0;
 }
@@ -770,6 +764,87 @@ table tr th strong, table tr td strong {
 	}
 }
 /*-----------------------------------------------------------------
+* Web
+-----------------------------------------------------------------*/
+.web-box {
+	padding: 1rem 0;
+}
+.web-list {
+	display: flex;
+	align-items: flex-start;
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 1rem;
+	padding: 1rem;
+	box-shadow: 0 0 3rem rgba(0, 0, 0, .1);
+	border-radius: .3rem;
+}
+.web-vpn {
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1;
+	padding: .3rem .5rem;
+	color: white;
+	line-height: 1;
+	background-color: firebrick;
+}
+.web-pic {
+	width: 4rem;
+	height: 4rem;
+	overflow: hidden;
+	margin-right: 1rem;
+	border: thin solid #f2f2f2;
+	border-radius: 50%;
+}
+.web-content-box {
+	flex: 1;
+}
+.web-excerpt {
+	margin: .5rem 0;
+}
+.web-link a {
+	display: inline-block;
+	padding: .5rem;
+	color: #0057ff;
+	line-height: 1;
+	border: thin solid #0057ff;
+	border-radius: .3rem;
+}
+@media only screen and (min-width: 600px) {
+	.web-list, .web-content-box {
+		align-items: center;
+	}
+	.web-pic {
+		width: 6rem;
+		height: 6rem;
+		margin-right: 2rem;
+	}
+	.web-content-box {
+		display: flex;
+		justify-content: space-between;
+	}
+	.web-link a:hover {
+		color: white;
+		background-color: #0057ff;
+	}
+}
+@media only screen and (min-width: 900px) {
+	.web-box {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 3rem 0;
+	}
+	.web-list {
+		width: calc(100%/2 - 1rem);
+		margin-right: 2rem;
+	}
+	.web-list:nth-child(2n) {
+		margin-right: 0;
+	}
+}
+/*-----------------------------------------------------------------
 * Site next
 -----------------------------------------------------------------*/
 .site-next {
@@ -836,6 +911,9 @@ table tr th strong, table tr td strong {
 }
 .single-meta a:hover {
 	color: #0057ff;
+}
+.single-meta .single-comment {
+	display: none;
 }
 .single-category a {
 	display: inline-block;
@@ -1105,6 +1183,9 @@ table tr th strong, table tr td strong {
 	}
 	.single-meta span, .single-meta a {
 		margin-left: 1.5rem;
+	}
+	.single-meta .single-comment {
+		display: inline-block;
 	}
 	.single-title {
 		font-size: 2rem;
