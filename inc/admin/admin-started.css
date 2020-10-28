@@ -12,17 +12,17 @@
     zoom: 1
 }
 
-.getting-started * {
+.admin-started * {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
-.getting-started {
+.admin-started {
     max-width: 1200px;
     overflow: hidden;
 }
 
-.getting-started .panel {
+.admin-started .panel {
     display: inline-block;
     width: 100%;
     padding: 2%;
@@ -56,7 +56,7 @@
     }
 }
 
-.getting-started .panel p {
+.admin-started .panel p {
     font-size: 16px;
     line-height: 1.6;
     color: #545454;
@@ -64,58 +64,45 @@
     margin-bottom: 0;
 }
 
-.getting-started .panel p a {
+.admin-started .panel p a {
     color: #13aff0;
     border-bottom: 1px dotted #f8478d;
 }
 
-.getting-started .panel p a:hover {
+.admin-started .panel p a:hover {
     border-bottom-color: transparent;
 }
 
-.getting-started .panel a {
+.admin-started .panel a {
     text-decoration: none;
 }
 
-.getting-started .panel a:focus,
-.getting-started .panel a:active {
+.admin-started .panel a:focus,
+.admin-started .panel a:active {
     outline: none;
     -webkit-box-shadow: none;
     box-shadow: none;
     border: none;
 }
 
-.getting-started .panel a.button,
-.getting-started input.button-primary {
-    background: #0073aa;
-    border: 1px solid #0073aa;
+.admin-started .panel a.button,
+.admin-started input.button-primary {
     text-shadow: none;
     -webkit-box-shadow: none;
     box-shadow: none;
     height: auto;
     font-weight: 600;
-    color: #fff;
     border-radius: 4px;
     font-size: 14px;
     padding: 5px 14px;
     line-height: 1.5;
 }
 
-.getting-started .panel-aside p + a.button {
+.admin-started .panel-aside p + a.button {
     margin-top: 20px;
 }
 
-.getting-started .panel a.button:focus,
-.getting-started .panel a.button:active,
-.getting-started .panel a.button:hover,
-.getting-started input.button-primary:hover,
-.getting-started input.button-primary:focus {
-    color: #0073aa;
-    background: none;
-    border-color: #0073aa;
-}
-
-.getting-started .panel {
+.admin-started .panel {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -125,7 +112,7 @@
     flex-wrap: wrap;
 }
 
-.getting-started .panel-aside {
+.admin-started .panel-aside {
     padding: 16px;
     background: #F8F8F8;
     margin-right: 3%;
@@ -137,11 +124,11 @@
 }
 
 @media only screen and (max-width:768px) {
-    .getting-started .panel {
+    .admin-started .panel {
         margin-top: 32px;
     }
 
-    .getting-started .panel-aside {
+    .admin-started .panel-aside {
         margin-right: 0;
         -webkit-box-flex: 1;
         -webkit-flex: 1 1 100%;
@@ -150,11 +137,11 @@
     }
 }
 
-.getting-started .panel-aside:last-child {
+.admin-started .panel-aside:last-child {
     margin-right: 0;
 }
 
-.getting-started .panel-aside h4 {
+.admin-started .panel-aside h4 {
     margin-top: 0;
     font-size: 20px;
     line-height: 1.4;
