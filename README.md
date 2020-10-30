@@ -10,7 +10,7 @@ Tags: two columns, flexible header, accessibility ready, custom colors, custom h
 
 == Description ==
 
-DOCCG 2020 is a WordPress theme developed by TingBiao Wang. You can use it for commercial and personal projects.
+DOCCG is a WordPress theme developed by TingBiao Wang. You can use it for commercial and personal projects.
 
 == Installation ==
 
@@ -21,8 +21,8 @@ DOCCG 2020 is a WordPress theme developed by TingBiao Wang. You can use it for c
 
 == Copyright ==
 
-DOCCG 2020 WordPress Theme, Copyright 2016-2019 wangtingiao.com
-DOCCG 2020 is distributed under the terms of the GNU GPL
+DOCCG WordPress Theme, Copyright 2016-2019 wangtingiao.com
+DOCCG is distributed under the terms of the GNU GPL
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
-DOCCG 2020 bundles the following third-party resources:
+DOCCG bundles the following third-party resources:
 
 HTML5 Shiv, Copyright 2014 Alexander Farkas
 Licenses: MIT/GPL2
@@ -55,7 +55,7 @@ Source: http://fontawesome.io/
 == Changelog ==
 
 = 1.0 =
-* Released: October 22, 2020
+* Released: October 31, 2020
 
 Initial release
 
