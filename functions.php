@@ -170,8 +170,6 @@ require get_template_directory() . '/inc/custom-post-type.php';
 
 require get_template_directory() . '/inc/custom-taxonomy.php';
 
-require get_template_directory() . '/inc/custom-login-register.php';
-
 require get_template_directory() . '/inc/admin/admin-started.php';
 
 require get_template_directory() . '/inc/customizer/customizer.php';
