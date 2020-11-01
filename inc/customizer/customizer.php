@@ -538,7 +538,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_statistics',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_html_class',
+					'sanitize_callback' => '',
 					'transport' => '',
 				) );
 			$wp_customize->add_control( 'doc_statistics',
@@ -580,7 +580,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_setting( 'doc_back_totop_bell_js',
 				array(
 					'default' => '',
-					'sanitize_callback' => 'sanitize_html_class',
+					'sanitize_callback' => '',
 					'transport' => '',
 				) );
 			$wp_customize->add_control( 'doc_back_totop_bell_js',
