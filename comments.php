@@ -16,8 +16,8 @@ if ( post_password_required() ) {
 	<div class="comment-box">
 		<h3 class="comment-title" itemprop="commentCount">
 			<?php
-			comments_number( __( '0 Comment', 'doctext' ), __( '1 Comment', 'doctext' ), '% ' . _x( 'Comment', 'doctext' ) );
-			echo '<a href="#respond">' . __( 'To comment', 'doc-text' ) . '</a>';
+			comments_number( __( '0 评论', 'doctext' ), __( '1 评论', 'doctext' ), '% ' . _x( '评论', 'doctext' ) );
+			echo '<a href="#respond">' . __( '写评论', 'doc-text' ) . '</a>';
 			?>
 		</h3>
 		<ol class="comment-ol"  itemprop="comment">
@@ -45,7 +45,7 @@ if ( post_password_required() ) {
 	comment_form( array(
 		'title_reply_before' => '<h3 class="comment-title" itemprop="comment">',
 		'title_reply_after' => '</h3>',
-		'comment_field' => '<p class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun' ) . '</label><textarea id="comment" name="comment" cols="45" rows="4" aria-required="true"></textarea></p>',
+		'comment_field' => '<p class="comment-form-comment"><label for="comment">' . _x( '评论', 'noun' ) . '</label><textarea id="comment" name="comment" cols="45" rows="4" aria-required="true"></textarea></p>',
 	) );
 	?>
 </div>
