@@ -40,7 +40,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'custom_logo_text_open',
 				array(
-					'label' => __( 'Show site title', 'doc-text' ),
+					'label' => __( '显示站点标题', 'doc-text' ),
 					'section' => 'title_tagline',
 					'priority' => '9',
 					'type' => 'checkbox',
@@ -54,7 +54,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'custom_logo_text_span_open',
 				array(
-					'label' => __( 'Show site title annotation', 'doc-text' ),
+					'label' => __( '显示站点标题注释', 'doc-text' ),
 					'section' => 'title_tagline',
 					'priority' => 10,
 					'type' => 'checkbox',
@@ -69,7 +69,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'custom_logo_text_span',
 				array(
-					'label' => __( 'Site title annotation content', 'doc-text' ),
+					'label' => __( '站点标题注释内容', 'doc-text' ),
 					'section' => 'title_tagline',
 					'priority' => 10,
 					'type' => 'text',
@@ -93,8 +93,8 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			);
 			$wp_customize->add_control( 'doc_keywords',
 				array(
-					'label' => __( 'Site keywords', 'doc-text' ),
-					'description' => esc_html__( 'Good keywords can improve rankings, use English commas to separate each word', 'doc-text' ),
+					'label' => __( '站点关键词', 'doc-text' ),
+					'description' => esc_html__( '好的关键字可以提高排名，使用英文逗号分隔每个单词', 'doc-text' ),
 					'section' => 'title_tagline',
 					'priority' => 10,
 					'type' => 'textarea',
@@ -110,7 +110,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 
 			$wp_customize->add_panel( 'doc_panels',
 				array(
-					'title' => __( 'Theme setting', 'doc-text' ),
+					'title' => __( '主题设置', 'doc-text' ),
 					'priority' => 0,
 				)
 			);
@@ -120,7 +120,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			/* -------------------------------------------------------------------------- */
 			$wp_customize->add_section( 'doc_home_menu',
 				array(
-					'title' => __( 'Site home', 'doc-text' ),
+					'title' => __( '站点首页', 'doc-text' ),
 					'panel' => 'doc_panels',
 					'priority' => ''
 				) );
@@ -133,7 +133,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_banner_open',
 				array(
-					'label' => __( 'Show carousel pictures', 'doc-text' ),
+					'label' => __( '显示轮播', 'doc-text' ),
 					'section' => 'doc_home_menu',
 					'priority' => '',
 					'type' => 'checkbox',
@@ -148,7 +148,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_banner_number',
 				array(
-					'label' => __( 'Number of Carousel Pictures', 'doc-text' ),
+					'label' => __( '轮播数量', 'doc-text' ),
 					'section' => 'doc_home_menu',
 					'priority' => '',
 					'type' => 'text',
@@ -165,13 +165,13 @@ if ( !class_exists( 'doc_customizer' ) ) {
 
 			$wp_customize->add_control( 'doc_banner_select',
 				array(
-					'label' => __( 'Carousel picture display mode', 'doc-text' ),
+					'label' => __( '轮播显示模式', 'doc-text' ),
 					'section' => 'doc_home_menu',
 					'priority' => '',
 					'type' => 'select',
 					'choices' => array(
-						'category' => __( 'Category mode', 'doc-text' ),
-						'article' => __( 'Article mode', 'doc-text' )
+						'category' => __( '分类模式', 'doc-text' ),
+						'article' => __( '文章模式', 'doc-text' )
 					)
 				)
 			);
@@ -185,8 +185,8 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_banner_category_id',
 				array(
-					'label' => __( 'Category ID', 'doc-text' ),
-					'description' => esc_html__( 'You can fill in multiple IDs, separated by commas', 'doc-text' ),
+					'label' => __( '分类ID', 'doc-text' ),
+					'description' => esc_html__( '您可以填写多个ID，以逗号分隔', 'doc-text' ),
 					'section' => 'doc_home_menu',
 					'priority' => '',
 					'type' => 'text',
@@ -204,8 +204,8 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_banner_post_id',
 				array(
-					'label' => __( 'Article ID', 'doc-text' ),
-					'description' => esc_html__( 'You can fill in multiple IDs, separated by commas', 'doc-text' ),
+					'label' => __( '文章ID', 'doc-text' ),
+					'description' => esc_html__( '您可以填写多个ID，以逗号分隔', 'doc-text' ),
 					'section' => 'doc_home_menu',
 					'priority' => '',
 					'type' => 'text',
@@ -218,7 +218,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			/* -------------------------------------------------------------------------- */
 			$wp_customize->add_section( 'doc_post_list_menu',
 				array(
-					'title' => __( 'Article list', 'doc-text' ),
+					'title' => __( '分类列表', 'doc-text' ),
 					'panel' => 'doc_panels',
 					'priority' => ''
 				) );
@@ -231,7 +231,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_list_pic_open',
 				array(
-					'label' => __( 'Show thumbnail', 'doc-text' ),
+					'label' => __( '显示缩略图', 'doc-text' ),
 					'section' => 'doc_post_list_menu',
 					'priority' => '',
 					'type' => 'checkbox',
@@ -245,7 +245,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_list_category_open',
 				array(
-					'label' => __( 'Show category', 'doc-text' ),
+					'label' => __( '显示分类', 'doc-text' ),
 					'section' => 'doc_post_list_menu',
 					'priority' => '',
 					'type' => 'checkbox',
@@ -259,7 +259,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_list_time_open',
 				array(
-					'label' => __( 'Show release time', 'doc-text' ),
+					'label' => __( '显示发布时间', 'doc-text' ),
 					'section' => 'doc_post_list_menu',
 					'priority' => '',
 					'type' => 'checkbox',
@@ -273,7 +273,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_list_excerpt_open',
 				array(
-					'label' => __( 'Show excerpt', 'doc-text' ),
+					'label' => __( '显示摘要', 'doc-text' ),
 					'section' => 'doc_post_list_menu',
 					'priority' => '',
 					'type' => 'checkbox',
@@ -287,7 +287,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_list_link_text_open',
 				array(
-					'label' => __( 'Show button', 'doc-text' ),
+					'label' => __( '显示按钮', 'doc-text' ),
 					'section' => 'doc_post_list_menu',
 					'priority' => '',
 					'type' => 'checkbox',
@@ -302,12 +302,12 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_list_link_text',
 				array(
-					'label' => __( 'Button text content', 'doc-text' ),
+					'label' => __( '按钮文字', 'doc-text' ),
 					'section' => 'doc_post_list_menu',
 					'priority' => '',
 					'type' => 'text',
 					'input_attrs' => array(
-						'placeholder' => __( 'Read more', 'doc-text' ),
+						'placeholder' => __( '阅读更多', 'doc-text' ),
 					),
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_list_link_text',
@@ -324,7 +324,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			/* -------------------------------------------------------------------------- */
 			$wp_customize->add_section( 'doc_post_page_menu',
 				array(
-					'title' => __( 'Article page', 'doc-text' ),
+					'title' => __( '文章页', 'doc-text' ),
 					'panel' => 'doc_panels',
 					'priority' => ''
 				) );
@@ -337,7 +337,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_sin_top_category_open',
 				array(
-					'label' => __( 'Show article category', 'doc-text' ),
+					'label' => __( '显示文章分类', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
 					'priority' => '',
 					'type' => 'checkbox',
@@ -351,7 +351,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_sin_meta_open',
 				array(
-					'label' => __( 'Show article date, readings, comments, etc', 'doc-text' ),
+					'label' => __( '显示文章日期，阅读，评论等', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
 					'priority' => '',
 					'type' => 'checkbox',
@@ -365,7 +365,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_sin_copytight_open',
 				array(
-					'label' => __( 'Show article copyright', 'doc-text' ),
+					'label' => __( '显示文章版权', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
 					'priority' => '',
 					'type' => 'checkbox',
@@ -380,12 +380,12 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_sin_copytight',
 				array(
-					'label' => __( 'Article copyright content', 'doc-text' ),
+					'label' => __( '文章版权内容', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
 					'priority' => '',
 					'type' => 'textarea',
 					'input_attrs' => array(
-						'placeholder' => __( 'This article is collected from the Internet, and the copyright belongs to the original author or organization. If this page violates your rights, please contact us via email hi@doccg.com!', 'doc-text' ),
+						'placeholder' => __( '本文是从Internet上收集的，版权属于原始作者或组织。 如果此页面侵犯了您的权利，请通过电子邮件hi@doccg.com与我们联系！', 'doc-text' ),
 					),
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_sin_copytight',
@@ -405,7 +405,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_sin_comment_button_open',
 				array(
-					'label' => __( 'Show article comment button', 'doc-text' ),
+					'label' => __( '显示文章评论按钮', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
 					'priority' => '',
 					'type' => 'checkbox',
@@ -419,7 +419,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_sin_share_open',
 				array(
-					'label' => __( 'Show article sharing', 'doc-text' ),
+					'label' => __( '显示文章分享', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
 					'priority' => '',
 					'type' => 'checkbox',
@@ -428,20 +428,17 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Article sharing button settings
 			$wp_customize->add_setting( 'doc_sin_share',
 				array(
-					'default' => '',
+					'default' => 'weibo,qq,wechat,tencent,qzone',
 					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => '',
 				) );
 			$wp_customize->add_control( 'doc_sin_share',
 				array(
-					'label' => __( 'Article sharing button settings', 'doc-text' ),
-					'description' => esc_html__( 'Optional[ weibo,qq,wechat,tencent,douban,qzone ] [ linkedin,diandian,facebook,twitter,google ] https://github.com/overtrue/share.js/', 'doc-text' ),
+					'label' => __( '分享按钮设置', 'doc-text' ),
+					'description' => esc_html__( '可选[ weibo,qq,wechat,tencent,douban,qzone ] [ linkedin,diandian,facebook,twitter,google ] <a target="_blank" href="https://github.com/overtrue/share.js/">https://github.com/overtrue/share.js/</a>', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
 					'priority' => '',
 					'type' => 'text',
-					'input_attrs' => array(
-						'placeholder' => 'weibo,qq,wechat,tencent,qzone',
-					),
 				) );
 
 			// Show article tags
@@ -452,7 +449,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_sin_tag_open',
 				array(
-					'label' => __( 'Show article tags', 'doc-text' ),
+					'label' => __( '显示文章标签', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
 					'priority' => '',
 					'type' => 'checkbox',
@@ -463,7 +460,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			/* -------------------------------------------------------------------------- */
 			$wp_customize->add_section( 'doc_footer_menu',
 				array(
-					'title' => __( 'Site footer', 'doc-text' ),
+					'title' => __( '站点底部', 'doc-text' ),
 					'panel' => 'doc_panels',
 					'priority' => '',
 				) );
@@ -471,19 +468,16 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Site footer introduction
 			$wp_customize->add_setting( 'doc_bottom_about',
 				array(
-					'default' => '',
+					'default' => __( '感谢您访问我的小栈。我是设计师，也是前端开发爱好者。这些是我通常收集的一些资源和材料。希望对您有帮助。', 'doc-text' ),
 					'sanitize_callback' => 'wp_filter_nohtml_kses',
 					'transport' => 'postMessage',
 				) );
 			$wp_customize->add_control( 'doc_bottom_about',
 				array(
-					'label' => __( 'Site footer introductiont', 'doc-text' ),
+					'label' => __( '站点页脚介绍', 'doc-text' ),
 					'section' => 'doc_footer_menu',
 					'priority' => '',
 					'type' => 'textarea',
-					'input_attrs' => array(
-						'placeholder' => __( 'Thank you for visiting my small site. I am a designer and front-end development enthusiast. These are some resources and materials that I usually collect. hope it helps you.', 'doc-text' ),
-					),
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_bottom_about',
 				array(
@@ -497,19 +491,16 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Latest article title
 			$wp_customize->add_setting( 'doc_express_title',
 				array(
-					'default' => '',
+					'default' => __( '快讯', 'doc-text' ),
 					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'postMessage',
 				) );
 			$wp_customize->add_control( 'doc_express_title',
 				array(
-					'label' => __( 'Latest article title', 'doc-text' ),
+					'label' => __( '底部文章标题', 'doc-text' ),
 					'section' => 'doc_footer_menu',
 					'priority' => '',
 					'type' => 'text',
-					'input_attrs' => array(
-						'placeholder' => __( 'Express', 'doc-text' ),
-					),
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_express_title',
 				array(
@@ -529,13 +520,10 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_record',
 				array(
-					'label' => __( 'China record number', 'doc-text' ),
+					'label' => __( '备案号', 'doc-text' ),
 					'section' => 'doc_footer_menu',
 					'priority' => '',
 					'type' => 'text',
-					'input_attrs' => array(
-						'placeholder' => '京ICP备xxxxxxxx号',
-					),
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_record',
 				array(
@@ -555,7 +543,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_statistics',
 				array(
-					'label' => __( 'Statistical code', 'doc-text' ),
+					'label' => __( '统计代码', 'doc-text' ),
 					'section' => 'doc_footer_menu',
 					'priority' => '',
 					'type' => 'textarea',
@@ -567,7 +555,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			/* -------------------------------------------------------------------------- */
 			$wp_customize->add_section( 'doc_float_menu',
 				array(
-					'title' => __( 'Site float', 'doc-text' ),
+					'title' => __( '站点浮动', 'doc-text' ),
 					'panel' => 'doc_panels',
 					'priority' => '',
 				) );
@@ -581,14 +569,11 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_back_totop_bell_url',
 				array(
-					'label' => __( 'Online service url', 'doc-text' ),
-					'description' => esc_html__( 'Choose one of URL and JS, Recommend https://yzf.qq.com/', 'doc-text' ),
+					'label' => __( '在线服务url版', 'doc-text' ),
+					'description' => esc_html__( '建议只选择选择URL和JS之一，推荐 <a target="_blank" href="https://yzf.qq.com/">https://yzf.qq.com/</a>', 'doc-text' ),
 					'section' => 'doc_float_menu',
 					'priority' => '',
-					'type' => 'text',
-					'input_attrs' => array(
-						'placeholder' => 'https://yzf.qq.com/xv/web/static/chat/index.html?sign=37ef9b97d173059221459eeb1ab4b0608894ad265104845809fd80aa56ed7cae727195f2bd226dae3115d3f705d291c3dcd4185e',
-					),
+					'type' => 'text'
 				) );
 
 			// Statistical code JS
@@ -600,8 +585,8 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_back_totop_bell_js',
 				array(
-					'label' => __( 'Online service js', 'doc-text' ),
-					'description' => esc_html__( 'Choose one of URL and JS, Recommend https://yzf.qq.com/', 'doc-text' ),
+					'label' => __( '在线服务js版', 'doc-text' ),
+					'description' => esc_html__( '建议只选择选择URL和JS之一，推荐 <a target="_blank" href="https://yzf.qq.com/">https://yzf.qq.com/</a>', 'doc-text' ),
 					'section' => 'doc_float_menu',
 					'priority' => '',
 					'type' => 'textarea',
@@ -615,7 +600,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_back_totop_open',
 				array(
-					'label' => __( 'Show back to top', 'doc-text' ),
+					'label' => __( '显示返回顶部', 'doc-text' ),
 					'section' => 'doc_float_menu',
 					'priority' => '',
 					'type' => 'checkbox',
@@ -626,7 +611,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			/* -------------------------------------------------------------------------- */
 			$wp_customize->add_section( 'doc_socialization_menu',
 				array(
-					'title' => __( 'Site Socialization', 'doc-text' ),
+					'title' => __( '站点社交', 'doc-text' ),
 					'panel' => 'doc_panels',
 					'priority' => '',
 				) );
@@ -639,7 +624,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_socialization_open',
 				array(
-					'label' => __( 'Show social', 'doc-text' ),
+					'label' => __( '显示社会化', 'doc-text' ),
 					'section' => 'doc_socialization_menu',
 					'priority' => '',
 					'type' => 'checkbox',
@@ -648,19 +633,16 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Social title
 			$wp_customize->add_setting( 'doc_socialization_title',
 				array(
-					'default' => '',
+					'default' => __( '关注我们', 'doc-text' ),
 					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'postMessage',
 				) );
 			$wp_customize->add_control( 'doc_socialization_title',
 				array(
-					'label' => __( 'Social title', 'doc-text' ),
+					'label' => __( '社会化标题', 'doc-text' ),
 					'section' => 'doc_socialization_menu',
 					'priority' => '',
 					'type' => 'text',
-					'input_attrs' => array(
-						'placeholder' => __( 'Follow us', 'doc-text' ),
-					),
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_socialization_title',
 				array(
@@ -684,9 +666,6 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'section' => 'doc_socialization_menu',
 					'priority' => '',
 					'type' => 'text',
-					'input_attrs' => array(
-						'placeholder' => '1234567',
-					),
 				) );
 
 			// Weibo
@@ -1000,7 +979,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			/* -------------------------------------------------------------------------- */
 			$wp_customize->add_section( 'doc_qrcode_menu',
 				array(
-					'title' => __( 'Site QR code', 'doc-text' ),
+					'title' => __( '站点二维码', 'doc-text' ),
 					'panel' => 'doc_panels',
 					'priority' => '',
 				) );
@@ -1013,7 +992,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_qrcode_open',
 				array(
-					'label' => __( 'Show QR code', 'doc-text' ),
+					'label' => __( '显示二维码', 'doc-text' ),
 					'section' => 'doc_qrcode_menu',
 					'priority' => '',
 					'type' => 'checkbox',
@@ -1022,19 +1001,16 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// QR code title
 			$wp_customize->add_setting( 'doc_qrcode_title',
 				array(
-					'default' => '',
+					'default' => __( '扫一扫', 'doc-text' ),
 					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'postMessage',
 				) );
 			$wp_customize->add_control( 'doc_qrcode_title',
 				array(
-					'label' => __( 'QR code title', 'doc-text' ),
+					'label' => __( '二维码标题', 'doc-text' ),
 					'section' => 'doc_qrcode_menu',
 					'priority' => '',
 					'type' => 'text',
-					'input_attrs' => array(
-						'placeholder' => __( 'Scan it', 'doc-text' ),
-					),
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_qrcode_title',
 				array(
@@ -1053,7 +1029,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'doc_qrcode_img',
 				array(
-					'label' => __( 'QR code image', 'doc-text' ),
+					'label' => __( '二维码图片', 'doc-text' ),
 					'section' => 'doc_qrcode_menu',
 					'priority' => '',
 				) ) );
@@ -1066,7 +1042,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'doc_qrcode_img_2',
 				array(
-					'label' => __( 'QR code image 2', 'doc-text' ),
+					'label' => __( '二维码图片 2', 'doc-text' ),
 					'section' => 'doc_qrcode_menu',
 					'priority' => '',
 				) ) );
@@ -1079,7 +1055,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'doc_qrcode_img_3',
 				array(
-					'label' => __( 'QR code image 3', 'doc-text' ),
+					'label' => __( '二维码图片 3', 'doc-text' ),
 					'section' => 'doc_qrcode_menu',
 					'priority' => '',
 				) ) );
@@ -1089,7 +1065,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			/* -------------------------------------------------------------------------- */
 			$wp_customize->add_section( 'doc_advertisement_menu',
 				array(
-					'title' => __( 'Site advertisement', 'doc-text' ),
+					'title' => __( '站点广告', 'doc-text' ),
 					'panel' => 'doc_panels',
 					'priority' => '',
 				) );
@@ -1102,7 +1078,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_global_bottom_ad_open',
 				array(
-					'label' => __( 'Show global bottom ads', 'doc-text' ),
+					'label' => __( '显示全局底部广告', 'doc-text' ),
 					'section' => 'doc_advertisement_menu',
 					'priority' => '',
 					'type' => 'checkbox',
@@ -1117,13 +1093,10 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_global_bottom_ad_title',
 				array(
-					'label' => __( 'Ad title', 'doc-text' ),
+					'label' => __( '广告标题', 'doc-text' ),
 					'section' => 'doc_advertisement_menu',
 					'priority' => '',
 					'type' => 'text',
-					'input_attrs' => array(
-						'placeholder' => 'DOCCG 2020',
-					),
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_global_bottom_ad_title',
 				array(
@@ -1143,13 +1116,10 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_global_bottom_ad_p',
 				array(
-					'label' => __( 'Ad description', 'doc-text' ),
+					'label' => __( '广告描述', 'doc-text' ),
 					'section' => 'doc_advertisement_menu',
 					'priority' => '',
 					'type' => 'text',
-					'input_attrs' => array(
-						'placeholder' => __( 'Super easy to use WordPress theme', 'doc-text' ),
-					),
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_global_bottom_ad_p',
 				array(
@@ -1163,19 +1133,16 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Ad url text
 			$wp_customize->add_setting( 'doc_global_bottom_ad_url_text',
 				array(
-					'default' => '',
+					'default' => __( '免费获取', 'doc-text' ),
 					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'postMessage',
 				) );
 			$wp_customize->add_control( 'doc_global_bottom_ad_url_text',
 				array(
-					'label' => __( 'Ad url text', 'doc-text' ),
+					'label' => __( '广告链接文字', 'doc-text' ),
 					'section' => 'doc_advertisement_menu',
 					'priority' => '',
 					'type' => 'text',
-					'input_attrs' => array(
-						'placeholder' => __( 'Get it for free', 'doc-text' ),
-					),
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_global_bottom_ad_url_text',
 				array(
@@ -1195,13 +1162,10 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( 'doc_global_bottom_ad_url',
 				array(
-					'label' => __( 'Ad url', 'doc-text' ),
+					'label' => __( '广告链接', 'doc-text' ),
 					'section' => 'doc_advertisement_menu',
 					'priority' => '',
 					'type' => 'text',
-					'input_attrs' => array(
-						'placeholder' => get_bloginfo( 'url' ),
-					),
 				) );
 
 			// Ad background image
@@ -1212,17 +1176,18 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'doc_global_bottom_ad_img',
 				array(
-					'label' => __( 'Ad background image', 'doc-text' ),
+					'label' => __( '广告背景图片', 'doc-text' ),
 					'section' => 'doc_advertisement_menu',
 					'priority' => '',
 				) ) );
 
 		}
+
 	}
 	add_action( 'customize_register', array( 'doc_customizer', 'register' ) );
-}
 
-require get_template_directory() . '/inc/customizer/customizer-sanitize.php';
+	require get_template_directory() . '/inc/customizer/customizer-sanitize.php';
+}
 
 /**
  * Partial refresh function
