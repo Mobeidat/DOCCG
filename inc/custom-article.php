@@ -128,7 +128,7 @@ function doc_single_menu( $content ) {
 
 				}
 				else {
-					$index .= __( 'Directory is illegal', 'doc-text' );
+					$index .= __( '目录是非法的', 'doc-text' );
 					return false;
 				}
 			}
@@ -168,7 +168,7 @@ if ( !function_exists( 'doc_get_single_meta' ) ) {
 		echo doc_get_reading_time( $content );
 		echo '</span>';
 		echo '<a class="comment-toggle single-comment" itemprop="comment""><i class="fa fa-comment"></i>' . get_comments_number() . '</a>';
-		edit_post_link( __( 'Edit', 'doctext' ) );
+		edit_post_link( __( '编辑', 'doctext' ) );
 		echo '</div>';
 	}
 }
@@ -178,7 +178,7 @@ if ( !function_exists( 'doc_get_single_meta' ) ) {
  */
 if ( !function_exists( 'doc_get_reading_time' ) ) {
 	function doc_get_reading_time( $content ) {
-		$doc_format = __( '%min%min%sec%seconds reading', 'doc-text' );
+		$doc_format = __( '%min%分%sec%秒阅读', 'doc-text' );
 		$doc_chars_per_minute = 300;
 		$doc_format = str_replace( '%num%', $doc_chars_per_minute, $doc_format );
 		$words = mb_strlen( preg_replace( '/\s/', '', html_entity_decode( strip_tags( $content ) ) ), 'UTF-8' );
@@ -196,7 +196,7 @@ function doc_get_post_views( $post_id ) {
 	$count = get_post_meta( $post_id, $count_key, true );
 	if ( $count == '' ) {
 		delete_post_meta( $post_id, $count_key );
-		add_post_meta( $post_id, $count_key, '0' );
+		add_post_meta( $post_id, $count_key, 0 );
 		$count = '0';
 	}
 	echo number_format_i18n( $count );
@@ -210,7 +210,7 @@ function doc_set_post_views() {
 	if ( is_single() || is_page() ) {
 		if ( $count == '' ) {
 			delete_post_meta( $post_id, $count_key );
-			add_post_meta( $post_id, $count_key, '0' );
+			add_post_meta( $post_id, $count_key, 0 );
 		} else {
 			update_post_meta( $post_id, $count_key, $count + 1 );
 		}
@@ -225,8 +225,8 @@ add_action( 'get_header', 'doc_set_post_views' );
 if ( !function_exists( 'doc_post_content_copytight' ) ) {
 	function doc_post_content_copytight( $content ) {
 		if ( is_singular( 'post' ) ) {
-			$doc_sin_copytight_open = get_theme_mod( 'doc_sin_copytight_open', 'ture' );
-			$doc_sin_copytight = get_theme_mod( 'doc_sin_copytight', __( 'This article is collected from the Internet, and the copyright belongs to the original author or organization. If this page violates your rights, please contact us via email hi@doccg.com!', 'doc-text' ) );
+			$doc_sin_copytight_open = get_theme_mod( 'doc_sin_copytight_open', 1 );
+			$doc_sin_copytight = get_theme_mod( 'doc_sin_copytight', __( '本文是从Internet上收集的，版权属于原始作者或组织。 如果此页面侵犯了您的权利，请通过电子邮件hi@doccg.com与我们联系！', 'doc-text' ) );
 			if ( $doc_sin_copytight_open ) {
 				$content .= '<p class="wp-block-copytight single-copytight" itemscope itemtype="http://schema.org/Organization" itemprop="copyrightHolder"><i class="fa fa-flag"></i><span>' . $doc_sin_copytight . '</span></p>';
 			}
@@ -276,8 +276,8 @@ if ( !function_exists( 'doc_comment_by_post_user' ) ) {
 if ( !function_exists( 'doc_delete_comment_link' ) ) {
 	function doc_delete_comment_link( $id ) {
 		if ( current_user_can( 'edit_post' ) ) {
-			echo '&nbsp;<a href="' . admin_url( 'comment.php?action=cdc&c=' ) . $id . '">' . __( 'Delete', 'doc-text' ) . '</a>';
-			echo '&nbsp;<a href="' . admin_url( 'comment.php?action=cdc&dt=spam&c=' ) . $id . '">' . __( 'Rubbish', 'doc-text' ) . '</a>';
+			echo '&nbsp;<a href="' . admin_url( 'comment.php?action=cdc&c=' ) . $id . '">' . __( '删除', 'doc-text' ) . '</a>';
+			echo '&nbsp;<a href="' . admin_url( 'comment.php?action=cdc&dt=spam&c=' ) . $id . '">' . __( '垃圾', 'doc-text' ) . '</a>';
 		}
 	}
 }
@@ -307,7 +307,7 @@ function doc_theme_comments( $comment, $args, $depth ) {
 			<?php
 			$post_author = doc_comment_by_post_user( $comment );
 			if ( $post_author ):
-				echo '<span class="comment-post-user">' . __( 'Author', 'doc-text' ) . '</span>';
+				echo '<span class="comment-post-user">' . __( '作者', 'doc-text' ) . '</span>';
 			endif;
 			?>
 		</div>
@@ -315,7 +315,7 @@ function doc_theme_comments( $comment, $args, $depth ) {
 			<?php
 			comment_text();
 			if ( $comment->comment_approved == '0' ):
-				echo '<i>' . __( 'Comments waiting for approval!', 'doc-text' ) . '</i>';
+				echo '<i>' . __( '评论等待批准！', 'doc-text' ) . '</i>';
 			endif;
 			?>
 			<div class="comment-meta">
