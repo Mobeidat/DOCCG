@@ -15,7 +15,7 @@ get_header();
 			<?php
 
 			// Category
-			$doc_sin_top_category_open = get_theme_mod( 'doc_sin_top_category_open', 'ture' );
+			$doc_sin_top_category_open = get_theme_mod( 'doc_sin_top_category_open', 1 );
 			if ( $doc_sin_top_category_open ) {
 				echo '<div class="single-category" itemprop="keywords">';
 				doc_get_category();
@@ -23,7 +23,7 @@ get_header();
 			}
 
 			// Time / Read time / Comment / Edit
-			$doc_sin_meta_open = get_theme_mod( 'doc_sin_meta_open', 'ture' );
+			$doc_sin_meta_open = get_theme_mod( 'doc_sin_meta_open', 1 );
 			if ( $doc_sin_meta_open ): doc_get_single_meta();
 			endif;
 
@@ -40,23 +40,23 @@ get_header();
 		<?php
 
 		// Comment
-		$doc_sin_comment_button_open = get_theme_mod( 'doc_sin_comment_button_open', 'ture' );
-		if ( $doc_sin_comment_button_open ): echo '<div class="single-comment-button"><a class="comment-toggle"><i class="fa fa-comment"></i>' . __( 'View comments', 'doc-text' ) . '</a></div>';
+		$doc_sin_comment_button_open = get_theme_mod( 'doc_sin_comment_button_open', 1 );
+		if ( $doc_sin_comment_button_open ): echo '<div class="single-comment-button"><a class="comment-toggle"><i class="fa fa-comment"></i>' . get_comments_number() . __( '查看评论', 'doc-text' ) . '</a></div>';
 		endif;
 
 		// Single share
-		$doc_sin_share_open = get_theme_mod( 'doc_sin_share_open', 'ture' );
+		$doc_sin_share_open = get_theme_mod( 'doc_sin_share_open', 1 );
 		$doc_sin_share = get_theme_mod( 'doc_sin_share', 'weibo,qq,wechat,tencent,qzone' );
 		if ( $doc_sin_share_open ): echo '<div class="single-share share-component" data-sites="' . $doc_sin_share . '"></div>';
 		endif;
 
 		// Single tags
-		$doc_sin_tag_open = get_theme_mod( 'doc_sin_tag_open', 'ture' );
+		$doc_sin_tag_open = get_theme_mod( 'doc_sin_tag_open', 1 );
 		if ( $doc_sin_tag_open ): the_tags( '<div class="single-tag">', ' ', '</div>' );
 		endif;
 
 		// Comment
-		echo '<footer class="single-foo single-foo-fixed" itemprop="comment"><div class="single-foo-box max-width"><a class="single-foo-close comment-toggle"><span>' . _x( 'Comment', 'doc-text' ) . '</span><i class="fa fa-close"></i></a>';
+		echo '<footer class="single-foo single-foo-fixed" itemprop="comment"><div class="single-foo-box max-width"><a class="single-foo-close comment-toggle"><span>' . _x( '评论', 'doc-text' ) . '</span><i class="fa fa-close"></i></a>';
 		if ( comments_open() || get_comments_number() ) {
 			comments_template();
 		}
