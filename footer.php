@@ -11,7 +11,7 @@
 
 <footer id="site-foo" role="footer" itemscope itemtype="http://schema.org/WPFooter">
 	<?php
-	$doc_global_bottom_ad_open = get_theme_mod( 'doc_global_bottom_ad_open', '0' );
+	$doc_global_bottom_ad_open = get_theme_mod( 'doc_global_bottom_ad_open', 0 );
 	$doc_global_bottom_ad_title = get_theme_mod( 'doc_global_bottom_ad_title' );
 	$doc_global_bottom_ad_p = get_theme_mod( 'doc_global_bottom_ad_p' );
 	$doc_global_bottom_ad_url_text = get_theme_mod( 'doc_global_bottom_ad_url_text' );
@@ -37,7 +37,7 @@
 		<?php
 		echo '<div class="site-bottom-list bottom-about">';
 		doc_custom_logo();
-		$doc_bottom_about = get_theme_mod( 'doc_bottom_about', __( 'Thank you for visiting my small site. I am a designer and front-end development enthusiast. These are some resources and materials that I usually collect. hope it helps you.', 'doc-text' ) );
+		$doc_bottom_about = get_theme_mod( 'doc_bottom_about', __( '感谢您访问我的小栈。我是设计师，也是前端开发爱好者。这些是我通常收集的一些资源和材料。希望对您有帮助。', 'doc-text' ) );
 		if ( $doc_bottom_about ) {
 			echo '<p>' . $doc_bottom_about . '</p>';
 		}
@@ -48,7 +48,7 @@
 		if ( $news_query->have_posts() ): ?>
 		<div class="site-bottom-list news-posts">
 			<?php
-			$doc_express_title = get_theme_mod( 'doc_express_title', __( 'Express', 'doc-text' ) );
+			$doc_express_title = get_theme_mod( 'doc_express_title', __( '快讯', 'doc-text' ) );
 			echo '<h3 class="site-bottom-title">' . $doc_express_title . '</h3>';
 			?>
 			<div class="news-box">
