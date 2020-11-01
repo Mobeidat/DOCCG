@@ -15,7 +15,7 @@ get_header();
 			<?php
 			// Edit
 			echo '<div class="single-meta">';
-			edit_post_link( __( 'Edit', 'doctext' ) );
+			edit_post_link( __( '编辑', 'doctext' ) );
 			echo '</div>';
 
 			the_title( '<h3 class="single-title" itemprop="headline">', '</h3>' );
@@ -28,7 +28,7 @@ get_header();
 			?>
 		</main>
 		<?php
-		echo '<footer class="single-foo" itemprop="comment"><div class="single-foo-box max-width"><a class="single-foo-close comment-toggle"><span>' . __( 'Comment', 'doc-text' ) . '</span><i class="fa fa-close"></i></a>';
+		echo '<footer class="single-foo" itemprop="comment"><div class="single-foo-box max-width"><a class="single-foo-close comment-toggle"><span>' . __( '评论', 'doc-text' ) . '</span><i class="fa fa-close"></i></a>';
 		if ( comments_open() || get_comments_number() ) {
 			comments_template();
 		}
