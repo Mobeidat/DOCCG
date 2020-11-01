@@ -434,7 +434,7 @@ if ( !function_exists( 'doc_copyright_menu' ) ) {
 		echo ' | ' . __( '程序', 'doc-text' ) . ' </span><a href="https://cn.wordpress.org/" target="_blank">Wordpress</a><span> | ' . __( '主题', 'doc-text' ) . ' </span><a href="https://www.wangtingbiao.com" target="_blank" itemprop="copyrightHolder">TingBiao Wang</a>';
 		$doc_record = get_theme_mod( 'doc_record' );
 		if ( $doc_record ) {
-			echo '<span> | </span><a href="http://www.beian.miit.gov.cn/" class="docrecord" target="_blank">' . $doc_record . '</a>';
+			echo '<span> | </span><a href="https://beian.miit.gov.cn/#/Integrated/recordQuery" class="docrecord" target="_blank">' . $doc_record . '</a>';
 		}
 
 		echo get_theme_mod( 'doc_statistics' );
