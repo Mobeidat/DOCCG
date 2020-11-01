@@ -11,7 +11,7 @@
 	<?php
 	$site_vpn = get_post_meta( $post->ID, 'site_vpn', true );
 	if ( $site_vpn ) {
-		echo '<span class="web-vpn">' . __( 'Need VPN', 'doc-text' ) .
+		echo '<span class="web-vpn">' . __( '需要VPN', 'doc-text' ) .
 		'</span>';
 	}
 	if ( has_post_thumbnail() ) {
@@ -43,7 +43,7 @@
 		// Link
 		$web_link = get_post_meta( $post->ID, 'site_url', true );
 		if ( $web_link ) {
-			echo '<div class="web-link" itemprop="url" ><a href="' . $web_link . '">' . __( 'New window', 'doc-text' ) . '</a></div>';
+			echo '<div class="web-link" itemprop="url" ><a href="' . $web_link . '">' . __( '新窗口打开', 'doc-text' ) . '</a></div>';
 		}
 		?>
 	</div>
