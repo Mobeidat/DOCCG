@@ -23,7 +23,7 @@
 		$doc_list_time_open = get_theme_mod( 'doc_list_time_open', 1 );
 		$doc_list_excerpt_open = get_theme_mod( 'doc_list_excerpt_open', 1 );
 		$doc_list_link_text_open = get_theme_mod( 'doc_list_link_text_open', 1 );
-		$doc_list_link_text = get_theme_mod( 'doc_list_link_text', __( 'Read more', 'doc-text' ) );
+		$doc_list_link_text = get_theme_mod( 'doc_list_link_text', __( '阅读更多', 'doc-text' ) );
 
 		echo '<div class="article-meta">';
 
