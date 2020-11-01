@@ -7,15 +7,15 @@ function custom_post_type_label_args( $name, $slugName ) {
 	return $labels = array(
 		'name' => $name,
 		'singular_name' => $slugName,
-		'add_new' => __( 'Add ', 'doc-text' ),
-		'add_new_item' => __( 'Add ', 'doc-text' ) . $name,
-		'edit_item' => __( 'Edit ', 'doc-text' ) . $name,
-		'new_item' => __( 'News ', 'doc-text' ) . $name,
-		'all_items' => __( 'All ', 'doc-text' ) . $name,
-		'view_item' => __( 'View ', 'doc-text' ) . $name,
-		'search_items' => __( 'Search ', 'doc-text' ) . $name,
-		'not_found' => __( 'Not found ', 'doc-text' ) . $name,
-		'not_found_in_trash' => __( 'Not found in trash ', 'doc-text' ) . $name,
+		'add_new' => __( '添加', 'doc-text' ),
+		'add_new_item' => __( '添加', 'doc-text' ) . $name,
+		'edit_item' => __( '编辑', 'doc-text' ) . $name,
+		'new_item' => __( '新', 'doc-text' ) . $name,
+		'all_items' => __( '所有', 'doc-text' ) . $name,
+		'view_item' => __( '查看', 'doc-text' ) . $name,
+		'search_items' => __( '搜索', 'doc-text' ) . $name,
+		'not_found' => __( '未找到', 'doc-text' ) . $name,
+		'not_found_in_trash' => __( '回收站未找到', 'doc-text' ) . $name,
 		'parent_item_colon' => '',
 		'menu_name' => $name,
 	);
@@ -41,7 +41,7 @@ function custom_post_type_args( $name, $slugName, $postType = 'post', $public = 
 function add_custom_post_type() {
 	register_post_type( 'site',
 		custom_post_type_args(
-			__( 'Nice site', 'doc-text' ), //$name
+			__( '站点', 'doc-text' ), //$name
 			'site', //$slugName
 			'post', //$postType
 			true, //$public
@@ -55,7 +55,7 @@ function add_custom_post_type() {
 			array( 'title', 'thumbnail' ) //$supports
 		)
 	);
-	// add register_post_type 2,3,4
+	// 添加register_post_type 2,3,4
 }
 add_action( 'init', 'add_custom_post_type' );
 
@@ -75,7 +75,7 @@ class nice_site {
 		foreach ( $this->postTypes as $postType ) {
 			add_meta_box(
 				'site',
-				__( 'Nice site', 'doc-text' ),
+				__( '站点', 'doc-text' ),
 				array( $this, 'site_callback' ),
 				$postType,
 				'normal',
@@ -90,11 +90,11 @@ class nice_site {
 <p></p>
 <label for="site_vpn">
 	<input id="site_vpn" name="site_vpn" type="checkbox" class="box-input" <?php if( $meta_value == 'on' ){ echo 'checked'; } ?> />
-	<?php _e('Need VPN', 'doc-text'); ?>
+	<?php _e('需要VPN', 'doc-text'); ?>
 </label>
 <p></p>
-<textarea id="site_excerpt" name="site_excerpt" class="box-input" placeholder="<?php _e('Website Introduction', 'doc-text'); ?>"><?php echo get_post_meta( $post->ID, 'site_excerpt', true ); ?></textarea>
-<input id="site_url" name="site_url" type="url" class="box-input" value="<?php echo get_post_meta( $post->ID, 'site_url', true ); ?>" placeholder="<?php _e('Site url', 'doc-text'); ?>"/>
+<textarea id="site_excerpt" name="site_excerpt" class="box-input" placeholder="<?php _e('网站介绍', 'doc-text'); ?>"><?php echo get_post_meta( $post->ID, 'site_excerpt', true ); ?></textarea>
+<input id="site_url" name="site_url" type="url" class="box-input" value="<?php echo get_post_meta( $post->ID, 'site_url', true ); ?>" placeholder="<?php _e('网站链接', 'doc-text'); ?>"/>
 <?php
 }
 public function save_fields( $post_id ) {
