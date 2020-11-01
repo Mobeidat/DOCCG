@@ -119,7 +119,7 @@ if ( !function_exists( 'doc_breadcrumbs' ) ) {
 			echo '<section class="breadcrumbs" itemscope itemtype="https://schema.org/WebPage"><div class="max-width">';
 			global $post;
 			$homeLink = home_url();
-			echo ' <a itemprop="name" href="' . $homeLink . '">' . __( 'Home', 'doc-text' ) . '</a> ' . $delimiter;
+			echo ' <a itemprop="name" href="' . $homeLink . '">' . __( '首页', 'doc-text' ) . '</a> ' . $delimiter;
 			if ( is_category() ) {
 				global $wp_query;
 
@@ -186,19 +186,19 @@ if ( !function_exists( 'doc_breadcrumbs' ) ) {
 			}
 			elseif ( is_search() ) {
 				echo $before;
-				printf( __( 'Search Results for: %s', 'doc-text' ), get_search_query() );
+				printf( __( '搜索“%s”结果', 'doc-text' ), get_search_query() );
 				echo $after;
 			}
 			elseif ( is_tag() ) {
 				echo $before;
-				printf( __( 'Tag Archives: %s', 'doc-text' ), single_tag_title( '', false ) );
+				printf( __( '标签“%s”归档', 'doc-text' ), single_tag_title( '', false ) );
 				echo $after;
 			}
 			elseif ( is_author() ) {
 				global $author;
 				$userdata = get_userdata( $author );
 				echo $before;
-				printf( __( 'Author Archives: %s', 'doc-text' ), $userdata->display_name );
+				printf( __( '作者"%s"归档', 'doc-text' ), $userdata->display_name );
 				echo $after;
 			}
 			elseif ( is_404() ) {
@@ -208,7 +208,7 @@ if ( !function_exists( 'doc_breadcrumbs' ) ) {
 			}
 			if ( get_query_var( 'paged' ) ) {
 				if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() )
-					echo sprintf( __( '( Page %s )', 'doc-text' ), get_query_var( 'paged' ) );
+					echo sprintf( __( '(页面 %s )', 'doc-text' ), get_query_var( 'paged' ) );
 			}
 			echo '</div></section>';
 		}
@@ -272,9 +272,9 @@ if ( !function_exists( 'doc_sort_box' ) ) {
 			get_search_form();
 			if ( have_posts() ) {
 				global $wp_query;
-				echo $p_before . sprintf( __( '<span>" %1$s "</span>found articles, there are<span>" %2$s "</span>articles in total.', 'doc-text' ), get_search_query(), $wp_query->found_posts ) . $p_after;
+				echo $p_before . sprintf( __( '找到与<span>" %1$s "</span>相关的文章<span>" %2$s "</span>篇！', 'doc-text' ), get_search_query(), $wp_query->found_posts ) . $p_after;
 			} else {
-				echo $p_before . sprintf( __( 'No<span>" %s "</span>related articles were found, please fill in the keywords again and search again!', 'doc-text' ), get_search_query() ) . $p_after;
+				echo $p_before . sprintf( __( '未找到与<span>" %s "</span>相关文章，请换一个关键词重新尝试！', 'doc-text' ), get_search_query() ) . $p_after;
 			};
 		} elseif ( is_tag() ) {
 			echo $h2_before . '" ';
@@ -299,7 +299,7 @@ if ( !function_exists( 'doc_bottom_link' ) ) {
 	function doc_bottom_link() {
 
 		$doc_socialization_open = get_theme_mod( 'doc_socialization_open', 1 );
-		$doc_socialization_title = get_theme_mod( 'doc_socialization_title', __( 'Follow us', 'doc-text' ) );
+		$doc_socialization_title = get_theme_mod( 'doc_socialization_title', __( '关注我们', 'doc-text' ) );
 		if ( $doc_socialization_open ) {
 			echo '<div class="site-bottom-list bottom-link" itemprop="about"><h3 class="site-bottom-title">' . $doc_socialization_title . '</h3>';
 
@@ -383,8 +383,8 @@ if ( !function_exists( 'doc_bottom_link' ) ) {
 				echo '</p>';
 			}
 
-			$doc_qrcode_open = get_theme_mod( 'doc_qrcode_open', '0' );
-			$doc_qrcode_title = get_theme_mod( 'doc_qrcode_title', __( 'Scan it', 'doc-text' ) );
+			$doc_qrcode_open = get_theme_mod( 'doc_qrcode_open', 0 );
+			$doc_qrcode_title = get_theme_mod( 'doc_qrcode_title', __( '扫一扫', 'doc-text' ) );
 			$doc_qrcode_img = get_theme_mod( 'doc_qrcode_img' );
 			$doc_qrcode_img_2 = get_theme_mod( 'doc_qrcode_img_2' );
 			$doc_qrcode_img_3 = get_theme_mod( 'doc_qrcode_img_3' );
@@ -431,7 +431,7 @@ if ( !function_exists( 'doc_copyright_menu' ) ) {
 
 		doc_copyright_date();
 		bloginfo( 'name' );
-		echo ' | ' . __( 'Powered by', 'doc-text' ) . ' </span><a href="https://cn.wordpress.org/" target="_blank">Wordpress</a><span> | ' . __( 'Theme by', 'doc-text' ) . ' </span><a href="https://www.wangtingbiao.com" target="_blank" itemprop="copyrightHolder">TingBiao Wang</a>';
+		echo ' | ' . __( '程序', 'doc-text' ) . ' </span><a href="https://cn.wordpress.org/" target="_blank">Wordpress</a><span> | ' . __( '主题', 'doc-text' ) . ' </span><a href="https://www.wangtingbiao.com" target="_blank" itemprop="copyrightHolder">TingBiao Wang</a>';
 		$doc_record = get_theme_mod( 'doc_record' );
 		if ( $doc_record ) {
 			echo '<span> | </span><a href="http://www.beian.miit.gov.cn/" class="docrecord" target="_blank">' . $doc_record . '</a>';
@@ -472,7 +472,8 @@ if ( !function_exists( 'doc_statistics_fixed_box' ) ) {
 		$doc_back_totop_open = get_theme_mod( 'doc_back_totop_open', 1 );
 		if ( $doc_bell_url ) {
 			echo '<a href="' . $doc_bell_url . '" id="bell"><i class="fa fa-bell"></i></a>';
-		} elseif ( $doc_bell_js ) {
+		}
+		if ( $doc_bell_js ) {
 			echo '<a id="bell"><i class="fa fa-bell"></i><div>' . $doc_bell_js . '</div></a>';
 		}
 		if ( $doc_back_totop_open ) {
