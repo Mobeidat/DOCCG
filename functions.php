@@ -136,8 +136,8 @@ add_action( 'wp_enqueue_scripts', 'doc_register_scripts' );
 function doc_menus() {
 
 	$locations = array(
-		'topnav' => __( 'Top Menu', 'doc-text' ),
-		'bottomnav' => __( 'Bottom Menu', 'doc-text' ),
+		'topnav' => __( '顶部菜单', 'doc-text' ),
+		'bottomnav' => __( '底部菜单', 'doc-text' ),
 	);
 
 	register_nav_menus( $locations );
@@ -170,38 +170,11 @@ require get_template_directory() . '/inc/custom-post-type.php';
 
 require get_template_directory() . '/inc/custom-taxonomy.php';
 
-require get_template_directory() . '/inc/admin/admin-started.php';
-
 require get_template_directory() . '/inc/customizer/customizer.php';
 
-/* 1. customizer-preview.js
-function doc_customize_preview_js() {
-	$theme_version = wp_get_theme()->get( 'Version' );
-	wp_enqueue_script( 'doc_customizer_preview', get_template_directory() . '/inc/customizer/customizer-preview.js', array( 'customize-preview' ), $theme_version, true );
-}
-add_action( 'customize_preview_init', 'doc_customize_preview_js' );
-
-// 2. customizer-control.js
-function doc_customize_control_js() {
-	$theme_version = wp_get_theme()->get( 'Version' );
-	wp_enqueue_script( 'doc_customizer_control', get_template_directory() . '/inc/customizer/customizer-control.js', array( 'customize-controls', 'jquery' ), $theme_version, true );
-}
-add_action( 'customize_controls_enqueue_scripts', 'doc_customize_control_js' );
-*/
-
 /**
- * After installing the theme, jump to the theme introduction
+ * Retrieve upload settings
  */
-$doc_theme_start = wp_get_theme();
-if ( 'DOCCG' == $doc_theme_start->name ) {
-	if ( is_admin() ) {
-		require get_template_directory() . '/admin/admin-started.php';
-	}
+if ( get_option( 'upload_path' ) == 'wp-content/uploads' || get_option( 'upload_path' ) == null ) {
+	update_option( 'upload_path', WP_CONTENT_DIR . '/uploads' );
 }
-
-/**
- * Theme name and version
- */
-$doc_theme = wp_get_theme();
-define( 'DOCCG_THEME_VERSION', $doc_theme->get( 'Version' ) );
-define( 'DOCCG_THEME_NAME', $doc_theme->get( 'Name' ) );
