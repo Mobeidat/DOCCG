@@ -36,11 +36,11 @@ class Select_Category_Template {
 		?>
 <tr class="form-field">
 	<th scope="row" valign="top"><label for="term-template">
-			<?php _e('Category Template','doc-text'); ?>
+			<?php _e('分类模板','doc-text'); ?>
 		</label></th>
 	<td><select name="select" id="term-template">
 			<option value='default'>
-			<?php _e('Default Template','doc-text'); ?>
+			<?php _e('默认模板','doc-text'); ?>
 			</option>
 			<?php page_template_dropdown($template); ?>
 		</select>
