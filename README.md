@@ -2,13 +2,9 @@
 === DOCCG ===
 
 贡献者: TingBiao Wang
-
 经过测试: 5.0
-
 版本: 1.0
-
 许可证: GPLv2 or later
-
 许可证 URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == 简介 ==
