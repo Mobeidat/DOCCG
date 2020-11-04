@@ -3,35 +3,35 @@ Theme Name: DOCCG
 Theme URI: https://doccg.com
 Author: TingBiao Wang
 Author URI: https://wangtingbiao.com
-Description: DOCCG is a WordPress theme developed by TingBiao Wang. You can use it for commercial and personal projects.
-Version: 1.1
+Description: DOCCG是由TingBiao Wang开发的WordPress主题。 您可以将其用于商业和个人项目。
+Version: 1.2
 Requires at least: 5.0
 Requires PHP: 5.6
-License: GNU General Public License v2 or later
+License: GNU通用公共许可证v2或更高版本
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: doc-text
-Tags: two columns, flexible header, accessibility ready, custom colors, custom header, custom menu, custom logo, editor style, featured images, post formats, sticky post, theme options, threaded-comments, translation-ready
-This theme, like WordPress, is licensed under the GPL.
-Use it to make something cool, have fun, and share what you've learned with others.
+Tags: 两栏，灵活的标题，可访问性就绪，自定义颜色，自定义标题，自定义菜单，自定义徽标，编辑器样式，特色图像，帖子格式，便利贴，主题选项，主题注释，可翻译
+与WordPress一样，此主题也根据GPL获得许可。
+使用它可以使事情变得有趣，有趣并与他人分享您学到的知识。
 */
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
-Reset
-Basic Settings
-Global
-Header
-Banner
-Article
-Media
-Web
-Site next
-Page/Post
-Comment
-Footer
+初始化
+基本设置
+全局
+头部
+轮播海报
+文章列表
+媒体视频
+站点推荐
+分页
+单页面/文章页
+评论
+底部
 --------------------------------------------------------------*/
 /*-----------------------------------------------------------------
-* Reset
+* 初始化
 -----------------------------------------------------------------*/
 *, ::before, ::after {
 	-webkit-box-sizing: border-box;
@@ -83,7 +83,7 @@ h6 {
 	font-size: 1.3em;
 }
 /*-----------------------------------------------------------------
-* Basic Settings
+* 基本设置
 -----------------------------------------------------------------*/
 body {
 	font-family: -apple-system, "SF UI Text", Roboto, Noto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", Arial, sans-serif;
@@ -221,7 +221,7 @@ table tr th strong, table tr td strong {
 	}
 }
 /*-----------------------------------------------------------------
-* Global
+* 全局
 -----------------------------------------------------------------*/
 .max-width {
 	margin-left: 3vw;
@@ -279,7 +279,7 @@ table tr th strong, table tr td strong {
 	}
 }
 /*-----------------------------------------------------------------
-* Header
+* 头部
 -----------------------------------------------------------------*/
 #site-hea {
 	display: flex;
@@ -482,7 +482,7 @@ table tr th strong, table tr td strong {
 	}
 }
 /*-----------------------------------------------------------------
-* Banner
+* 轮播海报
 -----------------------------------------------------------------*/
 .swiper-slide a {
 	display: flex;
@@ -518,7 +518,7 @@ table tr th strong, table tr td strong {
 	}
 }
 /*-----------------------------------------------------------------
-* Article
+* 文章列表
 -----------------------------------------------------------------*/
 .article-box {
 	padding: 2rem 0;
@@ -664,7 +664,7 @@ table tr th strong, table tr td strong {
 	}
 }
 /*-----------------------------------------------------------------
-* Media
+* 媒体视频
 -----------------------------------------------------------------*/
 .media-box {
 	padding: 1rem 0;
@@ -765,7 +765,7 @@ table tr th strong, table tr td strong {
 	}
 }
 /*-----------------------------------------------------------------
-* Web
+* 站点推荐
 -----------------------------------------------------------------*/
 .web-box {
 	padding: 1rem 0;
@@ -846,7 +846,7 @@ table tr th strong, table tr td strong {
 	}
 }
 /*-----------------------------------------------------------------
-* Site next
+* 分页
 -----------------------------------------------------------------*/
 .site-next {
 	margin-bottom: 3rem;
@@ -883,7 +883,7 @@ table tr th strong, table tr td strong {
 	}
 }
 /*-----------------------------------------------------------------
-* Page/Post
+* 单页面/文章页
 -----------------------------------------------------------------*/
 .single-posts {
 	margin: 1rem 0;
@@ -1230,7 +1230,7 @@ table tr th strong, table tr td strong {
 	}
 }
 /*-----------------------------------------------------------------
-* Comment
+* 评论
 -----------------------------------------------------------------*/
 .single-foo-fixed {
 	position: fixed;
@@ -1457,7 +1457,7 @@ table tr th strong, table tr td strong {
 	}
 }
 /*-----------------------------------------------------------------
-* Footer
+* 底部
 -----------------------------------------------------------------*/
 /* AD -------------------- */
 .site-bottom-ad {
