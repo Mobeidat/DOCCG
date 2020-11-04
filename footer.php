@@ -37,7 +37,7 @@
 		<?php
 		echo '<div class="site-bottom-list bottom-about">';
 		doc_custom_logo();
-		$doc_bottom_about = get_theme_mod( 'doc_bottom_about', __( '感谢您访问我的小栈。我是设计师，也是前端开发爱好者。这些是我通常收集的一些资源和材料。希望对您有帮助。', 'doc-text' ) );
+		$doc_bottom_about = get_theme_mod( 'doc_bottom_about', __( '感谢您访问我的小栈！我是个普通的设计师，也是前端开发爱好者。在这里您可以找到高品质的教程、资源、优秀工具推荐。没有付费、帐户注册或电子邮件垃圾。只需下载您想要的，然后使用它。如果您喜欢并有收获，想保持这个网站正常运行，请考虑 ♥捐赠♥ 支持我。', 'doc-text' ) );
 		if ( $doc_bottom_about ) {
 			echo '<p>' . $doc_bottom_about . '</p>';
 		}
