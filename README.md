@@ -2,9 +2,13 @@
 === DOCCG ===
 
 贡献者: TingBiao Wang
+
 经过测试: 5.0
+
 版本: 1.0
+
 许可证: GPLv2 or later
+
 许可证 URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == 简介 ==
@@ -29,30 +33,30 @@ DOCCG WordPress主题，版权所有TingBiao Wang wangtingiao.com，DOCCG根据G
 DOCCG捆绑了以下第三方资源:
 
 Hatmal 5 Shiva，版权所有2014 Alexander Farkas
-许可证: MIT/GPL2
-资源: https://github.com/aFarkas/html5shiv
+* 许可证: MIT/GPL2
+* 资源: https://github.com/aFarkas/html5shiv
 
 jQuery scrollTo，版权所有2007-2015 Ariel Flesler
-许可证: MIT
-资源: https://github.com/flesler/jquery.scrollTo
+* 许可证: MIT
+* 资源: https://github.com/flesler/jquery.scrollTo
 
 normalize.css，版权所有2012-2016 Nicolas Gallagher和Jonathan Neal
-许可证: MIT
-资源: https://necolas.github.io/normalize.css/
+* 许可证: MIT
+* 资源: https://necolas.github.io/normalize.css/
 
 Font Awesome 图标，版权所有Dave Gandy
-许可证: SIL Open Font License, version 1.1
-资源: http://fontawesome.io/
+* 许可证: SIL Open Font License, version 1.1
+* 资源: http://fontawesome.io/
 
 == 更新日志 ==
 
 = 1.2 =
-* 发布日期: 10，31，2020
+发布日期: 10，31，2020
 
-1.修改全站各部分字体大小
+* 修改全站各部分字体大小
 
 = 1.1 =
-* 发布日期: 10，31，2020
+发布日期: 10，31，2020
 
 * 添加轮播海报
 * 添加文章页锚点跳转
@@ -63,7 +67,7 @@ Font Awesome 图标，版权所有Dave Gandy
 * 删除默认登录页美化CSS
 
 = 1.0 =
-* 发布日期: 10，15，2020
+发布日期: 10，15，2020
 
-初始发行
+* 初始发行
 
