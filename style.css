@@ -28,6 +28,7 @@ Tags: 两栏，灵活的标题，可访问性就绪，自定义颜色，自定�
 分页
 单页面/文章页
 评论
+404
 底部
 --------------------------------------------------------------*/
 /*-----------------------------------------------------------------
@@ -62,25 +63,45 @@ img {
 }
 h1, h2, h3, h4, h5, h6 {
 	margin: 0 !important;
-	line-height: 1.4 !important;
+	line-height: 1.3 !important;
 }
 h1 {
-	font-size: 2em;
-}
-h2 {
-	font-size: 1.7em;
-}
-h3 {
 	font-size: 1.6em;
 }
-h4 {
-	font-size: 1.5em;
-}
-h5 {
+h2 {
 	font-size: 1.4em;
 }
-h6 {
+h3 {
 	font-size: 1.3em;
+}
+h4 {
+	font-size: 1.2em;
+}
+h5 {
+	font-size: 1.1em;
+}
+h6 {
+	font-size: 1em;
+}
+@media only screen and (min-width: 900px) {
+	h1 {
+		font-size: 2em;
+	}
+	h2 {
+		font-size: 1.7em;
+	}
+	h3 {
+		font-size: 1.6em;
+	}
+	h4 {
+		font-size: 1.5em;
+	}
+	h5 {
+		font-size: 1.4em;
+	}
+	h6 {
+		font-size: 1.3em;
+	}
 }
 /*-----------------------------------------------------------------
 * 基本设置
@@ -228,7 +249,7 @@ table tr th strong, table tr td strong {
 	margin-right: 3vw;
 }
 .sort-box {
-	padding-top: 1rem;
+	padding-top: 1.5rem;
 }
 .sort-box p {
 	margin-top: 1rem;
@@ -363,7 +384,7 @@ table tr th strong, table tr td strong {
 	transition: .3s;
 }
 .nav ul li a {
-	font-size: .9rem;
+	font-size: 1.1rem;
 }
 .nav ul li i {
 	font-size: 1.5rem;
@@ -427,6 +448,9 @@ table tr th strong, table tr td strong {
 	.nav ul li a, .nav ul li i {
 		padding: 1.5rem .5rem;
 		cursor: pointer;
+	}
+	.nav ul li a {
+		font-size: .9rem;
 	}
 	.nav ul li i {
 		font-size: 1.2rem;
@@ -530,6 +554,9 @@ table tr th strong, table tr td strong {
 	margin-right: 0;
 	margin-bottom: 1rem;
 }
+.article-first-list:first-child .article-meta {
+	margin-bottom: .5rem;
+}
 .article-first-list:first-child .article-cat, .article-first-list:first-child .article-content p, .article-first-list:first-child .article-link {
 	display: block;
 }
@@ -550,7 +577,6 @@ table tr th strong, table tr td strong {
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
-	margin-bottom: .5rem;
 }
 .article-cat, .article-content p, .article-link {
 	display: none;
@@ -575,6 +601,9 @@ table tr th strong, table tr td strong {
 .article-time, .article-content p {
 	color: #232323;
 	opacity: .6;
+}
+.article-content p {
+	font-size: .8rem;
 }
 .article-time i {
 	margin-right: .3rem;
@@ -854,7 +883,7 @@ table tr th strong, table tr td strong {
 }
 .site-next a, .site-next span {
 	display: inline-block;
-	margin: 0 .5rem;
+	margin: .5rem .15rem;
 	padding: .5rem;
 	font-size: .9rem;
 	color: #232323;
@@ -866,12 +895,17 @@ table tr th strong, table tr td strong {
 	color: white;
 	background-color: #0057ff;
 }
+@media only screen and (min-width: 600px) {
+	.site-next a, .site-next span {
+		margin: .5rem;
+		padding: .5rem 1rem;
+	}
+}
 @media only screen and (min-width: 900px) {
 	.site-next {
 		margin-bottom: 6rem;
 	}
 	.site-next a, .site-next span {
-		padding: .5rem 1rem;
 		font-size: .9rem;
 	}
 	.site-next a:hover {
@@ -888,11 +922,25 @@ table tr th strong, table tr td strong {
 .single-posts {
 	margin: 1rem 0;
 }
-.single-meta, .single-title, .single-category, .single-content, .single-comment-button, .single-share, .single-tag, .single-foo {
-	margin-top: 1rem !important;
+.single-category, .single-meta, .single-title, .single-content, .single-comment-button, .single-share, .single-tag, .single-foo {
+	margin-top: 1.5rem !important;
 }
-.single-meta, .single-title, .single-category {
+.single-category, .single-meta, .single-title {
 	text-align: center;
+}
+.single-category a {
+	display: inline-block;
+	margin-right: .5rem;
+	padding: .2rem .5rem;
+	color: white;
+	background-color: #0057ff;
+	border-radius: .3rem;
+}
+.single-category a:last-child {
+	margin-right: 0;
+}
+.single-category a:hover {
+	background-color: #191919;
 }
 .single-meta {
 	margin-bottom: 1rem;
@@ -916,24 +964,13 @@ table tr th strong, table tr td strong {
 .single-meta .single-comment {
 	display: none;
 }
-.single-category a {
-	display: inline-block;
-	margin-right: .5rem;
-	padding: .2rem .5rem;
-	color: white;
-	background-color: #0057ff;
-	border-radius: .3rem;
-}
-.single-category a:last-child {
-	margin-right: 0;
-}
-.single-category a:hover {
-	background-color: #191919;
+.single-title {
+	font-size: 1.5rem;
 }
 .single-content {
 	position: relative;
 	font-size: .9rem;
-	line-height: 1.8rem;
+	line-height: 1.7rem;
 }
 .single-content > * {
 	max-width: 720px;
@@ -947,19 +984,30 @@ table tr th strong, table tr td strong {
 	margin-bottom: .5rem;
 }
 .single-content h1, .single-content h2, .single-content h3, .single-content h4, .single-content h5, .single-content h6, .single-content > ol, .single-content > ul, .wp-block-image, .wp-block-video, .wp-block-audio, .wp-block-gallery, .wp-block-cover, .wp-block-preformatted, .wp-block-verse, .wp-block-media-text, .wp-block-quote, .wp-block-columns, .wp-block-group, .wp-block-buttons, .wp-block-file, .wp-block-code, .wp-block-table {
-	margin-bottom: 1rem !important;
+	margin-top: 1rem !important;
+	margin-bottom: .5rem !important;
 }
 .wp-block-image, .wp-block-video, .wp-block-gallery, .wp-block-cover, .wp-block-media-text {
 	max-width: 100% !important;
 }
 .single-content ol li, .single-content ul li {
-	margin-left: 1rem;
+	margin-left: 1.5rem;
+	margin-bottom: .5rem;
 }
 .single-content ol li {
 	list-style-type: decimal;
 }
 .single-content ul li {
 	list-style-type: disc;
+}
+.single-content ol li ol li {
+	list-style-type: decimal-leading-zero;
+}
+.single-content ul li ul li {
+	list-style-type: circle;
+}
+.single-content ol li ol li ol li, .single-content ul li ul li ul li {
+	list-style-type: lower-alpha;
 }
 .wp-block-image, .wp-block-video {
 	text-align: center;
@@ -1018,7 +1066,7 @@ table tr th strong, table tr td strong {
 .wp-block-code {
 	overflow-x: auto;
 	padding: 1.5rem;
-	color: #999;
+	color: #a6a6a6;
 	background-color: #232323;
 	border-radius: .3rem;
 }
@@ -1076,8 +1124,11 @@ table tr th strong, table tr td strong {
 	line-height: 2.1;
 	text-align: center;
 	border-radius: 50%;
-	background-color: #232323;
+	background-color: #0057ff;
 	cursor: pointer;
+}
+.single-toggle a:hover {
+	background-color: #232323;
 }
 .single-menu {
 	display: none;
@@ -1085,27 +1136,35 @@ table tr th strong, table tr td strong {
 	overflow-y: auto;
 	margin-top: 1rem;
 	padding: 1.5rem;
+	line-height: 1.345 !important;
 	background-color: white;
 	box-shadow: 0 0 2rem rgba(0, 0, 0, .2);
 	border-radius: .5rem;
 }
-.single-menu > ol {
-	margin: .5rem 0 .5rem 1rem !important;
+.single-menu ol li {
+	margin: .5rem 0;
 }
-.single-menu > li {
-	list-style-type: none !important;
+.single-menu ol .h2 {
+	margin-left: 1rem !important;
+	list-style-type: disc !important;
 }
-.single-menu li a {
-	display: inline-block;
+.single-menu ol .h2 a {
+	font-size: 1.1rem;
+}
+.single-menu ol .h3 {
+	margin-left: 2rem !important;
+	list-style-type: circle !important;
+}
+.single-menu ol .h3 a {
+	font-size: 1rem;
+}
+.single-menu ol li a {
+	display: block;
 	color: #191919;
 	line-height: 1.345 !important;
 }
-.single-menu li a:hover {
+.single-menu ol li a:hover {
 	color: #0057ff;
-}
-.single-menu > li a {
-	font-size: 1rem;
-	font-weight: 700;
 }
 .single-comment-button {
 	text-align: center;
@@ -1151,6 +1210,9 @@ table tr th strong, table tr td strong {
 	background-color: #0057ff;
 	transition: .5s;
 }
+.single-previous-next p a {
+	font-size: .9rem;
+}
 .single-previous-next p:first-child {
 	border-bottom: thin solid #232323;
 }
@@ -1179,7 +1241,7 @@ table tr th strong, table tr td strong {
 	.single-posts {
 		margin: 3rem 0;
 	}
-	.single-meta, .single-title, .single-category, .single-content, .single-comment-button, .single-share, .single-tag, .single-foo {
+	.single-category, .single-meta, .single-title, .single-content, .single-comment-button, .single-share, .single-tag, .single-foo {
 		margin-top: 3rem !important;
 	}
 	.single-meta span, .single-meta a {
@@ -1195,7 +1257,8 @@ table tr th strong, table tr td strong {
 		font-size: 1rem;
 	}
 	.single-content h1, .single-content h2, .single-content h3, .single-content h4, .single-content h5, .single-content h6, .single-content > ol, .single-content > ul, .wp-block-image, .wp-block-video, .wp-block-audio, .wp-block-gallery, .wp-block-cover, .wp-block-preformatted, .wp-block-verse, .wp-block-media-text, .wp-block-quote, .wp-block-columns, .wp-block-group, .wp-block-buttons, .wp-block-file, .wp-block-code, .wp-block-table {
-		margin-bottom: 2rem !important;
+		margin-top: 2rem !important;
+		margin-bottom: 1rem !important;
 	}
 	.wp-block-group, .wp-block-file, .wp-block-copytight {
 		padding: 2rem;
@@ -1236,7 +1299,7 @@ table tr th strong, table tr td strong {
 	position: fixed;
 	left: 0;
 	bottom: 0;
-	z-index: 9999;
+	z-index: 999;
 	width: 100%;
 	transform: translateY(100vh);
 	transition: .5s;
@@ -1454,6 +1517,28 @@ table tr th strong, table tr td strong {
 	}
 	.comment-reply a {
 		font-size: .9rem;
+	}
+}
+/*-----------------------------------------------------------------
+* 404
+-----------------------------------------------------------------*/
+.doc-404-title {
+	margin: 5vh 0 !important;
+	font-size: 12rem !important;
+	text-align: center;
+}
+.doc-404-text {
+	margin-bottom: 1.5rem;
+	font-size: .9rem;
+	text-align: center;
+}
+@media only screen and (min-width: 900px) {
+	.doc-404-title {
+		margin: 10vh 0 !important;
+		font-size: 18rem !important;
+	}
+	.doc-404-text {
+		margin-bottom: 3rem;
 	}
 }
 /*-----------------------------------------------------------------
@@ -1686,9 +1771,9 @@ table tr th strong, table tr td strong {
 	display: flex;
 	flex-direction: column;
 	position: fixed;
-	right: 3vw;
-	bottom: 8vh;
-	z-index: 9999;
+	right: 4vw;
+	bottom: 5vh;
+	z-index: 999;
 }
 #fixed-box a {
 	position: relative;
@@ -1724,4 +1809,15 @@ table tr th strong, table tr td strong {
 }
 #totop:hover {
 	background-color: #0057ff !important;
+}
+@media only screen and (min-width: 600px) {
+	#fixed-box {
+		right: 3vw;
+	}
+}
+@media only screen and (min-width: 900px) {
+	#fixed-box {
+		right: 3.5rem;
+		bottom: 14vh;
+	}
 }
