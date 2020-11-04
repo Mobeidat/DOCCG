@@ -2,9 +2,13 @@
 === DOCCG ===
 
 贡献者: TingBiao Wang
+
 经过测试: 5.0
+
 版本: 1.0
+
 许可证: GPLv2 or later
+
 许可证 URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == 简介 ==
@@ -13,14 +17,17 @@ DOCCG是由TingBiao Wang开发的WordPress主题。 您可以将其用于商业�
 
 == 安装 ==
 
-*1.在管理面板中，转到外观->主题，然后单击"添加新"按钮。
-*2.在搜索表单中键入DOCCG，然后按键盘上的" Enter"键。
-*3.单击"激活"按钮立即使用您的新主题。
-*4.在管理面板中导航至"外观">"自定义"，然后自定义口味。
+1.在管理面板中，转到外观->主题，然后单击"添加新"按钮。
+
+2.在搜索表单中键入DOCCG，然后按键盘上的" Enter"键。
+
+3.单击"激活"按钮立即使用您的新主题。
+
+4.在管理面板中导航至"外观">"自定义"，然后自定义口味。
 
 == 版权 ==
 
-DOCCG WordPress主题，版权所有TingBiao Wang wangtingiao.com，DOCCG根据GNU GPL的条款分发
+DOCCG WordPress主题，版权所有TingBiao Wang wangtingiao.com，DOCCG根据GNU GPL的条款分发。
 
 该程序是免费软件：您可以重新分发和/或修改，根据GNU发布的GNU通用公共许可的条款进行。自由软件基金会（许可证的版本2），或（您可以选择）任何更高版本。
 
@@ -47,7 +54,7 @@ Font Awesome 图标，版权所有Dave Gandy
 == 更新日志 ==
 
 = 1.2 =
-发布日期: 10，31，2020
+发布日期: 11，04，2020
 
 * 修改全站各部分字体大小
 
