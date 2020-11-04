@@ -12,10 +12,14 @@ if ( have_posts() ):
 	?>
 <section itemprop="article" class="article-box max-width">
 	<?php
+	$serial = 0;
 	while ( have_posts() ): the_post();
-	get_template_part( 'template-parts/content', '' );
-	endwhile;
+	$serial++;
 	?>
+	<article id="post-<?php the_ID(); ?>" class="article-list <?php if ( $serial == 1 ) { echo 'article-first-list'; }?>" itemscope itemtype="http://schema.org/article">
+		<?php get_template_part( 'template-parts/content', '' );?>
+	</article>
+	<?php endwhile;	?>
 </section>
 <?php
 get_template_part( 'template-parts/content', 'next' );
