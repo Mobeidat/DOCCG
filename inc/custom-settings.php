@@ -112,8 +112,8 @@ if ( !function_exists( 'doc_breadcrumbs' ) ) {
 	function doc_breadcrumbs() {
 
 		$delimiter = '<span>&nbsp;&raquo;&nbsp;</span>';
-		$before = '<span class="current">';
-		$after = '</span>';
+		$span_before = '<span class="current">';
+		$span_after = '</span>';
 
 		if ( !is_home() && !is_front_page() || is_paged() ) {
 			echo '<section class="breadcrumbs" itemscope itemtype="https://schema.org/WebPage"><div class="max-width">';
@@ -132,45 +132,45 @@ if ( !function_exists( 'doc_breadcrumbs' ) ) {
 					$cat_code = get_category_parents( $parentCat, TRUE, ' ' . $delimiter . ' ' );
 					echo $cat_code = str_replace( '<a', '<a itemprop="breadcrumb"', $cat_code );
 				}
-				echo $before . '' . single_cat_title( '', false ) . '' . $after;
+				echo $span_before . '' . single_cat_title( '', false ) . '' . $span_after;
 			} elseif ( is_day() ) {
 				echo '<a itemprop="breadcrumb" href="' . get_year_link( get_the_time( 'Y' ) ) . '">' . get_the_time( 'Y' ) . '</a> ' . $delimiter . ' ';
 				echo '<a itemprop="breadcrumb"  href="' . get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) . '">' . get_the_time( 'F' ) . '</a> ' . $delimiter . ' ';
-				echo $before . get_the_time( 'd' ) . $after;
+				echo $span_before . get_the_time( 'd' ) . $span_after;
 			}
 			elseif ( is_month() ) {
 				echo '<a itemprop="breadcrumb" href="' . get_year_link( get_the_time( 'Y' ) ) . '">' . get_the_time( 'Y' ) . '</a> ' . $delimiter . ' ';
-				echo $before . get_the_time( 'F' ) . $after;
+				echo $span_before . get_the_time( 'F' ) . $span_after;
 			}
 			elseif ( is_year() ) {
-				echo $before . get_the_time( 'Y' ) . $after;
+				echo $span_before . get_the_time( 'Y' ) . $span_after;
 			}
 			elseif ( is_single() && !is_attachment() ) {
 				if ( get_post_type() != 'post' ) {
 					$post_type = get_post_type_object( get_post_type() );
 					$slug = $post_type->rewrite;
 					echo '<a itemprop="breadcrumb" href="' . $homeLink . '/' . $slug[ 'slug' ] . '/">' . $post_type->labels->singular_name . '</a> ' . $delimiter . ' ';
-					echo $before . get_the_title() . $after;
+					echo $span_before . get_the_title() . $span_after;
 				} else {
 					$cat = get_the_category();
 					$cat = $cat[ 0 ];
 					$cat_code = get_category_parents( $cat, TRUE, ' ' . $delimiter . ' ' );
 					echo $cat_code = str_replace( '<a', '<a itemprop="breadcrumb"', $cat_code );
-					echo $before . get_the_title() . $after;
+					echo $span_before . get_the_title() . $span_after;
 				}
 			} elseif ( !is_single() && !is_page() && get_post_type() != 'post' ) {
 				$post_type = get_post_type_object( get_post_type() );
-				echo $before . $post_type->labels->singular_name . $after;
+				echo $span_before . $post_type->labels->singular_name . $span_after;
 			}
 			elseif ( is_attachment() ) {
 				$parent = get_post( $post->post_parent );
 				$cat = get_the_category( $parent->ID );
 				$cat = $cat[ 0 ];
 				echo '<a itemprop="breadcrumb" href="' . get_permalink( $parent ) . '">' . $parent->post_title . '</a> ' . $delimiter . ' ';
-				echo $before . get_the_title() . $after;
+				echo $span_before . get_the_title() . $span_after;
 			}
 			elseif ( is_page() && !$post->post_parent ) {
-				echo $before . get_the_title() . $after;
+				echo $span_before . get_the_title() . $span_after;
 			}
 			elseif ( is_page() && $post->post_parent ) {
 				$parent_id = $post->post_parent;
@@ -182,29 +182,29 @@ if ( !function_exists( 'doc_breadcrumbs' ) ) {
 				}
 				$breadcrumbs = array_reverse( $breadcrumbs );
 				foreach ( $breadcrumbs as $crumb )echo $crumb . ' ' . $delimiter . ' ';
-				echo $before . get_the_title() . $after;
+				echo $span_before . get_the_title() . $span_after;
 			}
 			elseif ( is_search() ) {
-				echo $before;
+				echo $span_before;
 				printf( __( '搜索“%s”结果', 'doc-text' ), get_search_query() );
-				echo $after;
+				echo $span_after;
 			}
 			elseif ( is_tag() ) {
-				echo $before;
+				echo $span_before;
 				printf( __( '标签“%s”归档', 'doc-text' ), single_tag_title( '', false ) );
-				echo $after;
+				echo $span_after;
 			}
 			elseif ( is_author() ) {
 				global $author;
 				$userdata = get_userdata( $author );
-				echo $before;
+				echo $span_before;
 				printf( __( '作者"%s"归档', 'doc-text' ), $userdata->display_name );
-				echo $after;
+				echo $span_after;
 			}
 			elseif ( is_404() ) {
-				echo $before;
-				_e( 'Not Found', 'doc-text' );
-				echo $after;
+				echo $span_before;
+				__( '404', 'doc-text' );
+				echo $span_after;
 			}
 			if ( get_query_var( 'paged' ) ) {
 				if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() )
@@ -227,10 +227,11 @@ if ( !function_exists( 'doc_banner' ) ) {
 			$doc_banner_number = get_theme_mod( 'doc_banner_number', '3' );
 			$doc_banner_category_id = explode( ",", get_theme_mod( 'doc_banner_category_id' ) );
 			$doc_banner_post_id = explode( ",", get_theme_mod( 'doc_banner_post_id' ) );
+			$doc_banner_orderby_select = explode( ",", get_theme_mod( 'doc_banner_orderby_select' ) );
 
 			if ( $doc_banner_select == 'category' ) {
 
-				$banner_query = array( 'ignore_sticky_posts' => 1, 'posts_per_page' => $doc_banner_number, 'cat' => $doc_banner_category_id );
+				$banner_query = array( 'ignore_sticky_posts' => 1, 'posts_per_page' => $doc_banner_number, 'cat' => $doc_banner_category_id, 'orderby' => $doc_banner_orderby_select );
 
 			} elseif ( $doc_banner_select == 'article' ) {
 
@@ -280,8 +281,8 @@ if ( !function_exists( 'doc_sort_box' ) ) {
 			echo $h2_before . '" ';
 			single_tag_title();
 			echo ' "' . $h2_after;
-		} elseif ( is_date() ) {
-			echo $h2_before . esc_html__( get_the_date() ) . $h2_after;
+		} elseif ( is_404() ) {
+			echo $h2_before . __( '随便看看', 'doc-text' ) . $h2_after;
 		} else {
 			echo $h2_before;
 			single_cat_title();
@@ -393,9 +394,15 @@ if ( !function_exists( 'doc_bottom_link' ) ) {
 				if ( $doc_qrcode_title ) {
 					echo '<span>' . $doc_qrcode_title . '</span>';
 				}
-				echo '<img src="' . $doc_qrcode_img . '" alt="">';
-				echo '<img src="' . $doc_qrcode_img_2 . '" alt="">';
-				echo '<img src="' . $doc_qrcode_img_3 . '" alt="">';
+				if ( $doc_qrcode_img ) {
+					echo '<img src="' . $doc_qrcode_img . '" alt="">';
+				}
+				if ( $doc_qrcode_img_2 ) {
+					echo '<img src="' . $doc_qrcode_img_2 . '" alt="">';
+				}
+				if ( $doc_qrcode_img_3 ) {
+					echo '<img src="' . $doc_qrcode_img_3 . '" alt="">';
+				}
 				echo '</p>';
 			}
 			echo '</div>';
@@ -467,14 +474,14 @@ if ( !function_exists( 'doc_statistics_fixed_box' ) ) {
 			endwhile;
 		}
 
+		$doc_bell_select = get_theme_mod( 'doc_bell_select' );
 		$doc_bell_url = get_theme_mod( 'doc_bell_url' );
 		$doc_bell_js = get_theme_mod( 'doc_bell_js' );
 		$doc_back_totop_open = get_theme_mod( 'doc_back_totop_open', 1 );
-		if ( $doc_bell_url ) {
-			echo '<a href="' . $doc_bell_url . '" id="bell"><i class="fa fa-bell"></i></a>';
-		}
-		if ( $doc_bell_js ) {
-			echo '<a id="bell"><i class="fa fa-bell"></i><div>' . $doc_bell_js . '</div></a>';
+		if ( $doc_bell_select == 'bell_url' ) {
+			echo '<a id="bell" target="_blank" href="' . $doc_bell_url . '"><i class="fa fa-bell"></i></a>';
+		} elseif ( $doc_bell_select == 'bell_js' ) {
+			echo $doc_bell_js;
 		}
 		if ( $doc_back_totop_open ) {
 			echo '<a id="totop"><i class="fa fa-angle-up"></i></a>';
