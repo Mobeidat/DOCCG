@@ -40,5 +40,5 @@
 		?>
 	</div>
 </header>
-<?php doc_breadcrumbs();?>
 <main id="site-main" role="main" itemscope itemtype="http://schema.org/Blog">
+<?php doc_breadcrumbs();?>
