@@ -35,14 +35,6 @@ DOCCG WordPress主题，版权所有TingBiao Wang wangtingiao.com，DOCCG根据G
 
 DOCCG捆绑了以下第三方资源:
 
-Hatmal 5 Shiva，版权所有2014 Alexander Farkas
-* 许可证: MIT/GPL2
-* 资源: https://github.com/aFarkas/html5shiv
-
-jQuery scrollTo，版权所有2007-2015 Ariel Flesler
-* 许可证: MIT
-* 资源: https://github.com/flesler/jquery.scrollTo
-
 normalize.css，版权所有2012-2016 Nicolas Gallagher和Jonathan Neal
 * 许可证: MIT
 * 资源: https://necolas.github.io/normalize.css/
@@ -56,7 +48,11 @@ Font Awesome 图标，版权所有Dave Gandy
 = 1.2 =
 发布日期: 11，04，2020
 
+* 轮播海报添加显示顺序
 * 修改全站各部分字体大小
+* 修复文章列表类
+* 修复底部二维码显示错误
+* 修复浮动站点在线服务显示错误
 
 = 1.1 =
 发布日期: 10，31，2020
