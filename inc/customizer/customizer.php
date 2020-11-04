@@ -73,6 +73,9 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'section' => 'title_tagline',
 					'priority' => 10,
 					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => '2020',
+					),
 				) );
 			$wp_customize->selective_refresh->add_partial( 'custom_logo_text_span',
 				array(
@@ -139,21 +142,6 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'type' => 'checkbox',
 				) );
 
-			// Number of Carousel Pictures
-			$wp_customize->add_setting( 'doc_banner_number',
-				array(
-					'default' => '3',
-					'sanitize_callback' => 'absint',
-					'transport' => 'refresh',
-				) );
-			$wp_customize->add_control( 'doc_banner_number',
-				array(
-					'label' => __( '轮播数量', 'doc-text' ),
-					'section' => 'doc_home_menu',
-					'priority' => '',
-					'type' => 'text',
-				) );
-
 			// Carousel picture display mode
 			$wp_customize->add_setting( 'doc_banner_select',
 				array(
@@ -175,6 +163,48 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					)
 				)
 			);
+
+			// Carousel display order
+			$wp_customize->add_setting( 'doc_banner_orderby_select',
+				array(
+					'default' => 'rand',
+					'sanitize_callback' => 'doc_sanitize_radio',
+					'transport' => 'refresh',
+				)
+			);
+
+			$wp_customize->add_control( 'doc_banner_orderby_select',
+				array(
+					'label' => __( '轮播显示顺序', 'doc-text' ),
+					'section' => 'doc_home_menu',
+					'priority' => '',
+					'type' => 'select',
+					'choices' => array(
+						'rand' => __( '随机', 'doc-text' ),
+						'date' => __( '发表时间', 'doc-text' ),
+						'modified' => __( '修改时间', 'doc-text' ),
+						'comment_count' => __( '评论数', 'doc-text' ),
+					)
+				)
+			);
+
+			// Number of Carousel Pictures
+			$wp_customize->add_setting( 'doc_banner_number',
+				array(
+					'default' => '',
+					'sanitize_callback' => 'absint',
+					'transport' => 'refresh',
+				) );
+			$wp_customize->add_control( 'doc_banner_number',
+				array(
+					'label' => __( '轮播数量', 'doc-text' ),
+					'section' => 'doc_home_menu',
+					'priority' => '',
+					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => '3',
+					),
+				) );
 
 			// Category ID
 			$wp_customize->add_setting( 'doc_banner_category_id',
@@ -428,17 +458,20 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Article sharing button settings
 			$wp_customize->add_setting( 'doc_sin_share',
 				array(
-					'default' => 'weibo,qq,wechat,tencent,qzone',
+					'default' => '',
 					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => '',
 				) );
 			$wp_customize->add_control( 'doc_sin_share',
 				array(
 					'label' => __( '分享按钮设置', 'doc-text' ),
-					'description' => esc_html__( '可选[ weibo,qq,wechat,tencent,douban,qzone ] [ linkedin,diandian,facebook,twitter,google ] <a target="_blank" href="https://github.com/overtrue/share.js/">https://github.com/overtrue/share.js/</a>', 'doc-text' ),
+					'description' => esc_html__( '可选[ weibo,qq,wechat,tencent,douban,qzone ] [ linkedin,diandian,facebook,twitter,google ] https://github.com/overtrue/share.js', 'doc-text' ),
 					'section' => 'doc_post_page_menu',
 					'priority' => '',
 					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => 'weibo,qq,wechat,tencent,qzone',
+					),
 				) );
 
 			// Show article tags
@@ -460,7 +493,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			/* -------------------------------------------------------------------------- */
 			$wp_customize->add_section( 'doc_footer_menu',
 				array(
-					'title' => __( '站点底部', 'doc-text' ),
+					'title' => __( '站点底部与浮动', 'doc-text' ),
 					'panel' => 'doc_panels',
 					'priority' => '',
 				) );
@@ -468,7 +501,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Site footer introduction
 			$wp_customize->add_setting( 'doc_bottom_about',
 				array(
-					'default' => __( '感谢您访问我的小栈。我是设计师，也是前端开发爱好者。这些是我通常收集的一些资源和材料。希望对您有帮助。', 'doc-text' ),
+					'default' => '',
 					'sanitize_callback' => 'wp_filter_nohtml_kses',
 					'transport' => 'postMessage',
 				) );
@@ -478,6 +511,9 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'section' => 'doc_footer_menu',
 					'priority' => '',
 					'type' => 'textarea',
+					'input_attrs' => array(
+						'placeholder' => __( '感谢您访问我的小栈！我是个普通的设计师，也是前端开发爱好者。在这里您可以找到高品质的教程、资源、优秀工具推荐。没有付费、帐户注册或电子邮件垃圾。只需下载您想要的，然后使用它。如果您喜欢并有收获，想保持这个网站正常运行，请考虑 ♥捐赠♥ 支持我。', 'doc-text' ),
+					),
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_bottom_about',
 				array(
@@ -491,16 +527,19 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			// Latest article title
 			$wp_customize->add_setting( 'doc_express_title',
 				array(
-					'default' => __( '快讯', 'doc-text' ),
+					'default' => '',
 					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => 'postMessage',
 				) );
 			$wp_customize->add_control( 'doc_express_title',
 				array(
-					'label' => __( '底部文章标题', 'doc-text' ),
+					'label' => __( '页脚快讯标题', 'doc-text' ),
 					'section' => 'doc_footer_menu',
 					'priority' => '',
 					'type' => 'text',
+					'input_attrs' => array(
+						'placeholder' => __( '快讯', 'doc-text' ),
+					),
 				) );
 			$wp_customize->selective_refresh->add_partial( 'doc_express_title',
 				array(
@@ -549,45 +588,55 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'type' => 'textarea',
 				) );
 
-
-			/* -------------------------------------------------------------------------- */
-			/*	Site float
-			/* -------------------------------------------------------------------------- */
-			$wp_customize->add_section( 'doc_float_menu',
+			// Carousel picture display mode
+			$wp_customize->add_setting( 'doc_bell_select',
 				array(
-					'title' => __( '站点浮动', 'doc-text' ),
-					'panel' => 'doc_panels',
+					'default' => 'bell_url',
+					'sanitize_callback' => 'doc_sanitize_radio',
+					'transport' => 'refresh',
+				)
+			);
+
+			$wp_customize->add_control( 'doc_bell_select',
+				array(
+					'label' => __( '在线客服模式', 'doc-text' ),
+					'description' => esc_html__( '推荐腾讯云智服 https://yzf.qq.com', 'doc-text' ),
+					'section' => 'doc_footer_menu',
 					'priority' => '',
-				) );
+					'type' => 'select',
+					'choices' => array(
+						'bell_url' => __( 'URL版', 'doc-text' ),
+						'bell_js' => __( 'JS版', 'doc-text' )
+					)
+				)
+			);
 
 			// Online service url
-			$wp_customize->add_setting( 'doc_back_totop_bell_url',
+			$wp_customize->add_setting( 'doc_bell_url',
 				array(
 					'default' => '',
 					'sanitize_callback' => 'doc_sanitize_text',
 					'transport' => '',
 				) );
-			$wp_customize->add_control( 'doc_back_totop_bell_url',
+			$wp_customize->add_control( 'doc_bell_url',
 				array(
-					'label' => __( '在线服务url版', 'doc-text' ),
-					'description' => esc_html__( '建议只选择选择URL和JS之一，推荐 <a target="_blank" href="https://yzf.qq.com/">https://yzf.qq.com/</a>', 'doc-text' ),
-					'section' => 'doc_float_menu',
+					'label' => __( 'URL版', 'doc-text' ),
+					'section' => 'doc_footer_menu',
 					'priority' => '',
 					'type' => 'text'
 				) );
 
 			// Statistical code JS
-			$wp_customize->add_setting( 'doc_back_totop_bell_js',
+			$wp_customize->add_setting( 'doc_bell_js',
 				array(
 					'default' => '',
 					'sanitize_callback' => '',
 					'transport' => '',
 				) );
-			$wp_customize->add_control( 'doc_back_totop_bell_js',
+			$wp_customize->add_control( 'doc_bell_js',
 				array(
-					'label' => __( '在线服务js版', 'doc-text' ),
-					'description' => esc_html__( '建议只选择选择URL和JS之一，推荐 <a target="_blank" href="https://yzf.qq.com/">https://yzf.qq.com/</a>', 'doc-text' ),
-					'section' => 'doc_float_menu',
+					'label' => __( 'JS版', 'doc-text' ),
+					'section' => 'doc_footer_menu',
 					'priority' => '',
 					'type' => 'textarea',
 				) );
@@ -601,7 +650,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			$wp_customize->add_control( 'doc_back_totop_open',
 				array(
 					'label' => __( '显示返回顶部', 'doc-text' ),
-					'section' => 'doc_float_menu',
+					'section' => 'doc_footer_menu',
 					'priority' => '',
 					'type' => 'checkbox',
 				) );
