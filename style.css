@@ -62,7 +62,6 @@ img {
 	vertical-align: top;
 }
 h1, h2, h3, h4, h5, h6 {
-	margin: 0 !important;
 	line-height: 1.3 !important;
 }
 h1 {
@@ -308,7 +307,7 @@ table tr th strong, table tr td strong {
 	align-items: center;
 	position: relative;
 	z-index: 99;
-	padding: .5rem 3vw;
+	padding: 0 3vw;
 	background-color: #191919;
 }
 .site-hea-left, .site-hea-right {
@@ -545,19 +544,19 @@ table tr th strong, table tr td strong {
 * 文章列表
 -----------------------------------------------------------------*/
 .article-box {
-	padding: 2rem 0;
+	padding: 1.5rem 0;
 }
-.article-first-list:first-child {
-	display: block;
+.article-first-list {
+	flex-direction: column;
 }
-.article-first-list:first-child .article-pic {
+.article-first-list .article-pic {
 	margin-right: 0;
 	margin-bottom: 1rem;
 }
-.article-first-list:first-child .article-meta {
+.article-first-list .article-meta {
 	margin-bottom: .5rem;
 }
-.article-first-list:first-child .article-cat, .article-first-list:first-child .article-content p, .article-first-list:first-child .article-link {
+.article-first-list .article-cat, .article-first-list .article-content p, .article-first-list .article-link {
 	display: block;
 }
 .article-list {
@@ -646,21 +645,21 @@ table tr th strong, table tr td strong {
 		margin-bottom: 1rem;
 	}
 	.article-title {
-		font-size: 1rem;
+		font-size: 1.1rem;
 	}
 }
 @media only screen and (min-width: 900px) {
 	.article-box {
 		padding: 3rem 0;
 	}
-	.article-first-list:first-child {
-		display: flex;
+	.article-first-list {
+		flex-direction: row;
 	}
-	.article-first-list:first-child .article-pic, .article-first-list:first-child .article-content {
+	.article-first-list .article-pic, .article-first-list .article-content {
 		flex: 1;
 		margin-bottom: 0;
 	}
-	.article-first-list:first-child .article-pic, .article-pic, .article-cat {
+	.article-first-list .article-pic, .article-pic, .article-cat {
 		margin-right: 2rem;
 	}
 	.article-list {
@@ -682,11 +681,11 @@ table tr th strong, table tr td strong {
 	}
 }
 @media only screen and (min-width: 1200px) {
-	.article-first-list:first-child .article-title {
+	.article-first-list .article-title {
 		font-size: 1.6rem;
 	}
 	.article-title {
-		font-size: 1.2rem;
+		font-size: 1.3rem;
 	}
 	.article-content p {
 		font-size: 1rem;
@@ -796,10 +795,10 @@ table tr th strong, table tr td strong {
 /*-----------------------------------------------------------------
 * 站点推荐
 -----------------------------------------------------------------*/
-.web-box {
+.webs-box {
 	padding: 1rem 0;
 }
-.web-list {
+.webs-list {
 	display: flex;
 	align-items: flex-start;
 	position: relative;
@@ -809,7 +808,7 @@ table tr th strong, table tr td strong {
 	box-shadow: 0 0 3rem rgba(0, 0, 0, .1);
 	border-radius: .3rem;
 }
-.web-vpn {
+.webs-vpn {
 	display: inline-block;
 	position: absolute;
 	top: 0;
@@ -820,7 +819,7 @@ table tr th strong, table tr td strong {
 	line-height: 1;
 	background-color: firebrick;
 }
-.web-pic {
+.webs-pic {
 	width: 4rem;
 	height: 4rem;
 	overflow: hidden;
@@ -828,13 +827,13 @@ table tr th strong, table tr td strong {
 	border: thin solid #f2f2f2;
 	border-radius: 50%;
 }
-.web-content-box {
+.webs-content-box {
 	flex: 1;
 }
-.web-excerpt {
+.webs-excerpt {
 	margin: .5rem 0;
 }
-.web-link a {
+.webs-link a {
 	display: inline-block;
 	padding: .5rem;
 	color: #0057ff;
@@ -843,34 +842,34 @@ table tr th strong, table tr td strong {
 	border-radius: .3rem;
 }
 @media only screen and (min-width: 600px) {
-	.web-list, .web-content-box {
+	.webs-list, .webs-content-box {
 		align-items: center;
 	}
-	.web-pic {
+	.webs-pic {
 		width: 6rem;
 		height: 6rem;
 		margin-right: 2rem;
 	}
-	.web-content-box {
+	.webs-content-box {
 		display: flex;
 		justify-content: space-between;
 	}
-	.web-link a:hover {
+	.webs-link a:hover {
 		color: white;
 		background-color: #0057ff;
 	}
 }
 @media only screen and (min-width: 900px) {
-	.web-box {
+	.webs-box {
 		display: flex;
 		flex-wrap: wrap;
 		padding: 3rem 0;
 	}
-	.web-list {
+	.webs-list {
 		width: calc(100%/2 - 1rem);
 		margin-right: 2rem;
 	}
-	.web-list:nth-child(2n) {
+	.webs-list:nth-child(2n) {
 		margin-right: 0;
 	}
 }
@@ -976,19 +975,20 @@ table tr th strong, table tr td strong {
 	max-width: 720px;
 	margin-left: auto !important;
 	margin-right: auto !important;
+	margin-bottom: .5rem !important;
 }
 .single-content > a {
 	display: block;
 }
-.single-content p {
-	margin-bottom: .5rem;
+.single-content h1, .single-content h2, .single-content h3, .single-content h4, .single-content h5, .single-content h6, .wp-block-copytight {
+	margin-top: 1rem;
 }
-.single-content h1, .single-content h2, .single-content h3, .single-content h4, .single-content h5, .single-content h6, .single-content > ol, .single-content > ul, .wp-block-image, .wp-block-video, .wp-block-audio, .wp-block-gallery, .wp-block-cover, .wp-block-preformatted, .wp-block-verse, .wp-block-media-text, .wp-block-quote, .wp-block-columns, .wp-block-group, .wp-block-buttons, .wp-block-file, .wp-block-code, .wp-block-table {
-	margin-top: 1rem !important;
-	margin-bottom: .5rem !important;
-}
-.wp-block-image, .wp-block-video, .wp-block-gallery, .wp-block-cover, .wp-block-media-text {
+.wp-block-image, .wp-block-video, .wp-block-gallery, .wp-block-cover, .wp-block-media-text, .wp-block-separator {
 	max-width: 100% !important;
+}
+.single-content > ol, .single-content > ul {
+	margin-top: .5rem;
+	margin-bottom: .5rem;
 }
 .single-content ol li, .single-content ul li {
 	margin-left: 1.5rem;
@@ -1029,9 +1029,6 @@ table tr th strong, table tr td strong {
 	background-color: antiquewhite;
 	border-left: .5rem solid tan;
 	border-radius: .3rem;
-}
-.wp-block-columns p {
-	margin-bottom: .5rem !important;
 }
 .wp-block-group {
 	padding: 1rem;
@@ -1086,7 +1083,6 @@ table tr th strong, table tr td strong {
 	background-color: #0057ff;
 }
 .wp-block-separator {
-	margin: 1rem 0;
 	border: 0;
 	height: .1rem;
 	background: #ccc;
@@ -1256,15 +1252,12 @@ table tr th strong, table tr td strong {
 	.single-content {
 		font-size: 1rem;
 	}
-	.single-content h1, .single-content h2, .single-content h3, .single-content h4, .single-content h5, .single-content h6, .single-content > ol, .single-content > ul, .wp-block-image, .wp-block-video, .wp-block-audio, .wp-block-gallery, .wp-block-cover, .wp-block-preformatted, .wp-block-verse, .wp-block-media-text, .wp-block-quote, .wp-block-columns, .wp-block-group, .wp-block-buttons, .wp-block-file, .wp-block-code, .wp-block-table {
-		margin-top: 2rem !important;
-		margin-bottom: 1rem !important;
+	.single-content h1, .single-content h2, .single-content h3, .single-content h4, .single-content h5, .single-content h6, .single-content > ol, .single-content > ul, .wp-block-image, .wp-block-video, .wp-block-audio, .wp-block-gallery, .wp-block-cover, .wp-block-preformatted, .wp-block-verse, .wp-block-media-text, .wp-block-quote, .wp-block-columns, .wp-block-group, .wp-block-buttons, .wp-block-file, .wp-block-code, .wp-block-table, .wp-block-copytight {
+		margin-top: 1.5rem;
+		margin-bottom: 1rem;
 	}
 	.wp-block-group, .wp-block-file, .wp-block-copytight {
 		padding: 2rem;
-	}
-	.wp-block-separator {
-		margin: 2rem 0;
 	}
 	.wp-block-copytight {
 		font-size: 1rem;

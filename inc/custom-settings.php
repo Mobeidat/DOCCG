@@ -1,24 +1,89 @@
 <?php
 /**
- * Global basic settings.
  *
- * Exclude all pages from search results
- * Hide the black bar at the top of WordPress to remove the administrator login toolbar
- * Delete the Class selector
- * Website keyword description
- * Website custom logo
- * Custom breadcrumb navigation
- * Global information at the top of the site
- * Website social and custom QRcode
- * The copyright year will be updated automatically
- * Website copyright notice and bottom menu
- * Website statistics and floating buttons
+ * 分类选择自定义模板
+ * 获取当前分类子分类列表
+ * 从搜索结果中排除页面
+ * 隐藏前台顶部黑条
+ * 删除导航类别选择器
+ * 关键词
+ * 自定义Logo
+ * 面包屑导航
+ * 全局头部信息
+ * 社交和二维码
+ * 自动更新版权年份
+ * 版权声明和底部菜单
+ * 统计信息和浮动按钮
  *
  * @package TingBiao Wang
  */
 
 /**
- * Exclude all pages from search results
+ * 分类选择自定义模板
+ */
+class Select_Category_Template {
+	public function __construct() {
+		add_filter( 'category_template', array( $this, 'get_custom_category_template' ) );
+		add_action( 'edit_category_form_fields', array( $this, 'category_template_meta_box' ) );
+		add_action( 'category_add_form_fields', array( & $this, 'category_template_meta_box' ) );
+		add_action( 'created_category', array( & $this, 'save_category_template' ) );
+		add_action( 'edited_category', array( $this, 'save_category_template' ) );
+		do_action( 'Custom_Category_Template_constructor', $this );
+	}
+	public function category_template_meta_box( $tag ) {
+		$t_id = $tag->term_id;
+		$cat_meta = get_option( "category_templates" );
+		$template = isset( $cat_meta[ $t_id ] ) ? $cat_meta[ $t_id ] : false;
+		?>
+<tr class="form-field">
+	<th scope="row" valign="top"><label for="term-template">
+			<?php _e('分类模板','doc-text'); ?>
+		</label></th>
+	<td><select name="select" id="term-template">
+			<option value='default'>
+			<?php _e('默认模板','doc-text'); ?>
+			</option>
+			<?php page_template_dropdown($template); ?>
+		</select>
+		<p></p></td>
+</tr>
+<?php
+do_action( 'Custom_Category_Template_ADD_FIELDS', $tag );
+}
+public function save_category_template( $term_id ) {
+	if ( isset( $_POST[ 'cat_template' ] ) ) {
+		$cat_meta = get_option( "category_templates" );
+		$cat_meta[ $term_id ] = $_POST[ 'cat_template' ];
+		update_option( "category_templates", $cat_meta );
+		do_action( 'Custom_Category_Template_SAVE_FIELDS', $term_id );
+	}
+}
+
+function get_custom_category_template( $category_template ) {
+	$cat_ID = absint( get_query_var( 'cat' ) );
+	$cat_meta = get_option( 'category_templates' );
+	if ( isset( $cat_meta[ $cat_ID ] ) && $cat_meta[ $cat_ID ] != 'default' ) {
+		$temp = locate_template( $cat_meta[ $cat_ID ] );
+		if ( !empty( $temp ) )
+			return apply_filters( "Custom_Category_Template_found", $temp );
+	}
+	return $category_template;
+}
+}
+$cat_template = new Select_Category_Template();
+
+/**
+ * 获取当前分类子分类列表
+ */
+function get_category_root_id( $cat ) {
+	$this_category = get_category( $cat );
+	while ( $this_category->category_parent ) {
+		$this_category = get_category( $this_category->category_parent );
+	}
+	return $this_category->term_id;
+}
+/**
+ * 从搜索结果中排除页面
  */
 function search_filter_page( $query ) {
 	if ( $query->is_search ) {
@@ -29,12 +94,12 @@ function search_filter_page( $query ) {
 add_filter( 'pre_get_posts', 'search_filter_page' );
 
 /**
- * Hide the black bar at the top of WordPress to remove the administrator login toolbar
+ * 隐藏前台顶部黑条
  */
 add_filter( 'show_admin_bar', '__return_false' );
 
 /**
- * Delete the Class selector
+ * 删除导航类别选择器
  */
 function doc_css_attributes_filter( $var ) {
 	return is_array( $var ) ? array_intersect( $var, array( 'current-menu-item', 'current-post-ancestor', 'current-menu-ancestor' ) ) : '';
@@ -44,7 +109,7 @@ add_filter( 'nav_menu_item_id', 'doc_css_attributes_filter', 100, 1 );
 add_filter( 'page_css_class', 'doc_css_attributes_filter', 100, 1 );
 
 /**
- * Website keyword description
+ * 关键词
  */
 if ( !function_exists( 'doc_keywords' ) ) {
 	function doc_keywords() {
@@ -79,7 +144,7 @@ function doc_keywords_description() {
 add_action( 'wp_head', 'doc_keywords_description' );
 
 /**
- * Website custom logo
+ * 自定义Logo
  */
 if ( !function_exists( 'doc_custom_logo' ) ) {
 	function doc_custom_logo() {
@@ -106,7 +171,7 @@ if ( !function_exists( 'doc_custom_logo' ) ) {
 }
 
 /**
- * Custom breadcrumb navigation
+ * 面包屑导航
  */
 if ( !function_exists( 'doc_breadcrumbs' ) ) {
 	function doc_breadcrumbs() {
@@ -258,7 +323,7 @@ if ( !function_exists( 'doc_banner' ) ) {
 }
 
 /**
- * Global information at the top of the site
+ * 全局头部信息
  */
 if ( !function_exists( 'doc_sort_box' ) ) {
 	function doc_sort_box() {
@@ -294,7 +359,7 @@ if ( !function_exists( 'doc_sort_box' ) ) {
 }
 
 /**
- * Website social and custom QRcode
+ * 社交和二维码
  */
 if ( !function_exists( 'doc_bottom_link' ) ) {
 	function doc_bottom_link() {
@@ -411,7 +476,7 @@ if ( !function_exists( 'doc_bottom_link' ) ) {
 }
 
 /**
- * The copyright year will be updated automatically
+ * 自动更新版权年份
  */
 if ( !function_exists( 'doc_copyright_date' ) ) {
 	function doc_copyright_date() {
@@ -430,7 +495,7 @@ if ( !function_exists( 'doc_copyright_date' ) ) {
 }
 
 /**
- * Website copyright notice and bottom menu
+ * 版权声明和底部菜单
  */
 if ( !function_exists( 'doc_copyright_menu' ) ) {
 	function doc_copyright_menu() {
@@ -462,7 +527,7 @@ if ( !function_exists( 'doc_copyright_menu' ) ) {
 }
 
 /**
- * Website statistics and floating buttons
+ * 统计信息和浮动按钮
  */
 if ( !function_exists( 'doc_statistics_fixed_box' ) ) {
 	function doc_statistics_fixed_box() {

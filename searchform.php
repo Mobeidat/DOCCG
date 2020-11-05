@@ -1,8 +1,8 @@
 <?php
 /**
- * Search box template.
+ * 搜索框
  *
- * Customize the search box to fit the current theme style
+ * 自定义搜索框以适合当前主题样式
  *
  * @package TingBiao Wang
  */

@@ -2,9 +2,9 @@
 /**
  * Template Name: Video[视频]
  *
- * Video template file.
+ * 视频列表
  *
- * If the category selects this template, it will be displayed as a video list effect.
+ * 如果类别选择此模板，它将显示为视频列表效果
  *
  * @package TingBiao Wang
  */

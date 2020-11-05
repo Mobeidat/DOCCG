@@ -1,8 +1,8 @@
 <?php
 /**
- * Pagination template file.
+ * 分页
  *
- * Use digital paging by default.
+ * 默认情况下使用数字分页
  *
  * @package TingBiao Wang
  */

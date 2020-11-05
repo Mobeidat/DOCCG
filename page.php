@@ -1,8 +1,8 @@
 <?php
 /**
- * Single page template file.
+ * 页面
  *
- * This page is a single page type, dedicated to special articles and feature articles.
+ * 此页面是单个页面类型，专用于特殊文章
  *
  * @package TingBiao Wang
  */
@@ -13,11 +13,12 @@ get_header();
 	<article class="single-posts">
 		<header class="single-hea">
 			<?php
-			// Edit
+			// 编辑
 			echo '<div class="single-meta">';
 			edit_post_link( __( '编辑', 'doctext' ) );
 			echo '</div>';
 
+			//标题
 			the_title( '<h3 class="single-title" itemprop="headline">', '</h3>' );
 			?>
 		</header>
@@ -28,6 +29,7 @@ get_header();
 			?>
 		</main>
 		<?php
+		// 评论列表
 		echo '<footer class="single-foo" itemprop="comment"><div class="single-foo-box max-width"><a class="single-foo-close comment-toggle"><span>' . __( '评论', 'doc-text' ) . '</span><i class="fa fa-close"></i></a>';
 		if ( comments_open() || get_comments_number() ) {
 			comments_template();

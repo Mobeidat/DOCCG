@@ -1,8 +1,8 @@
 <?php
 /**
- * No post list template file.
+ * 没有帖子
  *
- * Use this list template when there are no articles.
+ * 没有帖子时，默认使用此列表模板
  *
  * @package TingBiao Wang
  */

@@ -1,8 +1,8 @@
 <?php
 /**
- * Post page template file.
+ * 类别
  *
- * If the article format is not selected, this default template will be displayed.
+ * 如果未选择类别模板，则将显示此默认模板
  *
  * @package TingBiao Wang
  */

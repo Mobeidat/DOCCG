@@ -1,78 +1,23 @@
 <?php
 /**
- * Article related code.
  *
- * Category selection template
- * The first picture in the article is a thumbnail
- * The category loop of the post
- * Article content directory
- * Article page metadata
- * Statistic estimated reading time
- * Number of articles read
- * Add custom post content
- * Add alt and title attributes to the img tag of the post picture
- * Post page custom comment submission/list function
- *
+ * 帖子所属分类
+ * 帖子浮动锚点
+ * 帖子发布时间、阅读大概时间、评论数
+ * 帖子内容阅读大概时间
+ * 帖子浏览量（刷新+1）主要用于视频模板
+ * 帖子内容版权-全局
+ * 将alt和title属性添加到帖子图片的img标签中
+ * 评论列表用户是否是当前帖子的作者
+ * 所有版本的wordpress的垃圾邮件和删除链接
+ * 回复评论自动添加@
+ * 自定义评论列表
  *
  * @package TingBiao Wang
  */
 
 /**
- * Category selection template
- */
-class Select_Category_Template {
-	public function __construct() {
-		add_filter( 'category_template', array( $this, 'get_custom_category_template' ) );
-		add_action( 'edit_category_form_fields', array( $this, 'category_template_meta_box' ) );
-		add_action( 'category_add_form_fields', array( & $this, 'category_template_meta_box' ) );
-		add_action( 'created_category', array( & $this, 'save_category_template' ) );
-		add_action( 'edited_category', array( $this, 'save_category_template' ) );
-		do_action( 'Custom_Category_Template_constructor', $this );
-	}
-	public function category_template_meta_box( $tag ) {
-		$t_id = $tag->term_id;
-		$cat_meta = get_option( "category_templates" );
-		$template = isset( $cat_meta[ $t_id ] ) ? $cat_meta[ $t_id ] : false;
-		?>
-<tr class="form-field">
-	<th scope="row" valign="top"><label for="term-template">
-			<?php _e('分类模板','doc-text'); ?>
-		</label></th>
-	<td><select name="select" id="term-template">
-			<option value='default'>
-			<?php _e('默认模板','doc-text'); ?>
-			</option>
-			<?php page_template_dropdown($template); ?>
-		</select>
-		<p></p></td>
-</tr>
-<?php
-do_action( 'Custom_Category_Template_ADD_FIELDS', $tag );
-}
-public function save_category_template( $term_id ) {
-	if ( isset( $_POST[ 'cat_template' ] ) ) {
-		$cat_meta = get_option( "category_templates" );
-		$cat_meta[ $term_id ] = $_POST[ 'cat_template' ];
-		update_option( "category_templates", $cat_meta );
-		do_action( 'Custom_Category_Template_SAVE_FIELDS', $term_id );
-	}
-}
-
-function get_custom_category_template( $category_template ) {
-	$cat_ID = absint( get_query_var( 'cat' ) );
-	$cat_meta = get_option( 'category_templates' );
-	if ( isset( $cat_meta[ $cat_ID ] ) && $cat_meta[ $cat_ID ] != 'default' ) {
-		$temp = locate_template( $cat_meta[ $cat_ID ] );
-		if ( !empty( $temp ) )
-			return apply_filters( "Custom_Category_Template_found", $temp );
-	}
-	return $category_template;
-}
-}
-$cat_template = new Select_Category_Template();
-
-/**
- * The category loop of the post
+ * 帖子所属分类
  */
 if ( !function_exists( 'doc_get_category' ) ) {
 	function doc_get_category() {
@@ -83,7 +28,7 @@ if ( !function_exists( 'doc_get_category' ) ) {
 }
 
 /**
- * Article content directory
+ * 帖子浮动锚点
  */
 function doc_single_menu( $content ) {
 	if ( !is_singular() ) {
@@ -135,7 +80,7 @@ function doc_single_menu( $content ) {
 add_filter( "the_content", "doc_single_menu" );
 
 /**
- * Article page metadata
+ * 帖子发布时间、阅读大概时间、评论数
  */
 if ( !function_exists( 'doc_get_single_meta' ) ) {
 	function doc_get_single_meta() {
@@ -151,7 +96,7 @@ if ( !function_exists( 'doc_get_single_meta' ) ) {
 }
 
 /**
- * Statistic estimated reading time
+ * 帖子内容阅读大概时间
  */
 if ( !function_exists( 'doc_get_reading_time' ) ) {
 	function doc_get_reading_time( $content ) {
@@ -166,7 +111,7 @@ if ( !function_exists( 'doc_get_reading_time' ) ) {
 }
 
 /**
- * Number of articles read
+ * 帖子浏览量（刷新+1）主要用于视频模板
  */
 function doc_get_post_views( $post_id ) {
 	$count_key = 'views';
@@ -197,7 +142,7 @@ function doc_set_post_views() {
 add_action( 'get_header', 'doc_set_post_views' );
 
 /**
- * Add custom post content
+ * 帖子内容版权-全局
  */
 if ( !function_exists( 'doc_post_content_copytight' ) ) {
 	function doc_post_content_copytight( $content ) {
@@ -214,7 +159,7 @@ if ( !function_exists( 'doc_post_content_copytight' ) ) {
 add_filter( 'the_content', 'doc_post_content_copytight' );
 
 /**
- * Add alt and title attributes to the img tag of the post picture
+ * 将alt和title属性添加到帖子图片的img标签中
  */
 if ( !function_exists( 'doc_post_img_gesalt' ) ) {
 	function doc_post_img_gesalt( $content ) {
@@ -227,12 +172,8 @@ if ( !function_exists( 'doc_post_img_gesalt' ) ) {
 }
 add_filter( 'the_content', 'doc_post_img_gesalt' );
 
-/* -------------------------------------------------------------------------- */
-/*	Post page custom comment submission/list function
-/* -------------------------------------------------------------------------- */
-
 /**
- * Whether the comment list user is the author of the current article
+ * 评论列表用户是否是当前帖子的作者
  */
 if ( !function_exists( 'doc_comment_by_post_user' ) ) {
 	function doc_comment_by_post_user( $comment = null ) {
@@ -248,7 +189,7 @@ if ( !function_exists( 'doc_comment_by_post_user' ) ) {
 }
 
 /**
- * Spam & Delete links for all versions of wordpress
+ * 所有版本的wordpress的垃圾邮件和删除链接
  */
 if ( !function_exists( 'doc_delete_comment_link' ) ) {
 	function doc_delete_comment_link( $id ) {
@@ -260,7 +201,7 @@ if ( !function_exists( 'doc_delete_comment_link' ) ) {
 }
 
 /**
- * Reply to comments automatically add @reviewers
+ * 回复评论自动添加@
  */
 function doc_comment_add_at( $comment_text, $comment = '' ) {
 	if ( $comment->comment_parent > 0 ) {
@@ -271,7 +212,7 @@ function doc_comment_add_at( $comment_text, $comment = '' ) {
 add_filter( 'comment_text', 'doc_comment_add_at', 20, 2 );
 
 /**
- * Custom comment list
+ * 自定义评论列表
  */
 function doc_theme_comments( $comment, $args, $depth ) {
 	$GLOBALS[ 'comment' ] = $comment;

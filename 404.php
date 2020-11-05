@@ -1,8 +1,8 @@
 <?php
 /**
- * Single page template file.
+ * 404
  *
- * This page is a single page type, dedicated to special articles and feature articles.
+ * 类别、帖子、页面等发生位置错误会显示此模板
  *
  * @package TingBiao Wang
  */

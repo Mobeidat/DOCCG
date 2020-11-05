@@ -9,8 +9,8 @@ function custom_taxonomy_label_args( $name, $slugName ) {
 		'singular_name' => $slugName,
 		'search_items' => __( '搜索', 'doc-text' ) . $name,
 		'all_items' => __( '所有', 'doc-text' ) . $name,
-		'parent_item' => __( '父级', 'doc-text' ) . $name,
-		'parent_item_colon' => __( '父级', 'doc-text' ) . $name,
+		'parent_item' => __( '父类别', 'doc-text' ) . $name,
+		'parent_item_colon' => __( '父类别', 'doc-text' ) . $name,
 		'edit_item' => __( '编辑', 'doc-text' ) . $name,
 		'update_item' => __( '更新', 'doc-text' ) . $name,
 		'add_new_item' => __( '添加', 'doc-text' ) . $name,
@@ -31,10 +31,10 @@ function custom_taxonomy_args( $name, $slugName, $hierarchical = true, $show_ui 
 }
 
 function add_custom_taxonomy() {
-	register_taxonomy( 'sites', array( 'site' ),
+	register_taxonomy( 'webs', array( 'web' ),
 		custom_taxonomy_args(
-			__( '分类', 'doc-text' ), //$name
-			'sites', //$slugName
+			__( '类别', 'doc-text' ), //$name
+			'webs', //$slugName
 			true, //$hierarchical
 			true, //$show_ui
 			true, //show_admin_column

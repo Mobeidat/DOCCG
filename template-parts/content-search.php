@@ -1,8 +1,8 @@
 <?php
 /**
- * Search list template file.
+ * 搜索列表
  *
- * Search page setting independent search list template.
+ * 搜索页面设置独立的搜索列表
  *
  * @package TingBiao Wang
  */

@@ -1,8 +1,8 @@
 <?php
 /**
- * Search page template files.
+ * 搜索结果
  *
- * No thumbnails are displayed on the search page, all posts on the website will be searched by default.
+ * 搜索结果没有缩略图显示，默认情况下将搜索网站上的所有帖子
  *
  * @package TingBiao Wang
  */

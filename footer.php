@@ -1,8 +1,8 @@
 <?php
 /**
- * Global footer template file.
+ * 全局页尾
  *
- * Show on all pages, share template.
+ * 在所有页面上共享显示
  *
  * @package TingBiao Wang
  */

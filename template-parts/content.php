@@ -1,8 +1,8 @@
 <?php
 /**
- * Default list template file.
+ * 默认帖子
  *
- * By default, all published articles use this list template.
+ * 默认情况下，所有已发布的帖子使用
  *
  * @package TingBiao Wang
  */
@@ -24,29 +24,29 @@ if ( $doc_list_pic_open ) {
 
 	echo '<div class="article-meta">';
 
-	// Article cat
+	// 所属分类
 	if ( $doc_list_category_open ) {
 		echo '<span class="article-cat" itemprop="keywords">';
 		echo doc_get_category();
 		echo '</span>';
 	}
 
-	// Article time
+	// 发布时间
 	if ( $doc_list_time_open ) {
 		echo '<time class="article-time" datetime="' . get_the_time( 'Y-m-d A G:i:s' ) . '" itemprop="datePublished">' . get_the_time( 'Y-m-d' ) . '</time>';
 	}
 
 	echo '</div>';
 
-	// Title
+	// 标题
 	the_title( '<h3 class="article-title" itemprop="headline"><a href="' . esc_url( get_permalink() ) . '">', '</a></h3>' );
 
-	// Excerpt
+	// 摘要
 	if ( $doc_list_excerpt_open ) {
 		the_excerpt();
 	}
 
-	// Link
+	// 链接
 	if ( $doc_list_link_text_open ) {
 		echo '<div class="article-link" itemprop="url" ><a href="' . get_the_permalink() . '">' . $doc_list_link_text . '</a></div>';
 	}

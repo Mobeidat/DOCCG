@@ -1,8 +1,8 @@
 <?php
 /**
- * Comment template file.
+ * 评论列表
  *
- * Customize the comment template to fit the current theme.
+ * 自定义评论列表以适合当前主题
  *
  * @package TingBiao Wang
  */

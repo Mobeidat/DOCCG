@@ -1,8 +1,8 @@
 <?php
 /**
- * Video list template file.
+ * 视频列表
  *
- * Selecting the current template by category will display a three-column video list template.
+ * 如果类别选择此模板将显示三列视频列表模板
  *
  * @package TingBiao Wang
  */
