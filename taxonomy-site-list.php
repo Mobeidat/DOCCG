@@ -2,7 +2,7 @@
 /**
  * 自定义类别-站点推荐
  *
- * 后台自定义文章类型添加共享站点 /wp-admin/edit.php?post_type=web
+ * 后台可添加自定义站点所属于什么类型 /wp-admin/edit-tags.php?taxonomy=site-list&post_type=site-post
  *
  * @package TingBiao Wang
  */
