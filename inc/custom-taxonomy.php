@@ -3,7 +3,7 @@
 /**
  * Register multiple custom categories
  */
-function custom_taxonomy_label_args( $name, $slugName ) {
+function taxonomy_site_list_label_args( $name, $slugName ) {
 	return $labels = array(
 		'name' => $name,
 		'singular_name' => $slugName,
@@ -19,9 +19,9 @@ function custom_taxonomy_label_args( $name, $slugName ) {
 	);
 }
 
-function custom_taxonomy_args( $name, $slugName, $hierarchical = true, $show_ui = true, $show_admin_column = true, $query_var = true ) {
+function taxonomy_site_list_args( $name, $slugName, $hierarchical = true, $show_ui = true, $show_admin_column = true, $query_var = true ) {
 	return $args = array(
-		'labels' => custom_taxonomy_label_args( $name, $slugName ),
+		'labels' => taxonomy_site_list_label_args( $name, $slugName ),
 		'hierarchical' => true,
 		'show_ui' => $show_ui,
 		'show_admin_column' => $show_admin_column,
@@ -30,11 +30,11 @@ function custom_taxonomy_args( $name, $slugName, $hierarchical = true, $show_ui 
 	);
 }
 
-function add_custom_taxonomy() {
-	register_taxonomy( 'webs', array( 'web' ),
-		custom_taxonomy_args(
+function add_taxonomy_site_list() {
+	register_taxonomy( 'site-list', array( 'site-post' ),
+		taxonomy_site_list_args(
 			__( '类别', 'doc-text' ), //$name
-			'webs', //$slugName
+			'site-list', //$slugName
 			true, //$hierarchical
 			true, //$show_ui
 			true, //show_admin_column
@@ -43,4 +43,4 @@ function add_custom_taxonomy() {
 	);
 	// add register_taxonomy 2,3,4
 }
-add_action( 'init', 'add_custom_taxonomy' );
+add_action( 'init', 'add_taxonomy_site_list' );
