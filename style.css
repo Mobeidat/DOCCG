@@ -795,10 +795,10 @@ table tr th strong, table tr td strong {
 /*-----------------------------------------------------------------
 * 站点推荐
 -----------------------------------------------------------------*/
-.webs-box {
+.site-list-box {
 	padding: 1rem 0;
 }
-.webs-list {
+.site-list-a {
 	display: flex;
 	align-items: flex-start;
 	position: relative;
@@ -808,7 +808,7 @@ table tr th strong, table tr td strong {
 	box-shadow: 0 0 3rem rgba(0, 0, 0, .1);
 	border-radius: .3rem;
 }
-.webs-vpn {
+.site-list-vpn {
 	display: inline-block;
 	position: absolute;
 	top: 0;
@@ -819,7 +819,7 @@ table tr th strong, table tr td strong {
 	line-height: 1;
 	background-color: firebrick;
 }
-.webs-pic {
+.site-list-pic {
 	width: 4rem;
 	height: 4rem;
 	overflow: hidden;
@@ -827,13 +827,13 @@ table tr th strong, table tr td strong {
 	border: thin solid #f2f2f2;
 	border-radius: 50%;
 }
-.webs-content-box {
+.site-list-content-box {
 	flex: 1;
 }
-.webs-excerpt {
+.site-list-excerpt {
 	margin: .5rem 0;
 }
-.webs-link a {
+.site-list-link a {
 	display: inline-block;
 	padding: .5rem;
 	color: #0057ff;
@@ -842,34 +842,34 @@ table tr th strong, table tr td strong {
 	border-radius: .3rem;
 }
 @media only screen and (min-width: 600px) {
-	.webs-list, .webs-content-box {
+	.site-list-a, .site-list-content-box {
 		align-items: center;
 	}
-	.webs-pic {
+	.site-list-pic {
 		width: 6rem;
 		height: 6rem;
 		margin-right: 2rem;
 	}
-	.webs-content-box {
+	.site-list-content-box {
 		display: flex;
 		justify-content: space-between;
 	}
-	.webs-link a:hover {
+	.site-list-link a:hover {
 		color: white;
 		background-color: #0057ff;
 	}
 }
 @media only screen and (min-width: 900px) {
-	.webs-box {
+	.site-list-box {
 		display: flex;
 		flex-wrap: wrap;
 		padding: 3rem 0;
 	}
-	.webs-list {
+	.site-list-a {
 		width: calc(100%/2 - 1rem);
 		margin-right: 2rem;
 	}
-	.webs-list:nth-child(2n) {
+	.site-list-a:nth-child(2n) {
 		margin-right: 0;
 	}
 }
