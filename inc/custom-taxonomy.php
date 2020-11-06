@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Register multiple custom categories
+ * 注册自定义类别
  */
-function taxonomy_site_list_label_args( $name, $slugName ) {
+function taxonomy_box_label_args( $name, $slugName ) {
 	return $labels = array(
 		'name' => $name,
 		'singular_name' => $slugName,
@@ -19,9 +19,9 @@ function taxonomy_site_list_label_args( $name, $slugName ) {
 	);
 }
 
-function taxonomy_site_list_args( $name, $slugName, $hierarchical = true, $show_ui = true, $show_admin_column = true, $query_var = true ) {
+function taxonomy_box_args( $name, $slugName, $hierarchical = true, $show_ui = true, $show_admin_column = true, $query_var = true ) {
 	return $args = array(
-		'labels' => taxonomy_site_list_label_args( $name, $slugName ),
+		'labels' => taxonomy_box_label_args( $name, $slugName ),
 		'hierarchical' => true,
 		'show_ui' => $show_ui,
 		'show_admin_column' => $show_admin_column,
@@ -30,9 +30,9 @@ function taxonomy_site_list_args( $name, $slugName, $hierarchical = true, $show_
 	);
 }
 
-function add_taxonomy_site_list() {
+function add_taxonomy_box() {
 	register_taxonomy( 'site-list', array( 'site-post' ),
-		taxonomy_site_list_args(
+		taxonomy_box_args(
 			__( '类型', 'doc-text' ), //$name
 			'site-list', //$slugName
 			true, //$hierarchical
@@ -41,6 +41,6 @@ function add_taxonomy_site_list() {
 			true //$query_var
 		)
 	);
-	// add register_taxonomy 2,3,4
+	// 添加多个类别 register_taxonomy( '', array( '' ),taxonomy_box_args( '' ));
 }
-add_action( 'init', 'add_taxonomy_site_list' );
+add_action( 'init', 'add_taxonomy_box' );
