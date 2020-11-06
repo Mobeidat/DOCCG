@@ -9,8 +9,8 @@ function taxonomy_site_list_label_args( $name, $slugName ) {
 		'singular_name' => $slugName,
 		'search_items' => __( '搜索', 'doc-text' ) . $name,
 		'all_items' => __( '所有', 'doc-text' ) . $name,
-		'parent_item' => __( '父类别', 'doc-text' ) . $name,
-		'parent_item_colon' => __( '父类别', 'doc-text' ) . $name,
+		'parent_item' => __( '父级', 'doc-text' ) . $name,
+		'parent_item_colon' => __( '父级', 'doc-text' ) . $name,
 		'edit_item' => __( '编辑', 'doc-text' ) . $name,
 		'update_item' => __( '更新', 'doc-text' ) . $name,
 		'add_new_item' => __( '添加', 'doc-text' ) . $name,
@@ -33,7 +33,7 @@ function taxonomy_site_list_args( $name, $slugName, $hierarchical = true, $show_
 function add_taxonomy_site_list() {
 	register_taxonomy( 'site-list', array( 'site-post' ),
 		taxonomy_site_list_args(
-			__( '类别', 'doc-text' ), //$name
+			__( '类型', 'doc-text' ), //$name
 			'site-list', //$slugName
 			true, //$hierarchical
 			true, //$show_ui
