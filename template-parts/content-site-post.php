@@ -1,8 +1,8 @@
 <?php
 /**
- * Default list template file.
+ * 站点列表
  *
- * By default, all published site-list use this list template.
+ * 将显示为站点列表效果（2列自适应）
  *
  * @package TingBiao Wang
  */
@@ -23,12 +23,12 @@
 			<?php
 			/*
 			echo '<div class="site-list-meta">';
-			// web cat
+			// 类型
 			echo '<span class="site-list-cat" itemprop="keywords">';
 			echo doc_get_category();
 			echo '</span>';
 			
-			// web time
+			// 发布日期
 			echo '<time class="site-list-time" datetime="' . get_the_time( 'Y-m-d A G:i:s' ) . '" itemprop="datePublished">' . get_the_time( 'Y-m-d' ) . '</time>';
 			echo '</div>';
 			*/
