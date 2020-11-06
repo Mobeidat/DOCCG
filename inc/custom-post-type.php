@@ -1,9 +1,9 @@
 <?php
 
 /**
- * 自定义帖子类型（不错的站点推荐）
+ * 注册自定义帖子
  */
-function site_post_label_args( $name, $slugName ) {
+function post_box_label_args( $name, $slugName ) {
 	return $labels = array(
 		'name' => $name,
 		'singular_name' => $slugName,
@@ -21,9 +21,9 @@ function site_post_label_args( $name, $slugName ) {
 	);
 }
 
-function site_post_args( $name, $slugName, $public = true, $show_in_nav_menus = true, $show_in_menu = true, $menu_position = null, $capability_type = 'post', $hierarchical = false, $supports = array(), $taxonomies = array(), $has_archive = true ) {
+function post_box_args( $name, $slugName, $public = true, $show_in_nav_menus = true, $show_in_menu = true, $menu_position = null, $capability_type = 'post', $hierarchical = false, $supports = array(), $taxonomies = array(), $has_archive = true ) {
 	return $args = array(
-		'labels' => site_post_label_args( $name, $slugName ),
+		'labels' => post_box_label_args( $name, $slugName ),
 		'public' => $public,
 		'show_in_nav_menus' => $show_in_nav_menus,
 		'show_in_menu' => $show_in_menu,
@@ -37,9 +37,9 @@ function site_post_args( $name, $slugName, $public = true, $show_in_nav_menus = 
 	);
 }
 
-function add_site_post() {
+function add_post_box() {
 	register_post_type( 'site-post',
-		site_post_args(
+		post_box_args(
 			__( '站点', 'doc-text' ), //$name
 			'site-post', //$slugName
 			true, //$public
@@ -55,12 +55,12 @@ function add_site_post() {
 	);
 	// 添加register_post_type 2,3,4
 }
-add_action( 'init', 'add_site_post' );
+add_action( 'init', 'add_post_box' );
 
 /**
- * Nice site-post metabox
+ * 帖子元框
  */
-class site_post_metabox {
+class post_box_metabox {
 	private $postTypes = array(
 		'site-post',
 	);
@@ -74,44 +74,44 @@ class site_post_metabox {
 			add_meta_box(
 				'site-post',
 				__( '站点', 'doc-text' ),
-				array( $this, 'site_post_callback' ),
+				array( $this, 'post_box_callback' ),
 				$postType,
 				'normal',
 				'default'
 			);
 		}
 	}
-	public function site_post_callback( $post ) {
-		wp_nonce_field( 'site_post_data', 'site_post_nonce' );
+	public function post_box_callback( $post ) {
+		wp_nonce_field( 'post_box_data', 'post_box_nonce' );
 		?>
 <?php $meta_value = get_post_meta( $post->ID, 'site_post_vpn', true ); ?>
 <p></p>
-<label for="site_post_vpn">
-	<input id="site_post_vpn" name="site_post_vpn" type="checkbox" class="box-input" <?php if( $meta_value == 'on' ){ echo 'checked'; } ?> />
+<label for="post_box_vpn">
+	<input id="post_box_vpn" name="post_box_vpn" type="checkbox" class="box-input" <?php if( $meta_value == 'on' ){ echo 'checked'; } ?> />
 	<?php _e('需要VPN', 'doc-text'); ?>
 </label>
 <p></p>
-<textarea id="site_post_excerpt" name="site_post_excerpt" class="box-input" placeholder="<?php _e('网站介绍', 'doc-text'); ?>"><?php echo get_post_meta( $post->ID, 'site_post_excerpt', true ); ?></textarea>
-<input id="site_post_url" name="site_post_url" type="url" class="box-input" value="<?php echo get_post_meta( $post->ID, 'site_post_url', true ); ?>" placeholder="<?php _e('网站链接', 'doc-text'); ?>"/>
+<textarea id="post_box_excerpt" name="post_box_excerpt" class="box-input" placeholder="<?php _e('网站介绍', 'doc-text'); ?>"><?php echo get_post_meta( $post->ID, 'site_post_excerpt', true ); ?></textarea>
+<input id="post_box_url" name="post_box_url" type="url" class="box-input" value="<?php echo get_post_meta( $post->ID, 'site_post_url', true ); ?>" placeholder="<?php _e('网站链接', 'doc-text'); ?>"/>
 <?php
 }
 public function save_fields( $post_id ) {
-	if ( !isset( $_POST[ 'site_post_nonce' ] ) )
+	if ( !isset( $_POST[ 'post_box_nonce' ] ) )
 		return $post_id;
-	$nonce = $_POST[ 'site_post_nonce' ];
-	if ( !wp_verify_nonce( $nonce, 'site_post_data' ) )
+	$nonce = $_POST[ 'post_box_nonce' ];
+	if ( !wp_verify_nonce( $nonce, 'post_box_data' ) )
 		return $post_id;
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
 		return $post_id;
 	// Update metafields
-	if ( isset( $_POST[ 'site_post_vpn' ] ) )
-		update_post_meta( $post_id, 'site_post_vpn', $_POST[ 'site_post_vpn' ] );
+	if ( isset( $_POST[ 'post_box_vpn' ] ) )
+		update_post_meta( $post_id, 'post_box_vpn', $_POST[ 'post_box_vpn' ] );
 	else
-		update_post_meta( $post_id, 'site_post_vpn', null );
-	if ( isset( $_POST[ 'site_post_url' ] ) )
-		update_post_meta( $post_id, 'site_post_url', esc_url_raw( $_POST[ 'site_post_url' ] ) );
-	if ( isset( $_POST[ 'site_post_excerpt' ] ) )
-		update_post_meta( $post_id, 'site_post_excerpt', esc_attr( $_POST[ 'site_post_excerpt' ] ) );
+		update_post_meta( $post_id, 'post_box_vpn', null );
+	if ( isset( $_POST[ 'post_box_url' ] ) )
+		update_post_meta( $post_id, 'post_box_url', esc_url_raw( $_POST[ 'post_box_url' ] ) );
+	if ( isset( $_POST[ 'post_box_excerpt' ] ) )
+		update_post_meta( $post_id, 'post_box_excerpt', esc_attr( $_POST[ 'post_box_excerpt' ] ) );
 }
 public function admin_footer() {
 	?>
@@ -120,12 +120,8 @@ public function admin_footer() {
 	.input-label { margin-bottom: 5px; display: block } 
 	.editor-input { margin-bottom: 25px; }
 	.delete-item { display: block; margin-bottom: 5px !important; }
-	::-site-postkit-input-placeholder { font-style: italic; }
-	::-moz-placeholder { font-style: italic; }
-	:-ms-input-placeholder { font-style: italic; }
-	:-moz-placeholder { font-style: italic; }
 	</style>
 <?php
 }
 }
-new site_post_metabox;
+new post_box_metabox;
