@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Register multiple custom article types
+ * 自定义帖子类型（不错的站点推荐）
  */
-function custom_post_type_label_args( $name, $slugName ) {
+function site_post_label_args( $name, $slugName ) {
 	return $labels = array(
 		'name' => $name,
 		'singular_name' => $slugName,
@@ -21,9 +21,9 @@ function custom_post_type_label_args( $name, $slugName ) {
 	);
 }
 
-function custom_post_type_args( $name, $slugName, $public = true, $show_in_nav_menus = true, $show_in_menu = true, $menu_position = null, $capability_type = 'post', $hierarchical = false, $supports = array(), $taxonomies = array(), $has_archive = true ) {
+function site_post_args( $name, $slugName, $public = true, $show_in_nav_menus = true, $show_in_menu = true, $menu_position = null, $capability_type = 'post', $hierarchical = false, $supports = array(), $taxonomies = array(), $has_archive = true ) {
 	return $args = array(
-		'labels' => custom_post_type_label_args( $name, $slugName ),
+		'labels' => site_post_label_args( $name, $slugName ),
 		'public' => $public,
 		'show_in_nav_menus' => $show_in_nav_menus,
 		'show_in_menu' => $show_in_menu,
@@ -37,11 +37,11 @@ function custom_post_type_args( $name, $slugName, $public = true, $show_in_nav_m
 	);
 }
 
-function add_custom_post_type() {
-	register_post_type( 'web',
-		custom_post_type_args(
+function add_site_post() {
+	register_post_type( 'site-post',
+		site_post_args(
 			__( '站点', 'doc-text' ), //$name
-			'web', //$slugName
+			'site-post', //$slugName
 			true, //$public
 			true, //$show_in_nav_menus
 			true, //show_in_menu
@@ -49,20 +49,20 @@ function add_custom_post_type() {
 			'post', //$capability_type
 			false, //$hierarchical
 			array( 'title', 'editor', 'thumbnail' ), //$supports
-			array( 'webs' ), //taxonomies
+			array( 'site-list' ), //taxonomies
 			true //$has_archive
 		)
 	);
 	// 添加register_post_type 2,3,4
 }
-add_action( 'init', 'add_custom_post_type' );
+add_action( 'init', 'add_site_post' );
 
 /**
- * Nice web metabox
+ * Nice site-post metabox
  */
-class nice_web {
+class site_post_metabox {
 	private $postTypes = array(
-		'web',
+		'site-post',
 	);
 	public function __construct() {
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
@@ -72,60 +72,60 @@ class nice_web {
 	public function add_meta_boxes() {
 		foreach ( $this->postTypes as $postType ) {
 			add_meta_box(
-				'web',
+				'site-post',
 				__( '站点', 'doc-text' ),
-				array( $this, 'web_callback' ),
+				array( $this, 'site_post_callback' ),
 				$postType,
 				'normal',
 				'default'
 			);
 		}
 	}
-	public function web_callback( $post ) {
-		wp_nonce_field( 'nice_web_data', 'nice_web_nonce' );
+	public function site_post_callback( $post ) {
+		wp_nonce_field( 'site_post_data', 'site_post_nonce' );
 		?>
-<?php $meta_value = get_post_meta( $post->ID, 'web_vpn', true ); ?>
+<?php $meta_value = get_post_meta( $post->ID, 'site_post_vpn', true ); ?>
 <p></p>
-<label for="web_vpn">
-	<input id="web_vpn" name="web_vpn" type="checkbox" class="box-input" <?php if( $meta_value == 'on' ){ echo 'checked'; } ?> />
+<label for="site_post_vpn">
+	<input id="site_post_vpn" name="site_post_vpn" type="checkbox" class="box-input" <?php if( $meta_value == 'on' ){ echo 'checked'; } ?> />
 	<?php _e('需要VPN', 'doc-text'); ?>
 </label>
 <p></p>
-<textarea id="web_excerpt" name="web_excerpt" class="box-input" placeholder="<?php _e('网站介绍', 'doc-text'); ?>"><?php echo get_post_meta( $post->ID, 'web_excerpt', true ); ?></textarea>
-<input id="web_url" name="web_url" type="url" class="box-input" value="<?php echo get_post_meta( $post->ID, 'web_url', true ); ?>" placeholder="<?php _e('网站链接', 'doc-text'); ?>"/>
+<textarea id="site_post_excerpt" name="site_post_excerpt" class="box-input" placeholder="<?php _e('网站介绍', 'doc-text'); ?>"><?php echo get_post_meta( $post->ID, 'site_post_excerpt', true ); ?></textarea>
+<input id="site_post_url" name="site_post_url" type="url" class="box-input" value="<?php echo get_post_meta( $post->ID, 'site_post_url', true ); ?>" placeholder="<?php _e('网站链接', 'doc-text'); ?>"/>
 <?php
 }
 public function save_fields( $post_id ) {
-	if ( !isset( $_POST[ 'nice_web_nonce' ] ) )
+	if ( !isset( $_POST[ 'site_post_nonce' ] ) )
 		return $post_id;
-	$nonce = $_POST[ 'nice_web_nonce' ];
-	if ( !wp_verify_nonce( $nonce, 'nice_web_data' ) )
+	$nonce = $_POST[ 'site_post_nonce' ];
+	if ( !wp_verify_nonce( $nonce, 'site_post_data' ) )
 		return $post_id;
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
 		return $post_id;
 	// Update metafields
-	if ( isset( $_POST[ 'web_vpn' ] ) )
-		update_post_meta( $post_id, 'web_vpn', $_POST[ 'web_vpn' ] );
+	if ( isset( $_POST[ 'site_post_vpn' ] ) )
+		update_post_meta( $post_id, 'site_post_vpn', $_POST[ 'site_post_vpn' ] );
 	else
-		update_post_meta( $post_id, 'web_vpn', null );
-	if ( isset( $_POST[ 'web_url' ] ) )
-		update_post_meta( $post_id, 'web_url', esc_url_raw( $_POST[ 'web_url' ] ) );
-	if ( isset( $_POST[ 'web_excerpt' ] ) )
-		update_post_meta( $post_id, 'web_excerpt', esc_attr( $_POST[ 'web_excerpt' ] ) );
+		update_post_meta( $post_id, 'site_post_vpn', null );
+	if ( isset( $_POST[ 'site_post_url' ] ) )
+		update_post_meta( $post_id, 'site_post_url', esc_url_raw( $_POST[ 'site_post_url' ] ) );
+	if ( isset( $_POST[ 'site_post_excerpt' ] ) )
+		update_post_meta( $post_id, 'site_post_excerpt', esc_attr( $_POST[ 'site_post_excerpt' ] ) );
 }
 public function admin_footer() {
 	?>
 <style>
-            .box-input { width: 100%; padding: 10px; margin-bottom: 15px;} 
-            .input-label { margin-bottom: 5px; display: block } 
-            .editor-input { margin-bottom: 25px; }
-            .delete-item { display: block; margin-bottom: 5px !important; }
-            ::-webkit-input-placeholder { font-style: italic; }
-            ::-moz-placeholder { font-style: italic; }
-            :-ms-input-placeholder { font-style: italic; }
-            :-moz-placeholder { font-style: italic; }
-            </style>
+	.box-input { width: 100%; padding: 10px; margin-bottom: 15px;} 
+	.input-label { margin-bottom: 5px; display: block } 
+	.editor-input { margin-bottom: 25px; }
+	.delete-item { display: block; margin-bottom: 5px !important; }
+	::-site-postkit-input-placeholder { font-style: italic; }
+	::-moz-placeholder { font-style: italic; }
+	:-ms-input-placeholder { font-style: italic; }
+	:-moz-placeholder { font-style: italic; }
+	</style>
 <?php
 }
 }
-new nice_web;
+new site_post_metabox;
