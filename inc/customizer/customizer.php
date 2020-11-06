@@ -1,15 +1,13 @@
 <?php
 /**
- * Theme customization settings.
- *
- * wp default menu and add custom attributes
- * Add panel
- * Site home
- * Article list
- * Article page
- * Site float
- * Site Socialization
- * Site advertisement
+ * 默认菜单添加自定义属性
+ * 主面板
+ * 站点首页
+ * 帖子列表
+ * 帖子页
+ * 底部和浮动
+ * 社会化
+ * 底部广告
  * 
  * @package TingBiao Wang
  */
@@ -22,7 +20,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 		public static function register( $wp_customize ) {
 
 			/* -------------------------------------------------------------------------- */
-			/*	wp default menu and add custom attributes
+			/*	默认菜单添加自定义属性
 			/* -------------------------------------------------------------------------- */
 			$wp_customize->get_setting( 'blogname' )->transport = 'postMessage';
 			$wp_customize->selective_refresh->add_partial( 'blogname',
@@ -32,7 +30,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				)
 			);
 
-			// Show site title
+			// 显示站点标题
 			$wp_customize->add_setting( 'custom_logo_text_open',
 				array(
 					'default' => 1,
@@ -46,7 +44,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'type' => 'checkbox',
 				) );
 
-			// Show site title annotation
+			// 显示站点标题注释
 			$wp_customize->add_setting( 'custom_logo_text_span_open',
 				array(
 					'default' => 1,
@@ -60,7 +58,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'type' => 'checkbox',
 				) );
 
-			// Site title annotation content
+			// 站点标题注释内容
 			$wp_customize->add_setting( 'custom_logo_text_span',
 				array(
 					'default' => '',
@@ -86,7 +84,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					},
 				) );
 
-			// Site keywords
+			// 站点关键词
 			$wp_customize->add_setting( 'doc_keywords',
 				array(
 					'default' => '',
@@ -108,7 +106,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			);
 
 			/* -------------------------------------------------------------------------- */
-			/*	Add panel
+			/*	主面板
 			/* -------------------------------------------------------------------------- */
 
 			$wp_customize->add_panel( 'doc_panels',
@@ -119,7 +117,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 			);
 
 			/* -------------------------------------------------------------------------- */
-			/*	Site home
+			/*	站点首页
 			/* -------------------------------------------------------------------------- */
 			$wp_customize->add_section( 'doc_home_menu',
 				array(
@@ -244,7 +242,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					),
 				) );
 			/* -------------------------------------------------------------------------- */
-			/*	Article list
+			/*	帖子列表
 			/* -------------------------------------------------------------------------- */
 			$wp_customize->add_section( 'doc_post_list_menu',
 				array(
@@ -350,7 +348,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 
 			/* -------------------------------------------------------------------------- */
-			/*	Article page
+			/*	帖子页
 			/* -------------------------------------------------------------------------- */
 			$wp_customize->add_section( 'doc_post_page_menu',
 				array(
@@ -489,7 +487,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 
 			/* -------------------------------------------------------------------------- */
-			/*	Site footer
+			/*	底部和浮动
 			/* -------------------------------------------------------------------------- */
 			$wp_customize->add_section( 'doc_footer_menu',
 				array(
@@ -498,7 +496,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 					'priority' => '',
 				) );
 
-			// Site footer introduction
+			// 站点页脚介绍
 			$wp_customize->add_setting( 'doc_bottom_about',
 				array(
 					'default' => '',
@@ -656,7 +654,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) );
 
 			/* -------------------------------------------------------------------------- */
-			/*	Site Socialization
+			/*	社会化
 			/* -------------------------------------------------------------------------- */
 			$wp_customize->add_section( 'doc_socialization_menu',
 				array(
@@ -1110,7 +1108,7 @@ if ( !class_exists( 'doc_customizer' ) ) {
 				) ) );
 
 			/* -------------------------------------------------------------------------- */
-			/*	Site advertisement
+			/*	底部广告
 			/* -------------------------------------------------------------------------- */
 			$wp_customize->add_section( 'doc_advertisement_menu',
 				array(
