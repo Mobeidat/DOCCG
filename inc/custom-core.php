@@ -1,9 +1,9 @@
 <?php
 /**
  * 后台登录/注册显示修改站点Logo链接
- * Login in the background to register and display the logo name
- * Customize admin footer text
- * Protect your website from malicious requests
+ * 后台登录/注册显示修改Logo名称
+ * 自定义管理员后台页脚文本
+ * 保护您的网站免受恶意请求
  * Only show articles from current user
  * Kill the admin nag
  * Remove nofollow from comments
@@ -32,7 +32,7 @@ function doc_login_logo_url() {
 add_filter( 'login_headerurl', 'doc_login_logo_url' );
 
 /**
- * Login in the background to register and display the logo name
+ * 后台登录/注册显示修改Logo名称
  */
 function doc_login_logo_url_title() {
 	$doc_login_logo_url_title_a = get_bloginfo( 'name' );
@@ -41,7 +41,7 @@ function doc_login_logo_url_title() {
 add_filter( 'login_headertitle', 'doc_login_logo_url_title' );
 
 /**
- * Customize admin footer text
+ * 自定义管理员后台页脚文本
  */
 function doc_custom_admin_footer() {
 	echo '<a href="' . get_home_url() . '">' . get_bloginfo( 'name' ) . '</a>';
@@ -49,7 +49,7 @@ function doc_custom_admin_footer() {
 add_filter( 'admin_footer_text', 'doc_custom_admin_footer' );
 
 /**
- * Protect your website from malicious requests
+ * 保护您的网站免受恶意请求
  */
 global $user_ID;
 if ( $user_ID ) {
