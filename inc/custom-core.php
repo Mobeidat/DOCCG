@@ -1,8 +1,6 @@
 <?php
 /**
- * Important core code.
- *
- * Login in the background to register and display the logo link
+ * 后台登录/注册显示修改站点Logo链接
  * Login in the background to register and display the logo name
  * Customize admin footer text
  * Protect your website from malicious requests
@@ -26,7 +24,7 @@
  */
 
 /**
- * Login in the background to register and display the logo link
+ * 后台登录/注册显示修改站点Logo链接
  */
 function doc_login_logo_url() {
 	return home_url();
