@@ -35,9 +35,9 @@ Tags: 两栏，灵活的标题，可访问性就绪，自定义颜色，自定�
 * 初始化
 -----------------------------------------------------------------*/
 *, ::before, ::after {
+	-webkit-tap-highlight-color: transparent;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	-webkit-tap-highlight-color: transparent;
 }
 * {
 	margin: 0;
